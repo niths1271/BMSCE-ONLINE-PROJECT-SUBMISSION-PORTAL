@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./login.css">
+    <script type="text/javascript" src="./login.js"></script>
+
+    <title>Login and Signup</title>
+
+</head>
+
+<body>
+
+    <div class="container" id="container">
+
+        <div class="forms">
+            <div class="forms-container login-container">
+                <form action="#" class="log-in-form">
+                    <h2 class="title">Login</h2>
+
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="USN or Email" required/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required/>
+
+
+
+                    </div>
+                    <div id="remember"><input type="checkbox" name="remember">Remember me</div>
+
+                    <input type="submit" value="Login" class="btn solid" />
+
+                    <p class="bms-text">Or Go to Bmsce Sites</p>
+                    <div class="bms-media">
+                        <a href="https://www.bmsce.ac.in/" class="bms-icon">
+                            <i class="fa fa-university"></i>
+                        </a>
+                        <a href="https://campus.bmsce.ac.in/" class="bms-icon">
+                            <i class="fa fa-users"></i>
+                        </a>
+
+                    </div>
+
+                </form>
+                <span>
+                <input type="submit" value="Login as Admin" class="btn psw adm" />
+                <input type="submit" value="Forgot Password?" class="btn psw" />
+                </span>
+            </div>
+            <div class="forms-container signup-container">
+                <form action="#" class="sign-up-form">
+                    <h2 class="title">Signup</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="USN" required/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" placeholder="Email" required/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-unlock-alt"></i>
+                        <input type="password" placeholder="Create A New Password" required/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Confirm New Password" required/>
+                    </div>
+                    <input type="submit" class="btn" value="Signup" />
+                    <p class="bms-text">Or Go to Bmsce Sites</p>
+                    <div class="bms-media">
+                        <a href="https://www.bmsce.ac.in/" class="bms-icon">
+                            <i class="fa fa-university"></i>
+                        </a>
+                        <a href="https://campus.bmsce.ac.in/" class="bms-icon">
+                            <i class="fa fa-users"></i>
+                        </a>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel">
+                <div class=" panels right-panel">
+                    <div class="content">
+                        <h3>Not Registered ?</h3>
+                        <p>
+                            CLICK ON THE SIGNUP BUTTON TO CREATE NEW ACCOUNT
+                        </p>
+                        <button class="btn transparent" id="sign-up-btn">
+                Signup
+            </button>
+                    </div>
+
+                </div>
+                <div class="panels left-panel">
+                    <div class="content">
+                        <h3>Already Registered ?</h3>
+                        <button class="btn transparent" id="log-in-btn">
+                Login
+            </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
