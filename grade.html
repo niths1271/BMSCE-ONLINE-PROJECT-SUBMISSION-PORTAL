@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tab</title>
+    <link rel="stylesheet" href="grade.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);  
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Marks per Criteria'],
+                ['Navigation', 5],
+                ['Javascript(Validation of fields)', 10],
+                ['Css(Background)', 5],
+                ['Report', 5],
+                ['Presentation', 5]
+            ]);
+            var options = {
+                'title': 'FINAL MARKS DISTRIBUTION',
+                'width': 600,
+                'height': 600,
+                is3D: true,
+                legend: 'none',
+                fontSize: 20,
+                height: 400,
+                slices: [{
+                    color: 'black'
+                }, {
+                    color: 'red'
+                }, {
+                    color: 'yellow'
+                }, {
+                    color: 'blue'
+                }, {
+                    color: 'green'
+                }],
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+
+    <script src="./grade.js"></script>
+
+    <script>
+        $(function() {
+
+            $('.circlechart').circlechart();
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <h1>BMSCE ONLINE PROJECT SUBMISSION PORTAL</h1>
+    </header>
+    <div class="container">
+
+        <div class="menu">
+            <ul>
+                <li><a href="report.html">Report Submission</a></li>
+                <li><a href="app.html">Schedule an Appointment</a></li>
+                <li><a href="#">Project Submission</a></li>
+                <li class="active"><a href="#">Grades</a></li>
+                <li><a href="login.html">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="donuts">
+                <div id="donut">
+                    <div class="circlechart" data-percentage="40">CIE</div>
+                </div>
+                <div id="donut">
+                    <div class="circlechart" data-percentage="60">SEE</div>
+                </div>
+                <div id="donut">
+                    <div class="circlechart" data-percentage="80">TOTAL</div>
+                </div>
+               
+            </div>
+
+            <div class="piemain">
+                <div id="piechart"></div>
+            </div>
+            <div class="tbl-main">
+                <div class="table">
+                    <table>
+                        <tr>
+                            <th>Criteria</th>
+                            <th>points</th>
+                            <th>Color</th>
+                        </tr>
+                        <tr>
+                            <td>Javascript</td>
+                            <td>9</td>
+                            <td style="background-color:red;"></td>
+                        </tr>
+                        <tr>
+                            <td>Navigation</td>
+                            <td>4</td>
+                            <td style="background-color:black;"></td>
+                        </tr>
+                        <tr>
+                            <td>Css</td>
+                            <td>4</td>
+                            <td style="background-color:yellow;"></td>
+                        </tr>
+                        <tr>
+                            <td>Report</td>
+                            <td>4</td>
+                            <td style="background-color:blue;"></td>
+                        </tr>
+                        <tr>
+                            <td>Presentation</td>
+                            <td>4</td>
+                            <td style="background-color:green;"></td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+            <div class="w3-container a">
+                <h3>Instructor Remarks</h3>
+                <div class="w3-row">
+                    <div class="m2">
+                        <img class="w3-circle" src="avatar3.png" style="width:96px;height:96px">
+                    </div>
+                    <div class="m10">
+                        <h4>John <span class="w3-opacity w3-medium">Sep 29, 2014, 9:12 PM</span></h4>
+                        <p>Keep up the GREAT work! I am cheering for you!! Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+                    </div>
+                </div>
+
+                <div class="w3-row">
+                    <div class="m2">
+                        <img class="w3-circle" src="avatar1.png" style="width:96px;height:96px">
+                    </div>
+                    <div class="m10">
+                        <h4>Bo <span class="w3-opacity w3-medium">Sep 28, 2014, 10:15 PM</span></h4>
+                        <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><br>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-container b">
+                <h3>Team Members</h3>
+                <ul class="w3-ul w3-card-4 w3-white">
+                    <li class="w3-padding-16">
+                        <img src="avatar1.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                        <span class="w3-xlarge">Mike</span><br>
+                    </li>
+                    <li class="w3-padding-16">
+                        <img src="avatar1.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                        <span class="w3-xlarge">Jill</span><br>
+                    </li>
+                    <li class="w3-padding-16">
+                        <img src="avatar1.png" class="w3-left w3-circle w3-margin-right" style="width:35px">
+                        <span class="w3-xlarge">Jane</span><br>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
