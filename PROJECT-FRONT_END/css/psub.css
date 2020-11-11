@@ -107,6 +107,9 @@ ul li.active a {
 .notifications ul li {
     padding-top: 10px;
 }
+.notifications ul li:hover {
+    transform: scale(1.1);
+}
 
 .fileuploader {
     max-width: 100%;

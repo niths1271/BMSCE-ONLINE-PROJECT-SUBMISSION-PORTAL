@@ -122,6 +122,10 @@ ul li.active a {
 }
 
 
+.notifications ul li:hover {
+    transform: scale(1.1);
+}
+
 input[type="radio"]{
     display:none;
 }

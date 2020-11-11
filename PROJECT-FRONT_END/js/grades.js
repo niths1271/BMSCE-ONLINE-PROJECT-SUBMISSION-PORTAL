@@ -4,9 +4,9 @@ function makesvg(percentage, inner_text = "") {
     var percentage_str = percentage.toString();
     var classes = ""
 
-    if (percentage < 0) {
+    if (percentage>0 && percentage<=30) {
         classes = "danger-stroke circle-chart__circle--negative";
-    } else if (percentage > 0 && percentage <= 30) {
+    } else if (percentage > 30 && percentage <= 70) {
         classes = "warning-stroke";
     } else {
         classes = "success-stroke";
