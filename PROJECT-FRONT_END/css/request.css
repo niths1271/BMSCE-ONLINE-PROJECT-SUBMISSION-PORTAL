@@ -51,7 +51,44 @@ body {
 .column.side {
   width: 20%;
 }
+.button1 {
+  background-color: rgb(44, 43, 43); /* Green */
+  border: none;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 23px;
+  margin: 1px 2px;
+  font-family: cursive;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 12px;
+  margin-left: -55px;
+}
+.button2 {
+  background-color: #ddd;
+  font-family: cursive;
+  border: none;
+  color: black;
+  padding: 10px;
+  text-align: left;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 23px;
+  margin: 1px 2px;
+  margin-top: 15px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 12px;
+}
 
+.button1:hover {
+  background-color: #ddd;
+  color: black;
+}
 .column.middle {
   width: 69.2%;
 }
@@ -259,41 +296,4 @@ body {
   float: left;
   width: 400%;
   text-align: center;
-}
-.button1 {
-  background-color: lightblue; /* Green */
-  border: none;
-  color: black;
-  padding: 15px;
-  text-align: center;
-  position: relative;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 23px;
-  margin: 1px 2px;
-  margin-top: 20px;
-  cursor: pointer;
-  border-radius: 12px;
-  margin-left: -10px;
-}
-.button2 {
-  background-color: rgb(44, 43, 43);
-
-  border: none;
-  color: white;
-  padding: 10px;
-  text-align: left;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 23px;
-  margin: 1px 2px;
-  margin-top: 15px;
-  position: relative;
-  cursor: pointer;
-  border-radius: 12px;
-}
-
-.button2:hover {
-  background-color: #ddd;
-  color: black;
 }
