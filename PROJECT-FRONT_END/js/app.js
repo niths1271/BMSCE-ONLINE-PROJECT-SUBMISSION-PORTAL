@@ -3,15 +3,17 @@ function validate() {
     var table = document.getElementsByClassName('table')[0];
     var date = document.getElementById('appointmenttime').value;
     var time = document.getElementsByClassName('time')[0];
-    var btn = document.getElementsByClassName('btn')[0];
+    var b= document.getElementById('button');
+    var h= document.getElementById('header');
     time.style.display = 'none';
-    btn.style.display = 'none';
     table.style.display = 'block';
+    b.style.display = 'none';
+    h.style.display = 'none';
     if (x == 1) {
-        alert("YOU HAVE SELECTED APPOINTMENT FOR PRESENTATION AT TIME " + date);
+        alert("YOU HAVE SELECTED APPOINTMENT FOR PRESENTATION AT TIME  " + date);
 
-    } else {
-        alert("YOU HAVE SELECTED APPOINTMENT FOR DOUBT CLARIRFICATION AT TIME " + date);
-
+    } else  {
+        alert("YOU HAVE SELECTED APPOINTMENT FOR DOUBT CLARIRFICATION AT TIME  " + date);
     }
+   
 }
