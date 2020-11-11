@@ -313,9 +313,14 @@ body {
 .btn-group button:hover {
     background-color: #213e6e;
 }
+<<<<<<< HEAD
 
 body {
     background-image: url("https://mail.google.com/mail/u/0?ui=2&ik=04454976bc&attid=0.1&permmsgid=msg-f:1682868482578304874&th=175abff7fbc7cf6a&view=att&disp=safe&realattid=f_kha91m370");
+=======
+body  {
+  background-image: url("photos/email-pattern.png");
+>>>>>>> f5b052cdf50237b9ae80086c2e710d966074dea6
 }
 
 #textbox {
