@@ -6,7 +6,7 @@
 }
 
 body {
-    background-image:url(email-pattern.PNG);
+    background-image:url(../photos/email-pattern.png);
     /* linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), */
 }
 
@@ -88,7 +88,7 @@ ul li.active a {
     margin: 5px;
     margin-top: 1%;
     border-radius: 5px;
-    background-image: url(email-pattern.PNG);
+    background-image: url(../photos/email-pattern.png);
     padding: 5px;
     transform: translateY(10px);
     height: 15vh;
@@ -103,7 +103,7 @@ ul li.active a {
     margin: 5px;
     margin-top: 0;
     border-radius: 5px;
-    background-image: url(email-pattern.PNG);
+    background-image: url(../photos/email-pattern.png);
     padding: 5px;
     transform: translateY(30px);
     height: 68vh;
