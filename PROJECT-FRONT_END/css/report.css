@@ -29,7 +29,7 @@ header h1 {
     display: grid;
     background-size: cover;
     grid-template-columns: 25% 1fr;
-    grid-template-rows: 10% 1fr;
+    grid-template-rows: 8% 1fr;
 }
 
 .menu ul {
@@ -108,7 +108,7 @@ ul li.active a {
     background-image: url(../photos/email-pattern.png);
     padding: 5px;
     transform: translateY(30px);
-    height: 60vh;
+    height: 65vh;
     font-size: larger;
 }
 

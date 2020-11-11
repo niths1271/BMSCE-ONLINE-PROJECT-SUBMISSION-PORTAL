@@ -26,7 +26,7 @@ header h1 {
     display: grid;
     background-size: cover;
     grid-template-columns: 25% 1fr;
-    grid-template-rows: 10% 1fr;
+    grid-template-rows: 8% 1fr;
 }
 
 .menu ul {
@@ -100,7 +100,7 @@ ul li.active a {
     background-image: url("../photos/email-pattern.png");
     padding: 5px;
     transform: translateY(30px);
-    height: 60vh;
+    height: 67vh;
     font-size: larger;
 }
 
@@ -109,7 +109,7 @@ ul li.active a {
 }
 
 .fileuploader {
-    max-width: 1000px;
+    max-width: 100%;
 }
 
 .instruc ul {
@@ -117,25 +117,29 @@ ul li.active a {
 }
 
 .btn {
-    margin: 1rem;
-    padding: 0.6rem;
-    width: 7rem;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    font-weight: 800;
-    color: #fff;
-    background: linear-gradient( #44A08D, #093637);
+    margin-top: 10px;
+    margin-left: 45%;
+    padding: 10px;
+    width: 100px;
+    border-radius: 49px;
+    background-image: linear-gradient(#196ffa, #213e6e);
+    text-decoration: none;
     border: none;
     outline: none;
-    letter-spacing: 0.1rem;
-    border-radius: 7px;
-    transition: 0.2s ease-in;
+    cursor: pointer;
+    font-size: x-large;
+    font-style: normal;
 }
 
 .btn:hover {
-    background: linear-gradient( #093637, #44A08D);
+    background: linear-gradient( #213e6e,#196ffa);
 }
 
 .btn:active {
     transform: scale(0.9);
+}
+
+.main{
+    margin-left: 2%;
+    margin-right: 2%;
 }

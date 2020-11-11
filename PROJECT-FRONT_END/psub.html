@@ -65,17 +65,20 @@
             </ul>
         </div>
         <div class="main">
-            <h2>UPLOAD YOUR PROJECT FILES:</h2>
+            <h1 style="color:#593535; padding-bottom: 2%;">UPLOAD YOUR PROJECT FILES:</h1>
             <form action="php/form_upload.php" method="post" enctype="multipart/form-data">
-                <h3>UPLOAD ALL HTML FILES HERE:</h3>
+                <h3 style="color:#593535;">UPLOAD ALL HTML FILES HERE:</h3>
                 <input type="file" name="files">
                 <br>
-                <h3>UPLOAD ALL CSS FILES HERE:</h3>
+                <div class ="instructions"><p style="color:red;">*UPLOAD ALL THE FILES WITH HTML EXTENSION</p></div>
+                <h3 style="color:#593535;">UPLOAD ALL CSS FILES HERE:</h3>
                 <input type="file" name="files">
                 <br>
-                <h3>UPLOAD ALL JS FILES HERE:</h3>
+                <div class ="instructions"><p style="color:red;">*UPLOAD ALL THE FILES WITH CSS EXTENSION</p></div>
+                <h3 style="color:#593535;">UPLOAD ALL JS FILES HERE:</h3>
                 <input type="file" name="files">
                 <br>
+                <div class ="instructions"><p style="color:red;">*UPLOAD ALL THE FILES WITH JS EXTENSION</p></div>
             </form>
             <input type="button" value="Submit" class="btn">
         </div>
