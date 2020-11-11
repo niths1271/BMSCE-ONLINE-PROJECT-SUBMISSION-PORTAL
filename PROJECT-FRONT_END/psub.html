@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Tab</title>
+    <link rel="stylesheet" href="./css/psub.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="./js/psub.js"></script>
+    <!-- fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <link href="./dist/font/font-fileuploader.css" rel="stylesheet">
+
+    <!-- styles -->
+    <link href="./dist/jquery.fileuploader.min.css" media="all" rel="stylesheet">
+
+    <!-- js -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="./dist/jquery.fileuploader.min.js" type="text/javascript"></script>
+
+
+
+</head>
+
+<body>
+    <header>
+        <h1>BMSCE ONLINE PROJECT SUBMISSION PORTAL</h1>
+    </header>
+    <div class="container">
+        <div class="sidebar">
+            <div class="name">
+                <h3>Welcome</h3>
+                <p><i class="fa fa-user" aria-hidden="true"></i>Niranjan Nagaraj Savanur <br> niranjanns.cs19@bmsce.ac.in
+                </p>
+            </div>
+            <div class="notifications">
+                <h3>NOTIFICATIONS:</h3>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <hr>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <hr>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <hr>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <hr>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <hr>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <hr>
+                    <li>Lorem ipsum dolor sit amet.</li>
+                    <hr>
+                </ul>
+            </div>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="#">Report Submission</a></li>
+                <li><a href="#">Schedule an Appointment</a></li>
+                <li class="active"><a href="#">Project Submission</a></li>
+                <li><a href="#">Grades</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+        <div class="main">
+
+            <form action="php/form_upload.php" method="post" enctype="multipart/form-data">
+                <!-- file input -->
+                <input type="file" name="files">
+                <br>
+
+
+            </form>
+            <div class="instruc">
+                <h3>Instructions:</h3>
+                <ul>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat qui neque ipsa reprehenderit, ipsam labore.
+                    </li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat qui neque ipsa reprehenderit, ipsam labore.
+                    </li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat qui neque ipsa reprehenderit, ipsam labore.
+                    </li>
+                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat qui neque ipsa reprehenderit, ipsam labore.
+                    </li>
+                </ul>
+            </div>
+            <input type="button" value="Submit" class="btn">
+        </div>
+
+    </div>
+
+
+
+
+</body>
+
+</html>
