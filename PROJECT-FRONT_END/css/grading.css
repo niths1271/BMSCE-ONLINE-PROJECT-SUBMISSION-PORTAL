@@ -325,9 +325,9 @@ body {
     transform: translate(-50%, -50%);
     margin-left: 50%;
     margin-top: 5%;
-    background-color: #593535;
+    background-color: #196ffa;
     /* Green background */
-    border: 1px solid#593535;
+    border: 1px solid #196ffa;
     /* Green border */
     color: white;
     /* White text */
@@ -361,7 +361,7 @@ body {
 /* Add a background color on hover */
 
 .btn-group button:hover {
-    background-color: #593535;
+    background-color: #213e6e;
 }
 
 body {
