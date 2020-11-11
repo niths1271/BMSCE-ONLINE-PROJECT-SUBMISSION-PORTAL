@@ -337,7 +337,7 @@ body {
     /* Pointer/hand icon */
     float: left;
     /* Float the buttons side by side */
-    position: absolute;
+    /* position: absolute; */
     top: 150%;
     left: 50%;
     -ms-transform: translate(-50%, -50%);
