@@ -2,10 +2,14 @@ html,
 body {
     height: 100%;
 }
+<<<<<<< HEAD
+/*reset padding of body*/
+=======
 
 
 /* /reset padding of body/ */
 
+>>>>>>> 9bd0b4f9d5486a12bb064cccaed559d9bd02ea38
 body {
     padding: 0;
 }
