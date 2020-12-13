@@ -2,7 +2,6 @@ html,
 body {
   height: 100%;
 }
-/**reset padding of body**/
 body {
   padding: 0;
 }
@@ -18,26 +17,23 @@ body {
 .active {
   background-color: #ddd;
 }
-/* The navbar container */
 .topnav {
   width: 105%;
   overflow: hidden;
   background-color: #593535;
 }
 
-/* Navbar links */
 .topnav a {
-  font-size: 22px;
+  font-size: 20px;
   float: left;
   display: ruby-base;
   color: #f2f2f2;
   text-align: center;
-  width: 25%;
+  width: 20%;
   padding: 15px 15px;
   text-decoration: none;
 }
 
-/* Links - change color on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
@@ -48,13 +44,12 @@ body {
   padding: 0px;
 }
 
-/* Left and right column */
 .column.side {
   width: 20%;
 }
 
 .button1 {
-  background-color: #ddd; /* Green */
+  background-color: #ddd;
   border: none;
   color: black;
   padding: 15px;
@@ -96,10 +91,14 @@ body {
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-.set1{
-font-size: 25px; margin-left: 300px; color:white; background-color: rgb(34, 34, 226);padding: 10px;"
+.set1 {
+  font-size: 25px;
+  margin-left: 320px;
+  color: white;
+  background-image: linear-gradient(#196ffa, #213e6e);
+  padding: 10px;
 }
-.set1:hover{
+.set1:hover {
   background-color: #ddd;
   color: black;
 }
@@ -107,14 +106,12 @@ font-size: 25px; margin-left: 300px; color:white; background-color: rgb(34, 34, 
   width: 69.2%;
 }
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column.side,
   .column.middle {
@@ -123,94 +120,16 @@ font-size: 25px; margin-left: 300px; color:white; background-color: rgb(34, 34, 
 }
 .abc {
   font-size: 19px;
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: cursive;
   border: 1px solid black;
   outline: black solid 5px;
   margin: auto;
   padding: 10px;
   text-align: center;
- background-color: #8a5858;
- color:white
-}
-#customers {
-  margin-left: auto;
-  margin-right: auto;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  border-collapse: collapse;
-  width: 95%;
-}
-
-table.table {
-  width: 100%;
-
-  /* border-collapse: collapse; */
-  border-spacing: 0;
-  border: 5px solid black;
-}
-
-/* To display the block as level element */
-table.table tbody,
-table.table thead {
-  display: block;
-}
-
-thead tr th {
-  height: 50px;
-  line-height: 40px;
-}
-
-table.table tbody {
-  /* Set the height of table body */
-  height: 300px;
-
-  /* Set vertical scroll */
-  overflow-y: auto;
-
-  /* Hide the horizontal scroll */
-  overflow-x: hidden;
-}
-
-tbody {
-  border-top: 2px solid black;
-}
-
-tbody td,
-thead th {
-  width: 360px;
-  border-right: 2px solid black;
-}
-td {
-  text-align: center;
-}
-
-#customers td,
-#customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-#customers tr:nth-child(even) {
-  background-color: #f3f0f0;
-}
-
-#customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: center;
-  background-color: rgb(44, 43, 43);
+  background-color: #8a5858;
   color: white;
-  background-color: #593535;
 }
-#customers td {
-  padding-top: 5px;
-  padding-bottom: px;
-  width: 235px;
-}
-#customers {
-  font-size: 20px;
-}
+
 .column.side {
   background-color: rgb(231, 226, 226);
   width: 400px;
@@ -222,60 +141,11 @@ td {
 
   border: 6px solid rgb(0, 0, 0);
 }
-.approval {
-  text-align: center;
-  vertical-align: middle;
-}
-input.checkbox {
-  width: 30px;
-  height: 30px;
-}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.flip-box {
-  background-color: transparent;
-  width: 350px;
-  height: 150px;
-  border: 5px solid #f1f1f1;
-  perspective: 1000px;
-  margin: 0.5cm;
-}
-
-.flip-box-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-box:hover .flip-box-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-box-front,
-.flip-box-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  padding: 30px;
-}
-
-.flip-box-front {
-  background-color: #bbb;
-  color: black;
-}
-
-.flip-box-back {
-  background-color: dodgerblue;
-  color: white;
-  transform: rotateY(180deg);
-}
 .border {
   border-style: solid;
   border-width: 3x;
@@ -295,4 +165,26 @@ body {
   border-color: black;
   margin: 0.1cm;
   padding: 10px;
+}
+table1,
+th,
+td {
+  border: 1px solid black;
+}
+
+table1 {
+  width: 80%;
+  margin-left: 9%;
+  text-align: center;
+}
+th,
+td {
+  padding: 10px;
+}
+.table1 {
+  margin-top: -5%;
+  display: none;
+}
+.table1 p {
+  margin-left: 1%;
 }

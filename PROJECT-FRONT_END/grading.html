@@ -5,179 +5,160 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=100%" />
     <title>Teacher home page</title>
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="C:\Users\asus\grading.js"></script>
     <link rel="stylesheet" href="./css/grading.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="stylesheet" href="/cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <script src="C:\Users\asus\gradde.js"></script>
+    <script src="./js/grading.js"></script>
 </head>
 
 <body>
+    <div style="background-image: url(./photos/email-pattern.png);">
     <div class="header">
         <h1>BMSCE ONLINE PROJECT SUBMISSION PORTAL</h1>
     </div>
-
-
-
-    <div class="abc">
-        <div id="textbox">
-
-            <p><a href="#" class="alignleft">Logout</a></p>
-            <p class="aligncenter">WELCOME TO TEACHER'S HOME PAGE</p>
-
-
-
-        </div>
-    </div>
-
-
-
-
-
-
-    <!-- 
-    <div class="row">
-        <div class="column side">
-            <div class="border">
-                <h1 style="font-size: 25px">Dr.Umadevi</h1>
-                <i class="fa fa-user" style="font-size: 21px">
-               umadevi.cse@bmsce.ac.in</i>
-                <br />
-                <br />
-                <br />
-            </div>
-        </div>
-    </div> -->
-
-
-
-
-
-
-
-
-    <div class="topnav">
+<p class="abc">WELCOME TO TEACHER'S HOME PAGE!</p>
+<br>
+<div class="border1">
+<div class="topnav">
         <a href="viewreport.html">View Reports</a>
         <a href="appointment.html">Appointments</a>
         <a href="viewproject.html">View Projects</a>
         <a class="active" href="#" style="color: black">Grading </a>
+        <a href="alogin.html">Logout</a>
     </div>
 
 
+    <form action="/action_page.php" method="post">
 
+        <h2 style="font-size: 25px">
+            <span style="font-size: 20px">&#9733;</span> Credits for the work:
+        </h2>
+        <table id="customers" class="table">
+            <thead>
+                <tr style="font-size: 22px;">
+                    <th style="width: 580px;">Section</th>
+                    <th style="width: 625px;">Teams</th>
+                    <th>Credits</th>
+                </tr>
+            </thead>
 
-    <h2 style="font-size: 20px">
-        <span style="font-size: 20px">&#9733;</span> Credits for the work:
-    </h2>
-    <table id="customers" class="table">
-        <thead>
-            <tr>
-                <th>Section</th>
-                <th>Teams</th>
-                <th>Credits</th>
+            <tr style="font-size: 22px;">
+                <td style="text-align: center;">A</td>
+
+                <td>
+                    <ul>
+                        <li>Ajay</li>
+                        <li>Vijay</li>
+                        <li>Sujay</li>
+                        <li>Uday</li>
+                    </ul>
+                </td>
+                <td>
+                    <table>
+
+                        <tr>
+                            <td>1)</td>
+                            <div class="form-group">
+                                <td>Layout</td>
+                                <td>
+
+                                    <form action="/action_page.php">
+                                        <input type="number" id="quantity1" name="quantity1" class="form-control prc"
+                                            min="0" max="10" required>
+                            </div>
+                </td>
+                <td>/10</td>
             </tr>
-        </thead>
+            <tr>
+                <td>2)</td>
+                <td>Navigation</td>
+                <td>
+                    <div class="form-group">
+                        <form action="/action_page.php">
+                            <input type="number" id="quantity1" name="quantity1" min="0" max="10" required>
+                    </div>
+                </td>
+                <td>/10</td>
+            </tr>
+            <tr>
+                <td>3)</td>
+                <td>Validation of Form fields</td>
+                <td>
+                    <div class="form-group">
+                        <form action="/action_page.php">
+                            <input type="number" id="quantity1" name="quantity1" min="0" max="10" required>
+                    </div>
+                </td>
+                <td>/10</td>
+            </tr>
+            <tr>
+                <td>4)</td>
+                <td>Background</td>
+                <td>
+                    <div class="form-group">
+                        <form action="/action_page.php">
+                            <input type="number" id="quantity1" name="quantity1" min="0" max="10" required>
+                    </div>
+                </td>
+                <td>/10</td>
+            </tr>
+            <tr>
+                <td>5)</td>
+                <td>Report</td>
+                <td>
+                    <div class="form-group">
+                        <form action="/action_page.php">
+                            <input type="number" id="quantity2" name="quantity2" min="0" max="5" required>
+                    </div>
+                </td>
+                <td>/5</td>
+            </tr>
+            <tr>
+                <td>6)</td>
+                <td>Oral communication/Presentation</td>
+                <td>
+                    <div class="form-group">
 
-        <tr>
-            <td>A</td>
-
+                        <form action="/action_page.php">
+                            <input type="number" id="quantity2" name="quantity2" min="0" max="5" required>
+                    </div>
+                </td>
+                <td>/5</td>
+            </tr>
+            <tr>
+            <td>7)</td>
+            <td>Total marks(CIE)</td>
             <td>
-                <ul>
-                    <li>Ajay</li>
-                    <li>Vijay</li>
-                    <li>Sujay</li>
-                    <li>Uday</li>
-                </ul>
+                <form action="/action_page.php">
+                    <input type="number" id="quantity3" name="quantity3" min="0" max="50" required>
             </td>
-            <td>
-                <table>
+            <td>/50</td>
+            </tr>
+            <tr>
+                <td>8)</td>
+                <td>Total marks(SEE)</td>
+                <td>
+                    <form action="/action_page.php">
+                        <input type="number" id="quantity3" name="quantity3" min="0" max="50" required>
+                </td>
+                <td>/50</td>
+            </tr>
+            <tr>
+                <td>9)</td>
+                <td>Total marks</td>
+                <td>
+                    <form action="/action_page.php">
+                        <input type="number" id="quantity" name="quantity" min="0" max="100" required>
+                </td>
+                <td>/100</td>
+            </tr>
 
-                    <tr>
-                        <td>1)</td>
-                        <td>Layout</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
-                        </td>
-                        <td>/10</td>
-                    </tr>
-                    <tr>
-                        <td>2)</td>
-                        <td>Navigation</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
-                        </td>
-                        <td>/10</td>
-                    </tr>
-                    <tr>
-                        <td>3)</td>
-                        <td>Validation of Form fields</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
-                        </td>
-                        <td>/10</td>
-                    </tr>
-                    <tr>
-                        <td>4)</td>
-                        <td>Background</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
-                        </td>
-                        <td>/10</td>
-                    </tr>
-                    <tr>
-                        <td>5)</td>
-                        <td>Report</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
-                        </td>
-                        <td>/5</td>
-                    </tr>
-                    <tr>
-                        <td>6)</td>
-                        <td>Oral communication/Presentation</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
-                        </td>
-                        <td>/5</td>
-                    </tr>
-                    <tr>
-                        <td>7)</td>
-                        <td>Total marks(CIE)</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="50">
-                        </td>
-                        <td>/50</td>
-                    </tr>
-                    <tr>
-                        <td>8)</td>
-                        <td>Total marks(SEE)</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="50">
-                        </td>
-                        <td>/50</td>
-                    </tr>
-                    <tr>
-                        <td>9)</td>
-                        <td>Total marks</td>
-                        <td>
-                            <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="100">
-                        </td>
-                        <td>/100</td>
-                    </tr>
-                    </form>
-                </table>
-            </td>
+        </table>
+        </td>
         </tr>
-        <tr>
-            <td>B</td>
+        <tr style="font-size: 22px;">
+            <td style="text-align: center;">B</td>
             <td>
                 <ul>
                     <li>Hemanth</li>
@@ -194,7 +175,7 @@
                         <td>Layout</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
+                                <input type="number" id="quantity1" name="quantity1" min="0" max="10" required>
                         </td>
                         <td>/10</td>
                     </tr>
@@ -203,7 +184,7 @@
                         <td>Navigation</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
+                                <input type="number" id="quantity1" name="quantity1" min="0" max="10" required>
                         </td>
                         <td>/10</td>
                     </tr>
@@ -212,7 +193,7 @@
                         <td>Validation of Form fields</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
+                                <input type="number" id="quantity1" name="quantity1" min="0" max="10" required>
                         </td>
                         <td>/10</td>
                     </tr>
@@ -221,7 +202,7 @@
                         <td>Background</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
+                                <input type="number" id="quantity1" name="quantity1" min="0" max="10" required>
                         </td>
                         <td>/10</td>
                     </tr>
@@ -230,7 +211,7 @@
                         <td>Report</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
+                                <input type="number" id="quantity2" name="quantity2" min="0" max="5" required>
                         </td>
                         <td>/5</td>
                     </tr>
@@ -239,7 +220,7 @@
                         <td>Oral communication/Presentation</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="5">
+                                <input type="number" id="quantity2" name="quantity2" min="0" max="5" required>
                         </td>
                         <td>/5</td>
                     </tr>
@@ -248,7 +229,7 @@
                         <td>Total marks(CIE)</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="50">
+                                <input type="number" id="quantity3" name="quantity3" min="0" max="50" required>
                         </td>
                         <td>/50</td>
                     </tr>
@@ -257,7 +238,7 @@
                         <td>Total marks(SEE)</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="50">
+                                <input type="number" id="quantity3" name="quantity3" min="0" max="50" required>
                         </td>
                         <td>/50</td>
                     </tr>
@@ -266,26 +247,26 @@
                         <td>Total marks</td>
                         <td>
                             <form action="/action_page.php">
-                                <input type="number" id="quantity" name="quantity" min="0" max="100">
+                                <input type="number" id="quantity" name="quantity" min="0" max="100" required>
                         </td>
                         <td>/100</td>
                     </tr>
-                    </form>
+
                 </table>
-            </td>
-        </tr>
+    </form>
+    </td>
+    </td>
+    </tr>
 
     </table>
-    <div class="btn-group" style="width:100%">
-        <button style="width:10%">submit</button>
-    </div>
+    <div> <button type="submit" onclick="myFunction()" class="submitbtn" style="text-align: center;">SUBMIT</button> </div>
     </div>
 
+</div>
     </div>
     </div>
     </div>
-
-
+</div>
 </body>
 
 </html>

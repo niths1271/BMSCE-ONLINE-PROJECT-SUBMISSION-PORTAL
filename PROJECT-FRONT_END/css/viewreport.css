@@ -2,13 +2,13 @@ html,
 body {
   height: 100%;
 }
-/**reset padding of body**/
 body {
   padding: 0;
 }
 
 .header {
   font-size: 15px;
+  background-color: #f1f1f1;
   text-align: center;
   padding: 20px;
 }
@@ -18,26 +18,22 @@ body {
 .active {
   background-color: #ddd;
 }
-/* The navbar container */
 .topnav {
   width: 105%;
   overflow: hidden;
   background-color: #593535;
 }
-
-/* Navbar links */
 .topnav a {
-  font-size: 22px;
+  font-size: 20px;
   float: left;
   display: ruby-base;
   color: #f2f2f2;
   text-align: center;
-  width: 25%;
+  width: 20%;
   padding: 15px 15px;
   text-decoration: none;
 }
 
-/* Links - change color on hover */
 .topnav a:hover {
   background-color: #ddd;
   color: black;
@@ -48,7 +44,6 @@ body {
   padding: 0px;
 }
 
-/* Left and right column */
 .column.side {
   width: 20%;
 }
@@ -57,14 +52,12 @@ body {
   width: 69.2%;
 }
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column.side,
   .column.middle {
@@ -94,13 +87,10 @@ body {
 
 table.table {
   width: 100%;
-
-  /* border-collapse: collapse; */
   border-spacing: 0;
   border: 5px solid black;
 }
 
-/* To display the block as level element */
 table.table tbody,
 table.table thead {
   display: block;
@@ -112,13 +102,8 @@ thead tr th {
 }
 
 table.table tbody {
-  /* Set the height of table body */
   height: 300px;
-
-  /* Set vertical scroll */
   overflow-y: auto;
-
-  /* Hide the horizontal scroll */
   overflow-x: hidden;
 }
 
@@ -196,7 +181,6 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
