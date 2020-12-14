@@ -9,22 +9,39 @@ body {
     background-image: url(../photos/email-pattern.png);
 }
 .heading{
-    margin-top:2%;
-    margin-bottom:2%;
-    text-align: center ;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    color: crimson;
-}
-.fields4,.fields{
     font-size: x-large;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    padding-top:2%;
+    padding-bottom:2%;
+    padding-left: 11.5%;
+    color:  #593535;
+    position: fixed;
+    width: 100%;
+    z-index:1000;
+    background-color: white;
+}
+.container
+{
+    position: relative;
+    transform: translateY(20vh);
+    z-index:1;
+}
+.fields4{
+    font-size: x-large;
       margin-left: 2%;
       margin-bottom: 2%;
+      color: #593535
+}
+.fields{
+    font-size: xx-large;
+      margin-left: 2%;
+      margin-bottom: 2%;
+      color: #593535;   
+      font-weight: bold;
 }
 #projecttitle
 {
     width:30% ;
-    height:27px;
+    height:30px;
     font-size: large;
 }
 #members,#section{
@@ -40,11 +57,15 @@ body {
     border-radius: 50px;
     border: none;
     outline: none;
-    background-image: linear-gradient(#2980b9, #2c3e50);
+    background-image: linear-gradient(#196ffa, #213e6e);
     font-weight: 600;
     margin-top: 2%;
     font-size: x-large;
     
+}
+.submitbtn:active {
+    transform: scale(0.9);
+    background-image: linear-gradient( #213e6e, #196ffa);
 }
 .sub{
     text-align: center;
@@ -59,11 +80,15 @@ body {
     border-radius: 50px;
     border: none;
     outline: none;
-    background-image: linear-gradient(#2980b9, #2c3e50); 
+    background-image: linear-gradient(#196ffa, #213e6e); 
     font-weight: 600;
     
     font-size: large;
      
+}
+.submitbtn1:active {
+    transform: scale(0.9);
+    background-image: linear-gradient( #213e6e, #196ffa);
 }
 
 #name1,#name2,#name3,#name4
@@ -101,6 +126,7 @@ body {
     display:none;
 margin-left: 2%;
 margin-right: 2%;
+color: #593535;
 }
 .fields4{
     display: none;
