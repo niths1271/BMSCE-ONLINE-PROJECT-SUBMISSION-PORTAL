@@ -190,12 +190,6 @@ ul li.active a {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.main h2,
-.instructions ol li,
-.instructions h3 {
-    /* color: #fff; */
-}
-
 .notifications ul li {
     padding-top: 10px;
     transition: 0.3s ease;
