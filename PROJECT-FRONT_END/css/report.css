@@ -82,6 +82,7 @@ ul li.active a {
     background: #593535;
 }
 
+
 .name {
     border: 1px solid #fff;
     align-items: center;
@@ -108,7 +109,7 @@ ul li.active a {
     background-image: url(../photos/email-pattern.png);
     padding: 5px;
     transform: translateY(30px);
-    height: 65vh;
+    height: 68vh;
     font-size: larger;
 }
 
@@ -198,6 +199,10 @@ ul li.active a {
 .notifications ul li {
     padding-top: 10px;
     transition: 0.3s ease;
+    
+}
+.notifications ul{
+    list-style-type: circle;
 }
 
 .notifications ul li:hover {

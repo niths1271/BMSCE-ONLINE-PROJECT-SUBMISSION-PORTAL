@@ -82,7 +82,7 @@ ul li.active a {
     margin: 5px;
     margin-top: 1%;
     border-radius: 5px;
-    background-image: url("../photos/email-pattern.png");
+    background-image: url(../photos/email-pattern.png);
     padding: 5px;
     transform: translateY(10px);
     height: 15vh;
@@ -97,10 +97,10 @@ ul li.active a {
     margin: 5px;
     margin-top: 0;
     border-radius: 5px;
-    background-image: url("../photos/email-pattern.png");
+    background-image: url(../photos/email-pattern.png);
     padding: 5px;
     transform: translateY(30px);
-    height: 67vh;
+    height: 68vh;
     font-size: larger;
 }
 
