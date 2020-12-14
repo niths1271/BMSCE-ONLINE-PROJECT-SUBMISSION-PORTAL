@@ -1,10 +1,3 @@
-function imager() {
-    document.getElementById('background').classList.add('background-image-active');
-}
-window.onload = setTimeout(imager, 500);
-
-
-
 
 function validatelog() {
     var email = document.forms['log-in-form']['email'];
@@ -13,8 +6,7 @@ function validatelog() {
     var email_error = document.getElementById('email_error');
     var password_error = document.getElementById('password_error');
     var result1 = email.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
-    var result1a = email.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
-    if (result1 == email.value || result1a == email.value) {
+    if (result1 == email.value) {
         email_error.style.display = "none";
         flag = 1;
     } else {
