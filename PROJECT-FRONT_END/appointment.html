@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="./css/appointment.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <script src="./js/appointment.js"></script>
 </head>
 
 <body>
@@ -44,23 +45,25 @@
         <br>
         <br>
         <br>
-        
-
+        <br>
+        </div>
       </div>
-      </div>
-
       <div class="column middle">
         <div class="topnav">
           <a href="viewreport.html">View Reports</a>
           <a class="active" href="appointment.html" style="color: black">Appointments</a>
           <a href="viewproject.html">View Projects</a>
           <a href="grading.html">Grading </a>
+          <a href="alogin.html">Logout </a>
         </div>
 <div class="set">
   <ul><li>
    <form action="#">
-  <label for="setappointment">Set appointment date and time:</label>
-  <input type="datetime-local" id="set appointment" name="setappointment" style="font-size: 20px;">
+    <div id="header">
+  <label for="setappointment">Set appointment date and time:</label> </div>
+  <div class="time">
+  <input type="datetime-local" id="setappointment" name="setappointment" style="font-size: 20px;">
+  </div>
   </li>
   <br>
   <li>
@@ -68,29 +71,49 @@
         <label for="purpose">Purpose of the appointment:</label>
         
         <select id="purpose" style="font-size: 25px;">
-          <option value="Doubtclarification">Doubt clarification </style></option>
-          <option value="presentation">To view Presentations</option>
-          
+          <option value="1" >Doubt clarification </option>
+          <option value="2" >To view Presentations</option>
         </select>
         <br>
         <br>
       </li>
+      <div class="table1">
+        <table>
+          <h5 style="text-align:left" style="font-size: 13px;">APPOINTMENT DETAILS:</h5>
+          <tr style="font-size: 18px;">
+            <th>TEAM NO</th>
+            <th>PROJECT TITLE</th>
+            <th>APPOINTMENT TYPE</th>
+            <th>TIME OF APPOINTMENT</th>
+            <th>GOOGLE MEET LINK</th>
+          </tr>
+          <tr style="font-size: 18px;">
+            <td>2</td>
+            <td>ABCD</td>
+            <td id="appo">TO VIEW PRESENTATION</td>
+            <td id="t">20/11/2020 15:00</td>
+            <td>https://meet.google.com/abc-lmno-xyz</td>
+          </tr>
+        </table>
+        
+        <p style="font-size: 15px;">**THE ABOVE APPOINTMENT DETAILS WILL BE NOTIFIED TO THE STUDENTS IN THE STUDENTS' NOTIFICATION SECTION </p>
+      </div>
+      <div id="inst">
       <li><form action="#">
         <label for="add">Additional instructions regarding appointment(optional):</label>
         <br>
-        
-        <textarea id="add" name="add" rows="9" cols="100" style="border-width: 5px; border-color: black;">
+        <textarea id="add" name="add" rows="8" cols="100" style="border-width: 5px; border-color: black;">
         
         </textarea></li>
+        </div>
 </ul>
-        <button class="set1" > SET THE APPOINTMENT</button>
-
-<a href="alogin.html"><button style="margin-left: 319px; font-size: 13px; ">Logout</button></a>
+<div id="button">
+        <input type="button" value="SET THE APPOINTMENT" class="set1" onclick="validate();">
+</div>
 </div>
         </div>
       </div>
     </div>
   </div>
 </body>
-
 </html>

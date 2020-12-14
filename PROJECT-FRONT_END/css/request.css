@@ -2,12 +2,13 @@ html,
 body {
   height: 100%;
 }
-/reset padding of body/ body {
+body {
   padding: 0;
 }
 
 .header {
   font-size: 15px;
+  background-color: #f1f1f1;
   text-align: center;
   padding: 20px;
 }
@@ -17,26 +18,28 @@ body {
 .active {
   background-color: #ddd;
 }
-/* The navbar container */
 .topnav {
   width: 105%;
   overflow: hidden;
   background-color: #593535;
 }
 
-/* Navbar links */
 .topnav a {
-  font-size: 22px;
+  font-size: 20px;
   float: left;
   display: ruby-base;
   color: #f2f2f2;
   text-align: center;
-  width: 25%;
+  width: 20%;
   padding: 15px 15px;
   text-decoration: none;
 }
 
-/* Links - change color on hover */
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
 .topnav a:hover {
   background-color: #ddd;
   color: black;
@@ -47,12 +50,11 @@ body {
   padding: 0px;
 }
 
-/* Left and right column */
 .column.side {
   width: 20%;
 }
 .button1 {
-  background-color: rgb(44, 43, 43); /* Green */
+  background-color: rgb(44, 43, 43);
   border: none;
   color: white;
   padding: 15px;
@@ -93,14 +95,12 @@ body {
   width: 69.2%;
 }
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column.side,
   .column.middle {
@@ -109,8 +109,6 @@ body {
 }
 .abc {
   font-size: 19px;
-  color: white;
-
   font-family: cursive;
   border: 1px solid black;
   outline: black solid 5px;
@@ -118,6 +116,7 @@ body {
   padding: 10px;
   text-align: center;
   background-color: #8a5858;
+  color: white;
 }
 #customers {
   margin-left: auto;
@@ -130,13 +129,10 @@ body {
 
 table.table {
   width: 100%;
-
-  /* border-collapse: collapse; */
   border-spacing: 0;
   border: 5px solid black;
 }
 
-/* To display the block as level element */
 table.table tbody,
 table.table thead {
   display: block;
@@ -148,13 +144,8 @@ thead tr th {
 }
 
 table.table tbody {
-  /* Set the height of table body */
   height: 300px;
-
-  /* Set vertical scroll */
   overflow-y: auto;
-
-  /* Hide the horizontal scroll */
   overflow-x: hidden;
 }
 
@@ -164,7 +155,7 @@ tbody {
 
 tbody td,
 thead th {
-  width: 360px;
+  width: 300px;
   border-right: 2px solid black;
 }
 td {
@@ -280,9 +271,6 @@ body {
   margin: 0.1cm;
   padding: 10px;
 }
-body {
-  background-image: url("https://mail.google.com/mail/u/0?ui=2&ik=04454976bc&attid=0.1&permmsgid=msg-f:1682868482578304874&th=175abff7fbc7cf6a&view=att&disp=safe&realattid=f_kha91m370");
-}
 #textbox {
   display: flex;
   justify-content: space-between;
@@ -294,6 +282,6 @@ body {
 }
 .aligncenter {
   float: left;
-  width: 400%;
+  width: 200%;
   text-align: center;
 }
