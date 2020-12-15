@@ -30,7 +30,8 @@ function validatelog() {
         return false;
     }
     if (flag == 1) {
-        return true;
+        //return true;
+        window.location.href="viewreport.html";
     }
 
 
