@@ -1,6 +1,11 @@
 function Validate() {
-
     var no = document.getElementById('members').options[document.getElementById('members').selectedIndex].value;
+    var text=document.getElementById('projecttitle').value;
+    if(text=="")
+    {
+        alert("PLEASE ENTER THE PROJECT TITLE");
+        return false;
+    }
     if (no == 2) {
         alert("YOU HAVE SELECTED ONLY TWO MEMBERS IN YOUR TEAM");
         document.getElementsByClassName('sub1')[0].style.display = 'none';
@@ -32,6 +37,9 @@ function Validate() {
         document.getElementsByClassName('member4')[0].style.display = 'block';
         document.getElementsByClassName('sub')[0].style.display = 'block';
     }
+
+
+
     }
 
     function validate1(){
@@ -153,10 +161,10 @@ if(flag==0){
     return false;
 }
 if(flag==1){
-    return true;
+    //return true;
+    window.location.href="report.html";
 }   
      }
-
 
 else if(no==3)
 {
@@ -285,7 +293,8 @@ else if(no==3)
         return false;
     }
     if(flag==1){
-        return true;
+        //return true;
+        window.location.href="report.html";
     }   
 }
 
@@ -457,7 +466,8 @@ else if(no==4){
         return false;       
     }
     if(flag==1){
-        return true;
+        //return true;
+        window.location.href="report.html";
     }   
 
 }
