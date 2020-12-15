@@ -60,9 +60,10 @@
   <ul><li>
    <form action="#">
     <div id="header">
-  <label for="setappointment">Set appointment date and time:</label> </div>
-  <div class="time">
-  <input type="datetime-local" id="setappointment" name="setappointment" style="font-size: 20px;">
+  <label for="setappointment">Set appointment date and time:</label> 
+  </form>
+  
+  <input type="datetime-local" id="setappointment" name="setappointment" style="font-size: 20px;" class="time">
   </div>
   </li>
   <br>
@@ -77,19 +78,34 @@
         <br>
         <br>
       </li>
+      <li>
+        <label for="section">Section</label>
+        
+        <select id="section" style="font-size: 25px;">
+          <option value="3" name="sctn">A </option>
+          <option value="4" name="sctn">B</option>
+          <option value="5" name="sctn">C</option>
+          <option value="6" name="sctn">D</option>
+        </select>
+        <br>
+        <br>
+  
+      </li>
+      
+      
       <div class="table1">
         <table>
           <h5 style="text-align:left" style="font-size: 13px;">APPOINTMENT DETAILS:</h5>
           <tr style="font-size: 18px;">
-            <th>TEAM NO</th>
-            <th>PROJECT TITLE</th>
+            <th>SECTION</th>
+            <th>NO OF TEAMS</th>
             <th>APPOINTMENT TYPE</th>
             <th>TIME OF APPOINTMENT</th>
             <th>GOOGLE MEET LINK</th>
           </tr>
           <tr style="font-size: 18px;">
-            <td>2</td>
-            <td>ABCD</td>
+            <td id="s" style="text-align: center;">A</td>
+            <td style="text-align: center;">5</td>
             <td id="appo">TO VIEW PRESENTATION</td>
             <td id="t">20/11/2020 15:00</td>
             <td>https://meet.google.com/abc-lmno-xyz</td>
@@ -98,11 +114,12 @@
         
         <p style="font-size: 15px;">**THE ABOVE APPOINTMENT DETAILS WILL BE NOTIFIED TO THE STUDENTS IN THE STUDENTS' NOTIFICATION SECTION </p>
       </div>
+      
       <div id="inst">
       <li><form action="#">
         <label for="add">Additional instructions regarding appointment(optional):</label>
         <br>
-        <textarea id="add" name="add" rows="8" cols="100" style="border-width: 5px; border-color: black;">
+        <textarea id="add" name="add" rows="6" cols="100" style="border-width: 5px; border-color: black;">
         
         </textarea></li>
         </div>
