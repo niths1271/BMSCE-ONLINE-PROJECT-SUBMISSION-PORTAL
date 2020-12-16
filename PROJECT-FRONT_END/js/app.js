@@ -12,7 +12,7 @@ function validate() {
     h.style.display = 'none';
     if (document.getElementById('appointment1').checked) {
         alert("YOU HAVE SELECTED APPOINTMENT FOR PRESENTATION AT TIME  " + date);
-        t12.innerHTML=date;
+        t2.innerHTML=date;
     }
      else {
         alert("YOU HAVE SELECTED APPOINTMENT FOR DOUBT CLARIRFICATION AT TIME  " + date);
