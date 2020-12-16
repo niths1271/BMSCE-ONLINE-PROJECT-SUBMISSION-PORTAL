@@ -129,6 +129,3 @@ function validatesign() {
     }
 }
 
-// function nav() {
-
-// }
