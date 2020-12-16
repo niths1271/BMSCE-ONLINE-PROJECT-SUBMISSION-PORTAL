@@ -2,10 +2,6 @@ html,
 body {
   height: 100%;
 }
-body {
-  padding: 0;
-}
-
 .header {
   font-size: 15px;
   background-color: #f1f1f1;
@@ -39,12 +35,6 @@ body {
   background-color: #ddd;
   color: black;
 }
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
 .column {
   float: left;
   padding: 0px;
@@ -100,13 +90,6 @@ body {
   display: table;
   clear: both;
 }
-
-@media screen and (max-width: 600px) {
-  .column.side,
-  .column.middle {
-    width: 100%;
-  }
-}
 .abc {
   font-size: 19px;
   font-family: cursive;
@@ -118,7 +101,7 @@ body {
   background-color: #8a5858;
   color: white;
 }
-#customers {
+#teachers {
   margin-left: auto;
   margin-right: auto;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -162,29 +145,29 @@ td {
   text-align: center;
 }
 
-#customers td,
-#customers th {
+#teachers td,
+#teachers th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#customers tr:nth-child(even) {
+#teachers tr:nth-child(even) {
   background-color: #f3f0f0;
 }
 
-#customers th {
+#teachers th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
   background-color: #593535;
   color: white;
 }
-#customers td {
+#teachers td {
   padding-top: 5px;
   padding-bottom: px;
   width: 230px;
 }
-#customers {
+#teachers {
   font-size: 20px;
 }
 .column.side {
@@ -209,49 +192,6 @@ input.checkbox {
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
-
-.flip-box {
-  background-color: transparent;
-  width: 350px;
-  height: 150px;
-  border: 5px solid #f1f1f1;
-  perspective: 1000px;
-  margin: 0.5cm;
-}
-
-.flip-box-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.flip-box:hover .flip-box-inner {
-  transform: rotateY(180deg);
-}
-
-.flip-box-front,
-.flip-box-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  padding: 30px;
-}
-
-.flip-box-front {
-  background-color: #bbb;
-  color: black;
-}
-
-.flip-box-back {
-  background-color: dodgerblue;
-  color: white;
-  transform: rotateY(180deg);
-}
 .border {
   border-style: solid;
   border-width: 3x;
@@ -259,6 +199,7 @@ body {
   border-right-width: 6px;
   border-color: black;
   margin: -0.5cm;
+  padding-bottom: 175px;
 }
 .border1 {
   border-style: solid;
@@ -270,18 +211,4 @@ body {
   border-color: black;
   margin: 0.1cm;
   padding: 10px;
-}
-#textbox {
-  display: flex;
-  justify-content: space-between;
-}
-.alignleft {
-  float: left;
-  width: 25%;
-  text-align: left;
-}
-.aligncenter {
-  float: left;
-  width: 200%;
-  text-align: center;
 }
