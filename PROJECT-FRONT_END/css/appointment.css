@@ -2,9 +2,6 @@ html,
 body {
   height: 100%;
 }
-body {
-  padding: 0;
-}
 .header {
   font-size: 15px;
   background-color: #f1f1f1;
@@ -112,12 +109,6 @@ body {
   clear: both;
 }
 
-@media screen and (max-width: 600px) {
-  .column.side,
-  .column.middle {
-    width: 100%;
-  }
-}
 .abc {
   font-size: 19px;
   font-family: cursive;
@@ -138,7 +129,6 @@ body {
   padding: 10px;
   margin: 3px;
   text-align: center;
-
   border: 6px solid rgb(0, 0, 0);
 }
 
@@ -153,6 +143,7 @@ body {
   border-right-width: 6px;
   border-color: black;
   margin: -0.5cm;
+  padding-bottom: 190px;
 }
 .border1 {
   border-style: solid;

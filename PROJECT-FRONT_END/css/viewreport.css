@@ -2,10 +2,6 @@ html,
 body {
   height: 100%;
 }
-body {
-  padding: 0;
-}
-
 .header {
   font-size: 15px;
   background-color: #f1f1f1;
@@ -57,17 +53,9 @@ body {
   display: table;
   clear: both;
 }
-
-@media screen and (max-width: 600px) {
-  .column.side,
-  .column.middle {
-    width: 100%;
-  }
-}
 .abc {
   font-size: 19px;
   color: white;
-
   font-family: cursive;
   border: 1px solid black;
   outline: black solid 5px;
@@ -76,7 +64,7 @@ body {
   text-align: center;
   background-color: #8a5858;
 }
-#customers {
+#teachers {
   margin-left: auto;
   margin-right: auto;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -120,29 +108,29 @@ td {
   text-align: center;
 }
 
-#customers td,
-#customers th {
+#teachers td,
+#teachers th {
   border: 1px solid #ddd;
   padding: 8px;
 }
 
-#customers tr:nth-child(even) {
+#teachers tr:nth-child(even) {
   background-color: #f3f0f0;
 }
 
-#customers th {
+#teachers th {
   padding-top: 12px;
   padding-bottom: 12px;
   text-align: center;
   background-color: #593535;
   color: white;
 }
-#customers td {
+#teachers td {
   padding-top: 5px;
   padding-bottom: px;
   width: 235px;
 }
-#customers {
+#teachers {
   font-size: 20px;
 }
 .column.side {
@@ -153,7 +141,6 @@ td {
   padding: 10px;
   margin: 3px;
   text-align: center;
-
   border: 6px solid rgb(0, 0, 0);
 }
 .approval {
