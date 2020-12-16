@@ -1,9 +1,10 @@
 function myFunction() {
-    var x, text, a, b, c;
+    var x;
     x = document.getElementById("quantity").value;
     if (x == null || x == "") {
         alert("PLEASE FILL OUT THE EMPTY FIELDS");
-    } else {
-        alert("GRADING COMPLETE");
+    } 
+   /*else{
+        window.location.href="viewreport.html";
+    }   */
     }
-}

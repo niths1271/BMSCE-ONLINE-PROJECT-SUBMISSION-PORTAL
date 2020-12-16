@@ -469,6 +469,5 @@ else if(no==4){
         //return true;
         window.location.href="report.html";
     }   
-
 }
     }

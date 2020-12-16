@@ -18,5 +18,5 @@ function validate() {
         alert("YOU HAVE SELECTED APPOINTMENT FOR DOUBT CLARIRFICATION AT TIME  " + date);
         t1.innerHTML="DOUBT CLARIFICATION";
         t2.innerHTML=date;
-    }
+}
 }

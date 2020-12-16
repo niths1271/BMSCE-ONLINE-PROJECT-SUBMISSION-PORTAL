@@ -17,7 +17,6 @@ function validate() {
 alert("YOU HAVE SELECTED APPOINTMENT FOR DOUBT CLARIRFICATION AT TIME " + date);
 document.getElementById('appo').innerHTML="Doubt Clarification";
 }
-
  else {
 alert("YOU HAVE SELECTED APPOINTMENT FOR VIEWING PRESENTATIONS AT TIME " + date);
 }
