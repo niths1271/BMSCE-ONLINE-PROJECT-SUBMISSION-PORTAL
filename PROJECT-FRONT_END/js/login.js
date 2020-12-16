@@ -124,6 +124,11 @@ function validatesign() {
         return false;
     }
     if (flag == 1) {
+        // window.location.href = "C:\Users\niranjan savanur\Documents\GitHub\BMSCE-ONLINE-PROJECT-SUBMISSION-PORTAL\PROJECT-FRONT_END\submitdetails.html";
         return true;
     }
 }
+
+// function nav() {
+
+// }
