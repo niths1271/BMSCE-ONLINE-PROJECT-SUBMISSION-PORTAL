@@ -1,11 +1,10 @@
-
 function validatelog() {
     var email = document.forms['log-in-form']['email'];
     var password = document.forms['log-in-form']['password'];
     var flag = 0;
     var email_error = document.getElementById('email_error');
     var password_error = document.getElementById('password_error');
-    var result1 = email.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+    var result1 = email.value.match('[a-z]+.[a-z][a-z][a-z]@bmsce.ac.in');
     if (result1 == email.value) {
         email_error.style.display = "none";
         flag = 1;
@@ -31,7 +30,7 @@ function validatelog() {
     }
     if (flag == 1) {
         //return true;
-        window.location.href="viewreport.html";
+        window.location.href = "viewreport.html";
     }
 
 
