@@ -155,6 +155,4 @@ else if (p ==null  || p =="") {
   else {
     alert("Input OK ");
      }
-
-  document.getElementById("demo").innerHTML = text;
 }
