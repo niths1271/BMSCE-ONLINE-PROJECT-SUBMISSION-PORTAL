@@ -91,24 +91,28 @@ body {
 
 #name1,#name2,#name3,#name4
 {
+    font-size: larger;
     text-align: left;
     margin-bottom: 2%;
     width: 29%;
 }
 #e1,#e2,#e3,#e4
 {
+    font-size: larger;
     text-align: left;
     margin-bottom: 2%;
     width: 27.5%;
 }
 #usn1,#usn2,#usn3,#usn4
 {
+    font-size: larger;
     text-align: left;
     margin-bottom: 2%;
     width: 30%;
 }
 #phone1,#phone2,#phone3,#phone4
 {
+    font-size: larger;
     text-align: left;
     margin-bottom: 2%;
     width: 23.8%;
