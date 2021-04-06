@@ -157,6 +157,9 @@ function Validate() {
         document.getElementById('ph_error2').style.display='block';
         flag=0;
        }
+       if(usn1.value.match(usn2.value)){
+           alert("PLEASE ENTER UNIQUE USN FOR EACH MEMBER");
+        flag = 0;}
 if(flag==0){
     return false;
 }
@@ -289,6 +292,10 @@ else if(no==3)
         document.getElementById('ph_error3').style.display='block';
         flag=0;
        }
+       if(usn1.value.match(usn2.value) || usn1.value.match(usn3.value) || usn2.value.match(usn3.value) ){
+        alert("PLEASE ENTER UNIQUE USN FOR EACH MEMBER");
+     flag = 0;
+    }
        if(flag==0){
         return false;
     }
@@ -462,6 +469,11 @@ else if(no==4){
         document.getElementById('ph_error4').style.display='block';
         flag=0;
        }
+
+       if(usn1.value.match(usn2.value) || usn1.value.match(usn3.value) || usn1.value.match(usn4.value) || usn2.value.match(usn3.value) || usn2.value.match(usn4.value) || usn3.value.match(usn4.value)   ){
+        alert("PLEASE ENTER UNIQUE USN FOR EACH MEMBER");
+     flag = 0;
+    }
        if(flag==0){
         return false;       
     }
