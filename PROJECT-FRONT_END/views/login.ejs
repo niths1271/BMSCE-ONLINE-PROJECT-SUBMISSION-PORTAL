@@ -47,6 +47,11 @@
                 </form>
             </div>
             <!-- onsubmit="return validatesign() -->
+            <%if(errors !== ' '){%>
+               <% for(var i=0;i<errors.length;i++){%>
+                    <div><%= errors[i] %></div>
+               <%} %>
+         <% } %>
             <div class="forms-container signup-container">
                 <form action="/signup" class="sign-up-form" name="sign-up-form" method="POST" >
                     <h1 class="title">Signup</h1>
