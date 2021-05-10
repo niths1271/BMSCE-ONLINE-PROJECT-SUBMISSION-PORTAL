@@ -60,8 +60,8 @@ passport.use('local', new LocalStrategy({
     function(req, email, password, done) { // callback with email and password from our form
 
         connection.query(`SELECT * FROM STUDENT_USER_DETAILS WHERE EMAIL =  '${email}' ;`, function(err, rows) {
-            console.log(rows);
-            console.log(password);
+            // console.log(rows);
+            // console.log(password);
             if (err)
                 return done(err);
             if (!rows.length) {
@@ -75,14 +75,10 @@ passport.use('local', new LocalStrategy({
                 if (isMatch) {
                     return done(null, rows[0]);
                 } else {
-                    console.log(rows[0], password);
+                    // console.log(rows[0], password);
                     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
                 }
             });
-
-
-
-
         });
 
     }));
@@ -90,7 +86,7 @@ passport.use('local', new LocalStrategy({
 
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
-    console.log(user);
+    // console.log(user);
     done(null, user.id);
 });
 
@@ -171,8 +167,19 @@ app.post("/signup", [
 app.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
     function(req, res) {
+        console.log(req.user);
         res.redirect('/');
     });
+
+
+
+
+
+
+
+
+
+    
 
 app.listen(port, function() {
     console.log("Server started Successfully");

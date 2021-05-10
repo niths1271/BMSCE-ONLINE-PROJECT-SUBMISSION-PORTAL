@@ -4,18 +4,27 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/login.css">
    
-    <title>Login and Signup</title>
+    <title>Signup</title>
 
 </head>
 
 <body>
 
     <div class="container" id="container">
-<%if(errors){%>
-    <% for(var i=0;i<errors.length;i++){%>
-         <div class="alert alert-danger" role="alert"><%= errors[i] %></div>
-    <%} %>
-<% } %>
+        <div class="container">
+            <% if(errors && errors.length > 0 ) { %>
+              <div class="alert alert-danger">
+                  <% if(errors.length === 1) { %>
+                     <strong> <%= errors %> </strong>
+                  <% } else { %>
+                      <ul>
+                          <% errors.forEach(function(err) { %>
+                              <li> <strong> <%= err %> </strong></li>
+                          <% }) %>
+                      </ul>
+                  <% } %> 
+              </div>
+          <% } %>
  <div class="form">
      <form action="/signup" class="sign-up-form" name="sign-up-form" method="POST">
          <h1 class="title">Signup</h1>
