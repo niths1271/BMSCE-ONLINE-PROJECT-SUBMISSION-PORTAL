@@ -52,6 +52,7 @@ app.use(passport.session());
 
 //We have created a local strategy for login only!!!
 passport.use('local', new LocalStrategy({
+<<<<<<< Updated upstream
         // by default, local strategy uses username and password, we will override with email
         usernameField: 'email',
         passwordField: 'password',
@@ -87,6 +88,42 @@ passport.use('local', new LocalStrategy({
 // used to serialize the user for the session
 passport.serializeUser(function(user, done) {
     // console.log(user);
+=======
+    // by default, local strategy uses username and password, we will override with email
+    usernameField : 'email',
+    passwordField : 'password',
+    passReqToCallback : true // allows us to pass back the entire request to the callback
+},
+function(req, email, password, done) { // callback with email and password from our form
+
+     connection.query("SELECT * FROM STUDENT_USER_DETAILS WHERE EMAIL ='${email}'" ,function(err,rows){
+        console.log(rows);
+        if (err)
+            return done(err);
+         if (!rows.length) {
+             console.log(rows);
+            return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+        } 
+        
+        // if the user is found but the password is wrong
+        bcrypt.compare(password,rows[0].PASSWORD,function(err, result) {
+            if(!result){
+                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));// create the loginMessage and save it to session as flashdata 
+            }
+        });
+        // if (!( rows[0].PASSWORD == password))
+                 
+        // all is well, return successful user
+        return done(null, rows[0]);			
+    });
+
+}));
+
+
+  // used to serialize the user for the session
+  passport.serializeUser(function(user, done) {
+      console.log(user);
+>>>>>>> Stashed changes
     done(null, user.id);
 });
 
@@ -156,6 +193,7 @@ app.post("/signup", [
             });
         }
     });
+<<<<<<< Updated upstream
 
 // app.post("/login",function(req,res){
 //     console.log(req.body);
@@ -169,8 +207,33 @@ app.post('/login',
     function(req, res) {
         console.log(req.user);
         res.redirect('/');
+=======
+    console.log(errorsArr);
+    req.flash("errors",errorsArr);
+    // res.redirect("/signup");
+}else{
+    const email=req.body.semail;
+    const password=req.body.spassword;
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+       var post= {EMAIL:email,PASSWORD:hash};
+       var query = connection.query('INSERT INTO STUDENT_USER_DETAILS SET ?',post, function (error, results, fields) {
+        if (error) {
+            console.log(error);
+        }else{
+        console.log("Successfully inserted");
+      }});
+>>>>>>> Stashed changes
     });
 
+<<<<<<< Updated upstream
+=======
+app.post('/login',
+    passport.authenticate('local', { failureRedirect: '/login' }),
+    function(req, res) {
+        console.log(req.user);
+        res.redirect('/');
+    });
+>>>>>>> Stashed changes
 
 
 
