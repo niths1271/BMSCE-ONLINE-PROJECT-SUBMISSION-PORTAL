@@ -7,8 +7,11 @@ const mysql = require('mysql');
 const { body, validationResult } = require('express-validator');
 const session =require('express-session');
 const passport=require("passport");
-// const cookieParser=require("cookie-parser");
+var LocalStrategy = require('passport-local').Strategy;
 const connectFlash=require("connect-flash");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 
 const app=express();
 const port=3000;
@@ -32,15 +35,63 @@ app.use(express.static("public"));
 app.set("view engine","ejs");
 
 // app.use(cookieParser({secret:"Our little Secret."}));
+app.use(connectFlash());
 
 app.use(session({
     secret:"Our little Secret.",
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true }
+    cookie: {
+        maxAge: 4000000
+      },
+      resave: false,
+      saveUninitialized: false
+    // cookie: { secure: true }
   }));
 
-app.use(connectFlash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+//We have created a local strategy for login only!!!
+passport.use('local', new LocalStrategy({
+    // by default, local strategy uses username and password, we will override with email
+    usernameField : 'email',
+    passwordField : 'password',
+    passReqToCallback : true // allows us to pass back the entire request to the callback
+},
+function(req, email, password, done) { // callback with email and password from our form
+
+     connection.query("SELECT * FROM STUDENT_USER_DETAILS WHERE EMAIL = " + email,function(err,rows){
+        console.log(rows);
+        if (err)
+            return done(err);
+         if (!rows.length) {
+             console.log(rows);
+            return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+        } 
+        
+        // if the user is found but the password is wrong
+        if (!( rows[0].PASSWORD == password)){
+            return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));} // create the loginMessage and save it to session as flashdata      
+        // all is well, return successful user
+        return done(null, rows[0]);			
+  
+    });
+
+}));
+
+
+  // used to serialize the user for the session
+  passport.serializeUser(function(user, done) {
+      console.log(user);
+    done(null, user.id);
+});
+
+// used to deserialize the user
+passport.deserializeUser(function(id, done) {
+    connection.query("select * from STUDENT_USER_DETAILS where id = "+id,function(err,rows){	
+        done(err, rows[0]);
+    });
+});
 
 // app.use('/',require('./Routes/pages'));
 
@@ -48,21 +99,16 @@ app.get("/",function(req,res){
     res.render("index");
 });
 
-app.get("/login_or_signup",function(req,res){
-    res.render("login",{errors:req.flash("errors")});
+app.get("/signup",function(req,res){
+    res.render("signup",{errors:req.flash("errors")});
 });
 
-app.post("/login",function(req,res){
-    const email=req.body.email;
-    const password=req.body.password;
-    console.log(req);
-    console.log(password);
+app.get("/login",function(req,res){
+    res.render("login",{loginerrors:req.flash("loginMessage")});
 });
 
 app.post("/signup",
 [
-body('usn')
-     .notEmpty(),
 body('semail')
      .exists()
      .isEmail()
@@ -91,34 +137,28 @@ if(!validationErrors.isEmpty()){
     });
     console.log(errorsArr);
     req.flash("errors",errorsArr);
-    res.redirect("/login_or_signup");
+    res.redirect("/signup");
 }else{
-    const usn=req.body.usn;
     const email=req.body.semail;
     const password=req.body.spassword;
-    var post  = {USN:usn,EMAIL:email,PASSWORD:password};
-    var query = connection.query('INSERT INTO STUDENT_USER_DETAILS SET ?',post, function (error, results, fields) {
-      if (error) {
-          console.log(error);
-      }else{
-      console.log("Successfully inserted");
-    //   console.log(results);
-    //   console.log(fields);
-    }});
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+       var post= {EMAIL:email,PASSWORD:hash};
+       var query = connection.query('INSERT INTO STUDENT_USER_DETAILS SET ?',post, function (error, results, fields) {
+        if (error) {
+            console.log(error);
+        }else{
+        console.log("Successfully inserted");
+      }});
+    });
 }
 });
 
-
-
-
-
-
-
-
-
-
-
-
+app.post("/login",function(req,res){
+    console.log(req.body);
+    passport.authenticate('local'), { successRedirect: '/',
+                                     failureRedirect: '/login',
+                                     failureFlash: true };
+});
 
 app.listen(port,function(){
     console.log("Server started Successfully");
