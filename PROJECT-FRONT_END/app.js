@@ -1,51 +1,50 @@
-
 require('dotenv').config()
-const express=require("express");
-const bodyParser=require("body-parser");
-const ejs=require("ejs");
-const mysql = require('mysql');
+const express = require("express");
+const bodyParser = require("body-parser");
+const ejs = require("ejs");
+const mysql = require('mysql2');
 const { body, validationResult } = require('express-validator');
-const session =require('express-session');
-const passport=require("passport");
+const session = require('express-session');
+const passport = require("passport");
 var LocalStrategy = require('passport-local').Strategy;
-const connectFlash=require("connect-flash");
+const connectFlash = require("connect-flash");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 
-const app=express();
-const port=3000;
+const app = express();
+const port = 3000;
 
 const connection = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
     password: process.env.PASSWORD,
-    database:"OnlineProjectSubmissionPortal",
-    multipleStatements:true,
-  });
+    database: "OnlineProjectSubmissionPortal",
+    multipleStatements: true,
+});
 
-  connection.connect(function(err) {
+connection.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
-  });
+});
 
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
-app.set("view engine","ejs");
+app.set("view engine", "ejs");
 
 // app.use(cookieParser({secret:"Our little Secret."}));
 app.use(connectFlash());
 
 app.use(session({
-    secret:"Our little Secret.",
+    secret: "Our little Secret.",
     cookie: {
         maxAge: 4000000
-      },
-      resave: false,
-      saveUninitialized: false
-    // cookie: { secure: true }
-  }));
+    },
+    resave: false,
+    saveUninitialized: false
+        // cookie: { secure: true }
+}));
 
 
 app.use(passport.initialize());
@@ -53,113 +52,128 @@ app.use(passport.session());
 
 //We have created a local strategy for login only!!!
 passport.use('local', new LocalStrategy({
-    // by default, local strategy uses username and password, we will override with email
-    usernameField : 'email',
-    passwordField : 'password',
-    passReqToCallback : true // allows us to pass back the entire request to the callback
-},
-function(req, email, password, done) { // callback with email and password from our form
+        // by default, local strategy uses username and password, we will override with email
+        usernameField: 'email',
+        passwordField: 'password',
+        passReqToCallback: true // allows us to pass back the entire request to the callback
+    },
+    function(req, email, password, done) { // callback with email and password from our form
 
-     connection.query("SELECT * FROM STUDENT_USER_DETAILS WHERE EMAIL = " + email,function(err,rows){
-        console.log(rows);
-        if (err)
-            return done(err);
-         if (!rows.length) {
-             console.log(rows);
-            return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
-        } 
-        
-        // if the user is found but the password is wrong
-        if (!( rows[0].PASSWORD == password)){
-            return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));} // create the loginMessage and save it to session as flashdata      
-        // all is well, return successful user
-        return done(null, rows[0]);			
-  
-    });
+        connection.query(`SELECT * FROM STUDENT_USER_DETAILS WHERE EMAIL =  '${email}' ;`, function(err, rows) {
+            console.log(rows);
+            console.log(password);
+            if (err)
+                return done(err);
+            if (!rows.length) {
+                console.log(rows[0]);
+                return done(null, false, req.flash('loginMessage', 'No user found.')); // req.flash is the way to set flashdata using connect-flash
+            }
+            bcrypt.compare(password, rows[0].PASSWORD, (err, isMatch) => {
+                if (err) {
+                    console.log(err);
+                }
+                if (isMatch) {
+                    return done(null, rows[0]);
+                } else {
+                    console.log(rows[0], password);
+                    return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
+                }
+            });
 
-}));
 
 
-  // used to serialize the user for the session
-  passport.serializeUser(function(user, done) {
-      console.log(user);
+
+        });
+
+    }));
+
+
+// used to serialize the user for the session
+passport.serializeUser(function(user, done) {
+    console.log(user);
     done(null, user.id);
 });
 
 // used to deserialize the user
 passport.deserializeUser(function(id, done) {
-    connection.query("select * from STUDENT_USER_DETAILS where id = "+id,function(err,rows){	
+    connection.query("select * from STUDENT_USER_DETAILS where id = " + id, function(err, rows) {
         done(err, rows[0]);
     });
 });
 
 // app.use('/',require('./Routes/pages'));
 
-app.get("/",function(req,res){
+app.get("/", function(req, res) {
     res.render("index");
 });
 
-app.get("/signup",function(req,res){
-    res.render("signup",{errors:req.flash("errors")});
+app.get("/signup", function(req, res) {
+    res.render("signup", { errors: req.flash("errors") });
 });
 
-app.get("/login",function(req,res){
-    res.render("login",{loginerrors:req.flash("loginMessage")});
+app.get("/login", function(req, res) {
+    res.render("login", { loginerrors: req.flash("loginMessage") });
 });
 
-app.post("/signup",
-[
-body('semail')
-     .exists()
-     .isEmail()
-     .normalizeEmail()
-    .withMessage('Invalid Email Address!!!'),
-body('spassword')
-    .exists()
-    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
-    .escape()
-    .trim()
-    .withMessage('Invalid password!!!'),
-body('cpassword').exists().custom((value, { req }) => {
-    if (value !== req.body.spassword) {
-      throw new Error('The passwords are not same!!!');
-    }    
-    return true;
-  })
-],
-function(req,res){   
-    const errorsArr=[];
-    const validationErrors = validationResult(req);
-if(!validationErrors.isEmpty()){
-    const errors =Object.values(validationErrors.mapped());
-    errors.forEach(function(item){
-        errorsArr.push(item.msg);
+app.post("/signup", [
+        body('semail')
+        .exists()
+        .isEmail()
+        .normalizeEmail()
+        .withMessage('Invalid Email Address!!!'),
+        body('spassword')
+        .exists()
+        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
+        .escape()
+        .trim()
+        .withMessage('Invalid password!!!'),
+        body('cpassword').exists().custom((value, { req }) => {
+            if (value !== req.body.spassword) {
+                throw new Error('The passwords are not same!!!');
+            }
+            return true;
+        })
+    ],
+    function(req, res) {
+        const errorsArr = [];
+        const validationErrors = validationResult(req);
+        if (!validationErrors.isEmpty()) {
+            const errors = Object.values(validationErrors.mapped());
+            errors.forEach(function(item) {
+                errorsArr.push(item.msg);
+            });
+            console.log(errorsArr);
+            req.flash("errors", errorsArr);
+            res.redirect("/signup");
+        } else {
+            const email = req.body.semail;
+            const password = req.body.spassword;
+            bcrypt.hash(password, saltRounds, function(err, hash) {
+                var post = { EMAIL: email, PASSWORD: hash };
+                var query = connection.query('INSERT INTO STUDENT_USER_DETAILS SET ?', post, function(error, results, fields) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log("Successfully inserted");
+                    }
+                });
+            });
+        }
     });
-    console.log(errorsArr);
-    req.flash("errors",errorsArr);
-    res.redirect("/signup");
-}else{
-    const email=req.body.semail;
-    const password=req.body.spassword;
-    bcrypt.hash(password, saltRounds, function(err, hash) {
-       var post= {EMAIL:email,PASSWORD:hash};
-       var query = connection.query('INSERT INTO STUDENT_USER_DETAILS SET ?',post, function (error, results, fields) {
-        if (error) {
-            console.log(error);
-        }else{
-        console.log("Successfully inserted");
-      }});
+
+// app.post("/login",function(req,res){
+//     console.log(req.body);
+//     passport.authenticate('local'), { successRedirect: '/',
+//                                      failureRedirect: '/login',
+//                                      failureFlash: true };
+// });
+
+app.post('/login',
+    passport.authenticate('local', { failureRedirect: '/login' }),
+    function(req, res) {
+        res.redirect('/');
     });
-}
-});
 
-app.post("/login",function(req,res){
-    console.log(req.body);
-    passport.authenticate('local'), { successRedirect: '/',
-                                     failureRedirect: '/login',
-                                     failureFlash: true };
-});
-
-app.listen(port,function(){
+app.listen(port, function() {
     console.log("Server started Successfully");
 });
