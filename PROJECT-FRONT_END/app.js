@@ -108,7 +108,7 @@ app.get("/signup", function(req, res) {
 });
 
 app.get("/login", function(req, res) {
-    res.render("login", { loginerrors: req.flash("loginMessage") });
+    res.render("login", { loginerrors: req.flash("loginMessage"),signupmessage:req.flash("signupsuccessful") });
 });
 
 app.get("/submitprojectdetails",function(req,res){
@@ -159,6 +159,7 @@ app.post("/signup", [
                         console.log(error);
                     } else {
                         console.log("Successfully Inserted the New User");
+                        req.flash("signupsuccessful","YOU HAVE SUCCESSFULLY REGISTERED, NOW PLEASE LOGIN WITH SAME USERNAME AND PASSWORD");
                         res.redirect("/login");
                     }
                 });
@@ -200,6 +201,15 @@ var query = connection.query('INSERT INTO PROJECT_DETAILS SET ?', post, function
 });
 });
     
+app.post('/submitteamdetails',function(req,res){
+     
+});
+
+
+
+
+
+
 
 app.listen(port, function() {
     console.log("Server started Successfully");

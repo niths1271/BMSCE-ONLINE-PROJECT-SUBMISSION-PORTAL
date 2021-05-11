@@ -70,7 +70,7 @@ body {
 }
 .sub{
     text-align: center;
-    display: none;
+    /* display: none; */
 }
 .submitbtn1{
     margin-left:12%;
@@ -132,8 +132,8 @@ margin-left: 2%;
 margin-right: 2%;
 color: #593535;
 }
-.fields4{
+/* .fields4{
     display: none;
-}
+} */
 
     

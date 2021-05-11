@@ -8,36 +8,35 @@ function Validate() {
     }
     if (no == 2) {
         alert("YOU HAVE SELECTED ONLY TWO MEMBERS IN YOUR TEAM");
-        document.getElementsByClassName('sub1')[0].style.display = 'none';
-        document.getElementsByClassName('fields')[0].style.display = 'none';
-        document.getElementsByClassName('fields4')[0].style.display = 'block';
-        document.getElementsByClassName('member1')[0].style.display = 'block';
-        document.getElementsByClassName('member2')[0].style.display = 'block';
-        document.getElementsByClassName('sub')[0].style.display = 'block';
+        // document.getElementsByClassName('sub1')[0].style.display = 'none';
+        // document.getElementsByClassName('fields')[0].style.display = 'none';
+        // document.getElementsByClassName('fields4')[0].style.display = 'block';
+        // document.getElementsByClassName('member1')[0].style.display = 'block';
+        // document.getElementsByClassName('member2')[0].style.display = 'block';
+        // document.getElementsByClassName('sub')[0].style.display = 'block';
     }
      else if (no == 3) {
         alert("YOU HAVE SELECTED THREE MEMBERS IN YOUR TEAM");
-        document.getElementsByClassName('sub1')[0].style.display = 'none';
-        document.getElementsByClassName('fields')[0].style.display = 'none';
-        document.getElementsByClassName('fields4')[0].style.display = 'block';
-        document.getElementsByClassName('member1')[0].style.display = 'block';
-        document.getElementsByClassName('member2')[0].style.display = 'block';
-        document.getElementsByClassName('member3')[0].style.display = 'block';
-        document.getElementsByClassName('sub')[0].style.display = 'block';
+        // document.getElementsByClassName('sub1')[0].style.display = 'none';
+        // document.getElementsByClassName('fields')[0].style.display = 'none';
+        // document.getElementsByClassName('fields4')[0].style.display = 'block';
+        // document.getElementsByClassName('member1')[0].style.display = 'block';
+        // document.getElementsByClassName('member2')[0].style.display = 'block';
+        // document.getElementsByClassName('member3')[0].style.display = 'block';
+        // document.getElementsByClassName('sub')[0].style.display = 'block';
     }
     
      else if (no == 4) {
         alert("YOU HAVE SELECTED FOUR MEMBERS IN YOUR TEAM");
-        document.getElementsByClassName('sub1')[0].style.display = 'none';
-        document.getElementsByClassName('fields')[0].style.display = 'none';
-        document.getElementsByClassName('fields4')[0].style.display = 'block';
-        document.getElementsByClassName('member1')[0].style.display = 'block';
-        document.getElementsByClassName('member2')[0].style.display = 'block';
-        document.getElementsByClassName('member3')[0].style.display = 'block';
-        document.getElementsByClassName('member4')[0].style.display = 'block';
-        document.getElementsByClassName('sub')[0].style.display = 'block';
+        // document.getElementsByClassName('sub1')[0].style.display = 'none';
+        // document.getElementsByClassName('fields')[0].style.display = 'none';
+        // document.getElementsByClassName('fields4')[0].style.display = 'block';
+        // document.getElementsByClassName('member1')[0].style.display = 'block';
+        // document.getElementsByClassName('member2')[0].style.display = 'block';
+        // document.getElementsByClassName('member3')[0].style.display = 'block';
+        // document.getElementsByClassName('member4')[0].style.display = 'block';
+        // document.getElementsByClassName('sub')[0].style.display = 'block';
     }
-
 
 
     }

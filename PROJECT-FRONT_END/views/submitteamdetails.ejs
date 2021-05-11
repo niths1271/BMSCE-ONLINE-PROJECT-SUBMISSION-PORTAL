@@ -7,7 +7,6 @@
 </head>
 
 <body>
-
     <script type="text/javascript" src="./js/submitdetails.js"></script>
     <%- include('partials/header') %>
 
@@ -19,9 +18,9 @@
     <h3>ENTER THE DETAILS OF MEMBERS AS FOLLOWS:</h3>
   </div>
   <form action="/submitteamdetails" method="POST">
-
-<%for(var i=1;i<=members;i++){%>
-  <div class= > 
+<% var i; %>
+<%for(i=1;i<=members;i++){%>
+  <div class="memeber<%i%>" > 
     <hr>
   <h3 style="font-size: larger;">Member 1:</h3>
   <br>
@@ -46,9 +45,9 @@
   <hr>
   </div>
 <%}%>
-
-  
-  <div class=sub> <input type="submit" onclick="validate1();" class="submitbtn" value="SUBMIT" /> </div>
+  <div class=sub> 
+    <div class=sub> <input type="submit" onclick="validate1();" class="submitbtn" value="SUBMIT" /> </div>
+     </div>
 </form>  
 </div>
 
