@@ -167,12 +167,7 @@ app.post("/signup", [
         }
     });
 
-// app.post("/login",function(req,res){
-//     console.log(req.body);
-//     passport.authenticate('local'), { successRedirect: '/',
-//                                      failureRedirect: '/login',
-//                                      failureFlash: true };
-// });
+
 
 app.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
