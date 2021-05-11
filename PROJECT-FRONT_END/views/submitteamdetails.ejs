@@ -1,55 +1,54 @@
-
 <%- include('partials/header') %>
 
-<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="./css/submitdetails.css">
-<title>STUDENT SUBMIT DETAILS</title>
-</head>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/submitdetails.css">
+    <title>STUDENT SUBMIT DETAILS</title>
+    </head>
 
-<body>
-    <script type="text/javascript" src="./js/submitdetails.js"></script>
-    <%- include('partials/header') %>
+    <body>
+        <script type="text/javascript" src="./js/submitdetails.js"></script>
+        <%- include('partials/header') %>
 
-<div class="container">
-    <div class=heading>
-        <h1>WELCOME TO BMSCE PROJECT SUBMISSION PORTAL</h1>
-      </div>
-<div class="fieldsteam">
-    <h3>ENTER THE DETAILS OF MEMBERS AS FOLLOWS:</h3>
-  </div>
-  <form action="/submitteamdetails" method="POST">
-<% var i; %>
-<%for(i=1;i<=members;i++){%>
-  <div class="memeber<%i%>" > 
-    <hr>
-  <h3 style="font-size: larger;">Member 1:</h3>
-  <br>
-  <label for="name1" style="font-size: larger;"><b>NAME:</b></label>
-  <input type="text" placeholder="Enter NAME" name="name1" id="name1" required>
-    <br>
-  <label for="usn1" style="font-size: larger;"><b>USN:</b></label>
-  <input type="text" placeholder="Enter USN" name="usn1" id="usn1" required>
-  <div id="USN_error1">Invalid USN</div>
-  <br>
-  <label for="e1" style="font-size: larger;"><b>EMAIL ID:</b></label>
-  <input type="text" placeholder="Enter EMAIL ID" name="e1" id="e1" required>
-  <div id="semail_error1">Invalid Email</div>
-  <br>
+            <div class="container">
+                <div class=heading>
+                    <h1>WELCOME TO BMSCE PROJECT SUBMISSION PORTAL</h1>
+                </div>
+                <div class="fieldsteam">
+                    <h3>ENTER THE DETAILS OF MEMBERS AS FOLLOWS:</h3>
+                </div>
+                <form action="/submitteamdetails" method="POST">
+                    <% var i; %>
+                        <%for(i=1;i<=members;i++){%>
+                            <div class="memeber<%i%>">
+                                <hr>
+                                <h3 style="font-size: larger;">Member
+                                    <%= i %>
+                                </h3>
+                                <br>
+                                <label for="name1" style="font-size: larger;"><b>NAME:</b></label>
+                                <input type="text" placeholder="Enter NAME" name="name1" id="name1" required>
+                                <br>
+                                <label for="usn1" style="font-size: larger;"><b>USN:</b></label>
+                                <input type="text" placeholder="Enter USN" name="usn1" id="usn1" required>
+                                <div id="USN_error1">Invalid USN</div>
+                                <br>
+                                <label for="e1" style="font-size: larger;"><b>EMAIL ID:</b></label>
+                                <input type="text" placeholder="Enter EMAIL ID" name="e1" id="e1" required>
+                                <div id="semail_error1">Invalid Email</div>
+                                <br>
 
-  <label for="phone1" style="font-size: larger;" ><b>PHONE NUMBER:</b></label>
-<input type="tel"  placeholder="Enter PHONE NUMBER" id="phone1" name="phone1"
-     pattern="[0-9]{10}"
-     required>
-     <div id="ph_error1">Invalid PHONE NUMBER</div>
-     <br>
-  <hr>
-  </div>
-<%}%>
-  <div class=sub> 
-    <div class=sub> <input type="submit" onclick="validate1();" class="submitbtn" value="SUBMIT" /> </div>
-     </div>
-</form>  
-</div>
+                                <label for="phone1" style="font-size: larger;"><b>PHONE NUMBER:</b></label>
+                                <input type="tel" placeholder="Enter PHONE NUMBER" id="phone1" name="phone1" pattern="[0-9]{10}" required>
+                                <div id="ph_error1">Invalid PHONE NUMBER</div>
+                                <br>
+                                <hr>
+                            </div>
+                            <%}%>
+                                <div class=sub>
+                                    <div class=sub> <input type="submit" onclick="validate1();" class="submitbtn" value="SUBMIT" /> </div>
+                                </div>
+                </form>
+            </div>
 
-<script type="text/javascript" src="./js/submitdetails.js"></script>
-<%- include('partials/footer') %>
+            <script type="text/javascript" src="./js/submitdetails.js"></script>
+            <%- include('partials/footer') %>
