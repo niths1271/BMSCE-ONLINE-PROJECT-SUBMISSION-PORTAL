@@ -158,7 +158,7 @@ app.post("/signup", [
                     if (error) {
                         console.log(error);
                     } else {
-                        console.log("Successfully inserted");
+                        console.log("Successfully Inserted the New User");
                         res.redirect("/login");
                     }
                 });
@@ -176,16 +176,30 @@ app.post("/signup", [
 app.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
     function(req, res) {
-        console.log(req.user);
+        // console.log(req.user);
         res.redirect('/submitprojectdetails');
     });
 
 app.post('/submitprojectdetails',function(req,res){
 console.log(req.body);
 console.log(req.user);
+let i=1;
+var post={
+    USER_ID:req.user.id,
+    PROJECT_TITLE:req.body.projectitle,
+    MEMBERS_NO:req.body.dropdown2,
+    SECTION:req.body.dropdown1,
+};
+var query = connection.query('INSERT INTO PROJECT_DETAILS SET ?', post, function(error, results, fields) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log("Successfully Inserted Project Details of the New Team");
+        res.render("submitteamdetails",{members:req.body.dropdown2,});
+    }
+});
 });
     
-
 
 app.listen(port, function() {
     console.log("Server started Successfully");

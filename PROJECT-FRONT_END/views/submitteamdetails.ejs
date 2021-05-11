@@ -12,11 +12,16 @@
     <%- include('partials/header') %>
 
 <div class="container">
+    <div class=heading>
+        <h1>WELCOME TO BMSCE PROJECT SUBMISSION PORTAL</h1>
+      </div>
 <div class="fieldsteam">
     <h3>ENTER THE DETAILS OF MEMBERS AS FOLLOWS:</h3>
   </div>
   <form action="/submitteamdetails" method="POST">
-  <div class=member1>
+
+<%for(var i=1;i<=members;i++){%>
+  <div class= > 
     <hr>
   <h3 style="font-size: larger;">Member 1:</h3>
   <br>
@@ -40,7 +45,9 @@
      <br>
   <hr>
   </div>
+<%}%>
 
+  
   <div class=sub> <input type="submit" onclick="validate1();" class="submitbtn" value="SUBMIT" /> </div>
 </form>  
 </div>

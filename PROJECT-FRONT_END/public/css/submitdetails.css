@@ -14,18 +14,19 @@ body {
     padding-bottom:2%;
     padding-left: 11.5%;
     color:  #593535;
-    position: fixed;
+     /* position: fixed;  */
     width: 100%;
     z-index:1000;
     background-color: white;
+    margin-bottom: 20px;
 }
-.container
+ /* .container
 {
     position: relative;
     top:2px;
     transform: translateY(20vh);
     z-index:1;
-}
+}  */
 .fieldsteam{
     font-size: x-large;
       margin-left: 2%;
