@@ -25,27 +25,27 @@
                                     <%= i %>
                                 </h3>
                                 <br>
-                                <label for="name1" style="font-size: larger;"><b>NAME:</b></label>
-                                <input type="text" placeholder="Enter NAME" name="name1" id="name1" required>
+                                <label for="name<%= i %>" style="font-size: larger;"><b>NAME:</b></label>
+                                <input type="text" placeholder="Enter NAME" name="name<%= i %>" id="name<%= i %>" required>
                                 <br>
-                                <label for="usn1" style="font-size: larger;"><b>USN:</b></label>
-                                <input type="text" placeholder="Enter USN" name="usn1" id="usn1" required>
-                                <div id="USN_error1">Invalid USN</div>
+                                <label for="usn<%= i %>" style="font-size: larger;"><b>USN:</b></label>
+                                <input type="text" placeholder="Enter USN" name="usn<%= i %>" id="usn<%= i %>" required>
+                                <div id="USN_error<%= i %>">Invalid USN</div>
                                 <br>
-                                <label for="e1" style="font-size: larger;"><b>EMAIL ID:</b></label>
-                                <input type="text" placeholder="Enter EMAIL ID" name="e1" id="e1" required>
-                                <div id="semail_error1">Invalid Email</div>
+                                <label for="e<%= i %>" style="font-size: larger;"><b>EMAIL ID:</b></label>
+                                <input type="text" placeholder="Enter EMAIL ID" name="e<%= i %>" id="e<%= i %>" required>
+                                <div id="semail_error<%= i %>">Invalid Email</div>
                                 <br>
 
-                                <label for="phone1" style="font-size: larger;"><b>PHONE NUMBER:</b></label>
-                                <input type="tel" placeholder="Enter PHONE NUMBER" id="phone1" name="phone1" pattern="[0-9]{10}" required>
-                                <div id="ph_error1">Invalid PHONE NUMBER</div>
+                                <label for="phone<%= %>" style="font-size: larger;"><b>PHONE NUMBER:</b></label>
+                                <input type="tel" placeholder="Enter PHONE NUMBER" id="phone<%= i %>" name="phone<%= i %>" pattern="[0-9]{10}" required>
+                                <div id="ph_error<%= i %>">Invalid PHONE NUMBER</div>
                                 <br>
                                 <hr>
                             </div>
                             <%}%>
                                 <div class=sub>
-                                    <div class=sub> <input type="submit" onclick="validate1();" class="submitbtn" value="SUBMIT" /> </div>
+                                    <div class=sub> <input type="submit" class="submitbtn" value="SUBMIT" /> </div>
                                 </div>
                 </form>
             </div>

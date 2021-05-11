@@ -108,13 +108,13 @@ app.get("/signup", function(req, res) {
 });
 
 app.get("/login", function(req, res) {
-    res.render("login", { loginerrors: req.flash("loginMessage"),signupmessage:req.flash("signupsuccessful") });
+    res.render("login", { loginerrors: req.flash("loginMessage"), signupmessage: req.flash("signupsuccessful") });
 });
 
-app.get("/submitprojectdetails",function(req,res){
-    if(req.isAuthenticated){
+app.get("/submitprojectdetails", function(req, res) {
+    if (req.isAuthenticated) {
         res.render("submitprojectdetails");
-    }else{
+    } else {
         res.redirect("/login");
     }
 });
@@ -159,7 +159,7 @@ app.post("/signup", [
                         console.log(error);
                     } else {
                         console.log("Successfully Inserted the New User");
-                        req.flash("signupsuccessful","YOU HAVE SUCCESSFULLY REGISTERED, NOW PLEASE LOGIN WITH SAME USERNAME AND PASSWORD");
+                        req.flash("signupsuccessful", "YOU HAVE SUCCESSFULLY REGISTERED, NOW PLEASE LOGIN WITH SAME USERNAME AND PASSWORD");
                         res.redirect("/login");
                     }
                 });
@@ -181,28 +181,29 @@ app.post('/login',
         res.redirect('/submitprojectdetails');
     });
 
-app.post('/submitprojectdetails',function(req,res){
-console.log(req.body);
-console.log(req.user);
-let i=1;
-var post={
-    USER_ID:req.user.id,
-    PROJECT_TITLE:req.body.projectitle,
-    MEMBERS_NO:req.body.dropdown2,
-    SECTION:req.body.dropdown1,
-};
-var query = connection.query('INSERT INTO PROJECT_DETAILS SET ?', post, function(error, results, fields) {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log("Successfully Inserted Project Details of the New Team");
-        res.render("submitteamdetails",{members:req.body.dropdown2,});
-    }
+app.post('/submitprojectdetails', function(req, res) {
+    console.log(req.body);
+    console.log(req.user);
+    let i = 1;
+    var post = {
+        USER_ID: req.user.id,
+        PROJECT_TITLE: req.body.projectitle,
+        MEMBERS_NO: req.body.dropdown2,
+        SECTION: req.body.dropdown1,
+    };
+    var query = connection.query('INSERT INTO PROJECT_DETAILS SET ?', post, function(error, results, fields) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log("Successfully Inserted Project Details of the New Team");
+            res.render("submitteamdetails", { members: req.body.dropdown2, });
+        }
+    });
 });
-});
-    
-app.post('/submitteamdetails',function(req,res){
-     
+
+app.post('/submitteamdetails', function(req, res) {
+    console.log(req.body);
+    res.redirect("/");
 });
 
 
