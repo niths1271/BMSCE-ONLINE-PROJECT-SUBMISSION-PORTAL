@@ -111,6 +111,14 @@ app.get("/login", function(req, res) {
     res.render("login", { loginerrors: req.flash("loginMessage") });
 });
 
+app.get("/submitprojectdetails",function(req,res){
+    if(req.isAuthenticated){
+        res.render("submitprojectdetails");
+    }else{
+        res.redirect("/login");
+    }
+});
+
 app.post("/signup", [
         body('semail')
         .exists()
@@ -151,6 +159,7 @@ app.post("/signup", [
                         console.log(error);
                     } else {
                         console.log("Successfully inserted");
+                        res.redirect("/login");
                     }
                 });
             });
@@ -168,15 +177,14 @@ app.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
     function(req, res) {
         console.log(req.user);
-        res.redirect('/');
+        res.redirect('/submitprojectdetails');
     });
 
-
-
-
-
-
-
+app.post('/submitprojectdetails',function(req,res){
+console.log(req.body);
+console.log(req.user);
+});
+    
 
 
 app.listen(port, function() {
