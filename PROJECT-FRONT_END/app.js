@@ -174,6 +174,7 @@ app.post('/login',
     function(req, res) {
         // console.log(req.user);
         res.redirect('/submitprojectdetails');
+
     });
 
 app.post('/submitprojectdetails', function(req, res) {
@@ -199,10 +200,31 @@ app.post('/submitprojectdetails', function(req, res) {
 app.post('/submitteamdetails', function(req, res) {
     console.log(req.body);
     res.redirect("/");
+    connection.query(`SELECT PROJECT_ID,MEMBERS_NO FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err,result) {
+        if(err){
+            console.log(err);
+        }
+        else{
+              for(var i=1;i<=result.MEMBERS_NO;i++){
+
+                var post = {
+                    PROJECT_ID:result.PROJECT_ID,
+                    NAME:req.user.name,
+                    USN:req.body.projectitle,
+                    EMAIL:req.body.dropdown2,
+                    PHONE_NO:req.body.dropdown1,
+                };
+                var query = connection.query('INSERT INTO STUDENT_DETAILS SET ?', post, function(error) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+                        console.log("Successfully Inserted DETAILS OF MEMBER "+i);
+                    }
+                });  
+              }
+        }
 });
-
-
-
+});
 
 
 
