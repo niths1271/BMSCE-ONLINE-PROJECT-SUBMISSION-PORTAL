@@ -119,6 +119,9 @@ app.get("/submitprojectdetails", function(req, res) {
     }
 });
 
+app.get("/report", function(req, res) {
+    res.render("report");
+})
 
 
 app.post("/signup", [
@@ -174,9 +177,24 @@ app.post("/signup", [
 app.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
     function(req, res) {
-        // console.log(req.user);
-        res.redirect('/submitprojectdetails');
-         
+        connection.query(`SELECT USN FROM STUDENT_DETAILS WHERE EMAIL = (SELECT EMAIL FROM STUDENT_USER_DETAILS WHERE ID =${req.user.id} );`, function(error, result) {
+            if (!error) {
+                if (result.length == 0) {
+                    res.redirect('/submitprojectdetails');
+                } else {
+                    res.redirect("/report");
+                }
+            } else {
+                console.log(err);
+            }
+        });
+        if (req.user) {
+
+        } else {
+
+        }
+
+
     });
 
 app.post('/submitprojectdetails', function(req, res) {
@@ -201,78 +219,83 @@ app.post('/submitprojectdetails', function(req, res) {
 
 app.post('/submitteamdetails', function(req, res) {
     console.log(req.body);
-    connection.query(`SELECT PROJECT_ID,MEMBERS_NO FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err,result) {
+    connection.query(`SELECT PROJECT_ID,MEMBERS_NO FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
         console.log(result);
-        if(err){
+        if (err) {
             console.log(err);
-        }
-        else{
+        } else {
             console.log(result[0].PROJECT_ID);
             console.log(result[0].MEMBERS_NO);
-            switch(result[0].MEMBERS_NO){
+            switch (result[0].MEMBERS_NO) {
                 case 4:
                     var post4 = {
-                        PROJECT_ID:result[0].PROJECT_ID,
-                        NAME:req.body.name4,
-                        USN:req.body.usn4,
-                        EMAIL:req.body.e4,
-                        PHONE_NO:req.body.phone4,
+                        PROJECT_ID: result[0].PROJECT_ID,
+                        NAME: req.body.name4,
+                        USN: req.body.usn4,
+                        EMAIL: req.body.e4,
+                        PHONE_NO: req.body.phone4,
                     };
                     var query = connection.query('INSERT INTO STUDENT_DETAILS SET ?', post4, function(error) {
                         if (error) {
                             console.log(error);
+                            //break;
                         } else {
                             console.log("Successfully Inserted DETAILS OF MEMBER 4");
                         }
                     });
-                    case 3:
-                        var post3 = {
-                            PROJECT_ID:result[0].PROJECT_ID,
-                            NAME:req.body.name3,
-                            USN:req.body.usn3,
-                            EMAIL:req.body.e3,
-                            PHONE_NO:req.body.phone3,
-                        };
-                        var query = connection.query('INSERT INTO STUDENT_DETAILS SET ?', post3, function(error) {
-                            if (error) {
-                                console.log(error);
-                            } else {
-                                console.log("Successfully Inserted DETAILS OF MEMBER 3");
-                            }
-                        });  
-                        case 2:
-                            var post2 = {
-                                PROJECT_ID:result[0].PROJECT_ID,
-                                NAME:req.body.name2,
-                                USN:req.body.usn2,
-                                EMAIL:req.body.e2,
-                                PHONE_NO:req.body.phone2,
-                            };
-                            var query = connection.query('INSERT INTO STUDENT_DETAILS SET ?', post2, function(error) {
-                                if (error) {
-                                    console.log(error);
-                                } else {
-                                    console.log("Successfully Inserted DETAILS OF MEMBER 2");
-                                }
-                            });  
-                            case 1:
-                                var post1 = {
-                                    PROJECT_ID:result[0].PROJECT_ID,
-                                    NAME:req.body.name1,
-                                    USN:req.body.usn1,
-                                    EMAIL:req.body.e1,
-                                    PHONE_NO:req.body.phone1,
-                                };
-                                var query = connection.query('INSERT INTO STUDENT_DETAILS SET ?', post1, function(error) {
-                                    if (error) {
-                                        console.log(error);
-                                    } else {
-                                        console.log("Successfully Inserted DETAILS OF MEMBER 1");
-                                    }
-                                });    
+                case 3:
+                    var post3 = {
+                        PROJECT_ID: result[0].PROJECT_ID,
+                        NAME: req.body.name3,
+                        USN: req.body.usn3,
+                        EMAIL: req.body.e3,
+                        PHONE_NO: req.body.phone3,
+                    };
+                    var query = connection.query('INSERT INTO STUDENT_DETAILS SET ?', post3, function(error) {
+                        if (error) {
+                            console.log(error);
+                            //break;
+                        } else {
+                            console.log("Successfully Inserted DETAILS OF MEMBER 3");
+                        }
+                    });
+                case 2:
+                    var post2 = {
+                        PROJECT_ID: result[0].PROJECT_ID,
+                        NAME: req.body.name2,
+                        USN: req.body.usn2,
+                        EMAIL: req.body.e2,
+                        PHONE_NO: req.body.phone2,
+                    };
+                    var query = connection.query('INSERT INTO STUDENT_DETAILS SET ?', post2, function(error) {
+                        if (error) {
+                            console.log(error);
+                            //break;
+                        } else {
+                            console.log("Successfully Inserted DETAILS OF MEMBER 2");
+                        }
+                    });
+                case 1:
+                    var post1 = {
+                        PROJECT_ID: result[0].PROJECT_ID,
+                        NAME: req.body.name1,
+                        USN: req.body.usn1,
+                        EMAIL: req.body.e1,
+                        PHONE_NO: req.body.phone1,
+                    };
+                    var query = connection.query('INSERT INTO STUDENT_DETAILS SET ?', post1, function(error) {
+                        if (error) {
+                            console.log(error);
+                            //break;
+                        } else {
+                            console.log("Successfully Inserted DETAILS OF MEMBER 1");
+                        }
+                    });
+                    res.redirect("/report");
             }
-         }
-});
+
+        }
+    });
 });
 
 
@@ -280,4 +303,3 @@ app.post('/submitteamdetails', function(req, res) {
 app.listen(port, function() {
     console.log("Server started Successfully");
 });
-
