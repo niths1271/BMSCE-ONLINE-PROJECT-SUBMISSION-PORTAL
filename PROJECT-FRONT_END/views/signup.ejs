@@ -3,56 +3,61 @@
     <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/login.css">
-   
+
     <title>Signup</title>
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-    <div class="container" id="container">
-        <div class="container">
-            <% if(errors && errors.length > 0 ) { %>
-              <div class="alert alert-danger">
-                  <% if(errors.length === 1) { %>
-                     <strong> <%= errors %> </strong>
-                  <% } else { %>
-                      <ul>
-                          <% errors.forEach(function(err) { %>
-                              <li> <strong> <%= err %> </strong></li>
-                          <% }) %>
-                      </ul>
-                  <% } %> 
-              </div>
-          <% } %>
- <div class="form">
-     <form action="/signup" class="sign-up-form" name="sign-up-form" method="POST">
-         <h1 class="title">Signup</h1>
-         <div class="input-field">
-             <i class="fas fa-envelope"></i>
-             <input type="email" placeholder="Email" name="semail" required/>
-         </div>
-         <div class="input-field">
-             <i class="fas fa-unlock-alt"></i>
-             <input type="password" placeholder="Create A New Password" name="spassword" required/>
-         </div>
-         <div class="input-field">
-             <i class="fas fa-lock"></i>
-             <input type="password" placeholder="Confirm New Password" name="cpassword" required/>
-         </div>
-         <a href="#"><input type="submit" class="btn registerButton" value="Signup" /></a>
-         <p class="bms-text">Or Go to Bmsce Sites</p>
-         <div class="bms-media">
-             <a href="https://www.bmsce.ac.in/" class="bms-icon">
-                 <i class="fa fa-university"></i>
-             </a>
-             <a href="https://campus.bmsce.ac.in/student/" class="bms-icon">
-                 <i class="fa fa-users"></i>
-             </a>
+        <div class="container" id="container">
 
-         </div>
-     </form>
- </div>
-</div>
-<script type="text/javascript" src="/js/login.js"></script>
-<%- include('partials/footer') %>
+
+            <div class="form">
+                <% console.log(errors[0]);  %>
+                    <% if(errors.length > 0 ) { %>
+
+
+
+
+                        <% errors.forEach(function(err) { %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= err %>
+
+                            </div>
+
+
+                            <% }); %>
+
+
+                                <% } %>
+                                    <form action="/signup" class="sign-up-form" name="sign-up-form" method="POST">
+                                        <h1 class="title">Signup</h1>
+                                        <div class="input-field">
+                                            <i class="fas fa-envelope"></i>
+                                            <input type="email" placeholder="Email" name="semail" required/>
+                                        </div>
+                                        <div class="input-field">
+                                            <i class="fas fa-unlock-alt"></i>
+                                            <input type="password" placeholder="Create A New Password" name="spassword" required/>
+                                        </div>
+                                        <div class="input-field">
+                                            <i class="fas fa-lock"></i>
+                                            <input type="password" placeholder="Confirm New Password" name="cpassword" required/>
+                                        </div>
+                                        <a href="#"><input type="submit" class="btn registerButton" value="Signup" /></a>
+                                        <p class="bms-text">Or Go to Bmsce Sites</p>
+                                        <div class="bms-media">
+                                            <a href="https://www.bmsce.ac.in/" class="bms-icon">
+                                                <i class="fa fa-university"></i>
+                                            </a>
+                                            <a href="https://campus.bmsce.ac.in/student/" class="bms-icon">
+                                                <i class="fa fa-users"></i>
+                                            </a>
+
+                                        </div>
+                                    </form>
+            </div>
+        </div>
+        <script type="text/javascript" src="/js/login.js"></script>
+        <%- include('partials/footer') %>
