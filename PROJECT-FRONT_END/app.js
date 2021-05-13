@@ -119,6 +119,8 @@ app.get("/submitprojectdetails", function(req, res) {
     }
 });
 
+
+
 app.post("/signup", [
         body('semail')
         .exists()
@@ -174,7 +176,7 @@ app.post('/login',
     function(req, res) {
         // console.log(req.user);
         res.redirect('/submitprojectdetails');
-
+         
     });
 
 app.post('/submitprojectdetails', function(req, res) {
