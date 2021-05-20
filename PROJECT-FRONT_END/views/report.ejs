@@ -56,10 +56,13 @@
                         <li>PLEASE MAKE SURE THE REPORT IS ERROR FREE</li>
                     </ol>
                 </div>
-                <div class="disap drop-zone">
-                    <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                    <input type="file" name="myFile" class="drop-zone__input">
-                </div>
+                <div class="drag-area">
+                    <div class="icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <header>Drag & Drop to Upload File</header>
+                    <span>OR</span>
+                    <button>Browse File</button>
+                    <input type="file" hidden>
+                  </div>
                 <input type="button" value="SUBMIT" class="disap btn" onclick="makechg();">
                 <div class="table">
                     <table>
