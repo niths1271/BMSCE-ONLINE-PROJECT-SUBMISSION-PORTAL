@@ -138,7 +138,7 @@ ul li.active a {
     font-size: 20px;
     cursor: pointer;
     /* color: #fff; */
-    border: 4px dashed #000;
+    border: 4px dashed #593535;
     border-radius: 10px;
     margin-left: 9%;
     margin-top: 4%;
@@ -233,3 +233,4 @@ td {
     margin-top: 4%;
     display: none;
 }
+

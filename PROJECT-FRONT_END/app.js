@@ -8,7 +8,7 @@ const session = require('express-session');
 const connectFlash = require("connect-flash");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
+const fileUpload = require('express-fileupload');
 
 const app = express();
 const port = 3000;
@@ -17,7 +17,7 @@ const port = 3000;
 
 //for bodyparser
 app.use(bodyParser.urlencoded({ extended: true }));
-
+app.use(fileUpload());
 //Config view engine
 require("./configs/viewEngine")(app);
 

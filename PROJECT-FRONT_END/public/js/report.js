@@ -1,18 +1,32 @@
-
-function makechg() {
-    var a = document.getElementsByClassName('disap')[0];
-    var b = document.getElementsByClassName('disap')[1];
-    var c = document.getElementsByClassName('table')[0];
-alert("YOUR REPORT HAS BEEN SUBMITTED SUCCESFULLY");
-    a.style.display = 'none';
-    b.style.display = 'none';
-    c.style.display = 'block';
-    var today = new Date();
-var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-var dateTime = date+' '+time;
-document.getElementById("type").innerHTML=dateTime;
+//for validating type of document submitted
+var _validFileExtensions = [".docx",".pdf"];    
+function Validate(oForm) {
+    var arrInputs = oForm.getElementsByTagName("input");
+    for (var i = 0; i < arrInputs.length; i++) {
+        var oInput = arrInputs[i];
+        if (oInput.type == "file") {
+            var sFileName = oInput.value;
+            // if (sFileName.length > 0) {
+                var blnValid = false;
+                for (var j = 0; j < _validFileExtensions.length; j++) {
+                    var sCurExtension = _validFileExtensions[j];
+                    if (sFileName.substr(sFileName.length - sCurExtension.length, sCurExtension.length).toLowerCase() == sCurExtension.toLowerCase()) {
+                        blnValid = true;
+                        alert("SUBMITTED SUCCESSFULLY");
+                        break;
+                    }
+                }              
+                if (!blnValid) {
+                    alert("Sorry, " + sFileName + " is invalid, allowed extensions are: " + _validFileExtensions.join(", "));
+                    return false;
+                }
+            // }
+        }
+    }
+    return true;
 }
+
+
 
 //for drag and drop
 document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {

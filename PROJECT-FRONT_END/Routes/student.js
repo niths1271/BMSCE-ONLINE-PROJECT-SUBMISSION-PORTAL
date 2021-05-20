@@ -3,7 +3,7 @@ const mysql = require('mysql2');
 const express = require('express');
 const router = express.Router();
 const insertMembers = require('../controllers/insertmembers');
-
+var uuid = require('uuid');
 
 router.get("/submitprojectdetails", function(req, res) {
     if (req.isAuthenticated) {
@@ -55,12 +55,28 @@ router.post('/submitteamdetails', function(req, res) {
     });
 });
 
-
-
-
-
-
-
-
+router.post('/report',function(req,res){
+    let file=req.files.myFile
+    console.log(file);
+    var uuidname = uuid.v1(); // this is used for unique file name
+                 var filesrc = 'http://127.0.0.1:3000/docs/'+uuidname+file.name;
+                 connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        var insertData = {
+                            PROJECT_ID:result[0].PROJECT_ID,
+                            REPORT:filesrc,
+                        };
+                        connection.query('INSERT INTO DOCUMENTS SET ?',insertData, (err) => {
+                         if (err) throw err
+                         else{
+                        file.mv('public/docs/'+uuidname+file.name);
+                        console.log("Inserted Successfully");
+                         }
+        });
+                    }
+                });
+});
 
 module.exports = router;
