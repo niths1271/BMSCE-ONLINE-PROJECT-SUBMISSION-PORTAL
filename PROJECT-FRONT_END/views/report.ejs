@@ -1,13 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('partials/header') %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Tab</title>
     <link rel="stylesheet" href="css/report.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="./js/report.js"></script>
+    
 </head>
 
 <body>
@@ -43,7 +40,7 @@
                 <li><a href="app.html">Schedule an Appointment</a></li>
                 <li><a href="./psub.html">Project Submission</a></li>
                 <li><a href="./grades.html">Grades</a></li>
-                <li><a href="login.html">Logout</a></li>
+                <li><a href="/">Logout</a></li>
             </ul>
         </div>
         <div class="main">
@@ -90,6 +87,6 @@
 
     </div>
 
-</body>
+<script src="./js/report.js"></script>
 
-</html>
+<%- include('partials/footer') %>

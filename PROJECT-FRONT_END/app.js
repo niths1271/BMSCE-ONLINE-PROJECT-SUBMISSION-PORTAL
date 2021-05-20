@@ -53,13 +53,13 @@ app.use(passport.session());
 //We have created a local strategy for login only!!!
 passport.use('local', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
-        usernameField: 'email',
+        usernameField: 'username',
         passwordField: 'password',
         passReqToCallback: true // allows us to pass back the entire request to the callback
     },
-    function(req, email, password, done) { // callback with email and password from our form
+    function(req, username, password, done) { // callback with username and password from our form
 
-        connection.query(`SELECT * FROM STUDENT_USER_DETAILS WHERE EMAIL =  '${email}' ;`, function(err, rows) {
+        connection.query(`SELECT * FROM STUDENT_USER_DETAILS WHERE USERNAME =  '${username}' ;`, function(err, rows) {
             // console.log(rows);
             // console.log(password);
             if (err)
@@ -111,6 +111,11 @@ app.get("/login", function(req, res) {
     res.render("login", { loginerrors: req.flash("loginMessage"), signupmessage: req.flash("signupsuccessful") });
 });
 
+// app.get('/logout', function(req, res){
+//     req.logout();
+//     res.redirect('/');
+//   });
+
 app.get("/submitprojectdetails", function(req, res) {
     if (req.isAuthenticated) {
         res.render("submitprojectdetails");
@@ -120,16 +125,18 @@ app.get("/submitprojectdetails", function(req, res) {
 });
 
 app.get("/report", function(req, res) {
-    res.render("report");
+    if (req.isAuthenticated) {
+        res.render("report");
+    } else {
+        res.redirect("/login");
+    }
 })
 
 
 app.post("/signup", [
-        body('semail')
+        body('username')
         .exists()
-        .isEmail()
-        .normalizeEmail()
-        .withMessage('Invalid Email Address!!!'),
+        .withMessage('Invalid USERNAME'),
         body('spassword')
         .exists()
         .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
@@ -155,10 +162,10 @@ app.post("/signup", [
             req.flash("errors", errorsArr);
             res.redirect("/signup");
         } else {
-            const email = req.body.semail;
+            const username = req.body.username;
             const password = req.body.spassword;
             bcrypt.hash(password, saltRounds, function(err, hash) {
-                var post = { EMAIL: email, PASSWORD: hash };
+                var post = { USERNAME:username, PASSWORD: hash };
                 var query = connection.query('INSERT INTO STUDENT_USER_DETAILS SET ?', post, function(error, results, fields) {
                     if (error) {
                         console.log(error);
@@ -177,7 +184,7 @@ app.post("/signup", [
 app.post('/login',
     passport.authenticate('local', { failureRedirect: '/login' }),
     function(req, res) {
-        connection.query(`SELECT USN FROM STUDENT_DETAILS WHERE EMAIL = (SELECT EMAIL FROM STUDENT_USER_DETAILS WHERE ID =${req.user.id} );`, function(error, result) {
+        connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID = ${req.user.id};`, function(error, result) {
             if (!error) {
                 if (result.length == 0) {
                     res.redirect('/submitprojectdetails');
@@ -185,16 +192,9 @@ app.post('/login',
                     res.redirect("/report");
                 }
             } else {
-                console.log(err);
+                console.log(error);
             }
-        });
-        if (req.user) {
-
-        } else {
-
-        }
-
-
+        }); 
     });
 
 app.post('/submitprojectdetails', function(req, res) {
