@@ -17,7 +17,7 @@ const saltRounds = 10;
 const app = express();
 const port = 3000;
 
-
+// app.use(express.static(__dirname + '/public'));
 
 //for bodyparser
 app.use(bodyParser.urlencoded({ extended: true }));
