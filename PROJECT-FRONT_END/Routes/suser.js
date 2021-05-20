@@ -14,13 +14,6 @@ router.get("/login", function(req, res) {
     res.render("login", { loginerrors: req.flash("loginMessage"), signupmessage: req.flash("signupsuccessful") });
 });
 
-
-
-
-
-
-
-
 router.post("/signup", [
         body('username')
         .exists()
