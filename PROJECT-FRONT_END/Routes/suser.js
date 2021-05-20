@@ -2,10 +2,12 @@ const express = require("express");
 const connection = require("../configs/connection");
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-const { body, validationResult } = require('express-validator');
-
+const validateSignup = require('../validation/validator');
+const {validationResult}= require('express-validator');
 const router = express.Router();
 const saltRounds = 10;
+
+
 router.get("/signup", function(req, res) {
     res.render("signup", { errors: req.flash("errors") });
 });
@@ -14,24 +16,9 @@ router.get("/login", function(req, res) {
     res.render("login", { loginerrors: req.flash("loginMessage"), signupmessage: req.flash("signupsuccessful") });
 });
 
-router.post("/signup", [
-        body('username')
-        .exists()
-        .withMessage('Invalid USERNAME'),
-        body('spassword')
-        .exists()
-        .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
-        .escape()
-        .trim()
-        .withMessage('Invalid password!!!'),
-        body('cpassword').exists().custom((value, { req }) => {
-            if (value !== req.body.spassword) {
-                throw new Error('The passwords are not same!!!');
-            }
-            return true;
-        })
-    ],
-    function(req, res) {
+router.post("/signup",
+         validateSignup,
+         function(req, res) {
         const errorsArr = [];
         const validationErrors = validationResult(req);
         if (!validationErrors.isEmpty()) {

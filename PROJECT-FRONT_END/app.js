@@ -1,14 +1,10 @@
-const connection = require("./configs/connection");
 
 const passport = require("passport");
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const mysql = require('mysql2');
-const { body, validationResult } = require('express-validator');
 const session = require('express-session');
-
 const connectFlash = require("connect-flash");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
