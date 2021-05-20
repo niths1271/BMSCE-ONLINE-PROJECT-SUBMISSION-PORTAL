@@ -1,7 +1,7 @@
 const connection = require("../configs/connection");
 const mysql = require('mysql2');
 
-module.exports = function(members,res) {
+module.exports = function(result, members, res) {
     switch (members) {
         case 4:
             var post4 = {
@@ -67,6 +67,6 @@ module.exports = function(members,res) {
                     console.log("Successfully Inserted DETAILS OF MEMBER 1");
                 }
             });
-            res.redirect("/report");
+            res.redirect("/student/report");
     }
 };

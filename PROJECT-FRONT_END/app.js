@@ -48,6 +48,7 @@ require("./controllers/passport")(passport);
 app.use("/", require("./Routes/index"));
 
 app.use("/suser", require("./Routes/suser"));
+app.use("/student", require("./Routes/student"));
 
 
 

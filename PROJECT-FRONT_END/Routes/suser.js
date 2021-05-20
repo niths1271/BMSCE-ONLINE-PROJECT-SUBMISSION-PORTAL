@@ -48,7 +48,7 @@ router.post("/signup", [
             });
             console.log(errorsArr);
             req.flash("errors", errorsArr);
-            res.redirect("/signup");
+            res.redirect("/suser/signup");
         } else {
             const username = req.body.username;
             const password = req.body.spassword;
@@ -70,14 +70,14 @@ router.post("/signup", [
 
 
 router.post('/login',
-    passport.authenticate('local', { failureRedirect: '/login' }),
+    passport.authenticate('local', { failureRedirect: '/suser/login' }),
     function(req, res) {
         connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID = ${req.user.id};`, function(error, result) {
             if (!error) {
                 if (result.length == 0) {
-                    res.redirect('/suser/login');
+                    res.redirect('/student/submitprojectdetails');
                 } else {
-                    res.redirect("/");
+                    res.redirect("/student/report");
                 }
             } else {
                 console.log(error);
