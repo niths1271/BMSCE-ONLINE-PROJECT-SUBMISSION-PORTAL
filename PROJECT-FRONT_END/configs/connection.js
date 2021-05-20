@@ -15,4 +15,4 @@ connection.connect(function(err) {
     console.log("Connected!");
 });
 
-module.exports=connection;
+module.exports = connection;
