@@ -20,6 +20,7 @@ router.get("/report", function(req, res) {
             if (err) {
                 console.log(err);
             } else {
+<<<<<<< Updated upstream
                  connection.query(`SELECT LINK,TIMEOFUPLOAD,STATUS FROM DOCUMENTS WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(err,result1) {
                 if (err) {
                     console.log(err);
@@ -38,11 +39,50 @@ router.get("/report", function(req, res) {
                 }
             }
             });
+=======
+                res.render("report", { pname: result[0].PROJECT_TITLE });
+>>>>>>> Stashed changes
             }
         });
     } else {
         res.redirect("/suser/login");
     }
+});
+
+router.get("/appointment", function(req, res) {
+    if (req.isAuthenticated) {
+        connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                const done = { pname: result[0].PROJECT_TITLE, scheduled: 0 };
+                connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+
+                        if (reslt.length > 0) {
+                            console.log(reslt[0]);
+                            done.scheduled = 1;
+                            done.pid = reslt[0].PROJECT_ID;
+                            done.sby = (reslt[0].SCHEDULED_BY_ADMIN === 0) ? "student" : "admin";
+                            done.type = reslt[0].TYPEOFAPP;
+                            done.date = reslt[0].ADATE;
+                            done.approval = reslt[0].APPROVAL;
+
+                        }
+                        res.render("appointment", done);
+
+                    }
+                });
+
+
+            }
+        });
+    } else {
+        res.redirect("/suser/login");
+    }
+
 });
 
 router.post('/submitprojectdetails', function(req, res) {
@@ -79,10 +119,11 @@ router.post('/submitteamdetails', function(req, res) {
     });
 });
 
-router.post('/report',function(req,res){
-    let file=req.files.myFile
+router.post('/report', function(req, res) {
+    let file = req.files.myFile
     console.log(file);
     var uuidname = uuid.v1(); // this is used for unique file name
+<<<<<<< Updated upstream
                  var filesrc = 'http://127.0.0.1:3000/docs/'+uuidname+file.name;
                  connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
                     if (err) {
@@ -105,6 +146,56 @@ router.post('/report',function(req,res){
         });
                     }
                 });
+=======
+    var filesrc = 'http://127.0.0.1:3000/docs/' + uuidname + file.name;
+    connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            var insertData = {
+                PROJECT_ID: result[0].PROJECT_ID,
+                REPORT: filesrc,
+            };
+            connection.query('INSERT INTO DOCUMENTS SET ?', insertData, (err) => {
+                if (err) throw err
+                else {
+                    file.mv('public/docs/' + uuidname + file.name);
+                    console.log("Inserted Successfully");
+
+                }
+            });
+        }
+    });
+});
+
+router.post("/appointment", function(req, res) {
+    console.log(req.body);
+    connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            var type = (req.body.appointment == 1) ? "presentation" : "doubt clarification";
+            var date = req.body.appointmenttime;
+            var insertData = {
+                PROJECT_ID: result[0].PROJECT_ID,
+                TYPEOFAPP: type,
+                ADATE: date.substring(0, 10),
+                APPROVAL: "PENDING..",
+                SCHEDULED_BY_ADMIN: 0
+            };
+            console.log(insertData);
+            connection.query('INSERT INTO APPOINTMENT SET ?', insertData, (err) => {
+                if (err) throw err
+                else {
+
+                    console.log("Inserted Successfully");
+                    res.redirect("/student/appointment");
+
+                }
+            });
+        }
+    });
+>>>>>>> Stashed changes
 });
 
 module.exports = router;

@@ -14,7 +14,12 @@
         <div class="container">
             <div class="sidebar">
                 <div class="name">
-                    <p><i class="fas fa-project-diagram"></i><h2>PROJECT NAME:</h2><h3><%=pname%></h3></p>                 
+                    <p><i class="fas fa-project-diagram"></i>
+                        <h2>PROJECT NAME:</h2>
+                        <h3>
+                            <%=pname%>
+                        </h3>
+                    </p>
                 </div>
                 <div class="notifications">
                     <h3 style="color: #593535;">NOTIFICATIONS:</h3>
@@ -34,8 +39,8 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li class="active"><a href="report.html">Report Submission</a></li>
-                    <li><a href="app.html">Schedule an Appointment</a></li>
+                    <li class="active"><a href="/student/report">Report Submission</a></li>
+                    <li><a href="/student/appointment">Schedule an Appointment</a></li>
                     <li><a href="./psub.html">Project Submission</a></li>
                     <li><a href="./grades.html">Grades</a></li>
                     <li><a href="/">Logout</a></li>
@@ -55,6 +60,7 @@
                     </ol>
                 </div>
 
+<<<<<<< Updated upstream
                 <form action="/student/report" onsubmit="return Validate(this);" method="post" enctype="multipart/form-data" >
                 <div class="drop-zone">
                     <span class="drop-zone__prompt">Drop file here or click to upload</span>
@@ -64,6 +70,17 @@
             </form>
 <%}else{%>
        <div class="table">
+=======
+                <form action="/student/report" onsubmit="return Validate(this);" method="post" enctype="multipart/form-data">
+                    <div class="drop-zone">
+                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
+                        <input type="file" name="myFile" class="drop-zone__input">
+                    </div>
+                    <input type="submit" value="SUBMIT" class="disap btn">
+                </form>
+
+                <div class="table">
+>>>>>>> Stashed changes
                     <table>
                         <caption>Submitted details</caption>
                         <tr>
