@@ -15,7 +15,13 @@ router.get("/submitprojectdetails", function(req, res) {
 
 router.get("/report", function(req, res) {
     if (req.isAuthenticated) {
-        res.render("report");
+        connection.query(`SELECT PROJECT_TITLE FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
+            if (err) {
+                console.log(err);
+            } else {
+                res.render("report",{pname:result[0].PROJECT_TITLE});
+            }
+        });
     } else {
         res.redirect("/suser/login");
     }
@@ -73,6 +79,7 @@ router.post('/report',function(req,res){
                          else{
                         file.mv('public/docs/'+uuidname+file.name);
                         console.log("Inserted Successfully");
+                        
                          }
         });
                     }
