@@ -41,8 +41,8 @@
                     <li><a href="/">Logout</a></li>
                 </ul>
             </div>
+            <% if(result==0){%>
             <div class="main">
-
                 <h1 style="color:#593535; padding-top: 2%; padding-left: 2%;">UPLOAD YOUR REPORT:</h1>
 
                 <div class="instructions">
@@ -62,22 +62,22 @@
                   </div>
                 <input type="submit" value="SUBMIT" class="disap btn">
             </form>
-
-                <div class="table">
+<%}else{%>
+       <div class="table">
                     <table>
                         <caption>Submitted details</caption>
                         <tr>
-                            <th>Team</th>
+                            <th>Project_ID</th>
                             <th>Title</th>
                             <th>Document</th>
                             <th>Time</th>
                             <th>Status</th>
                         </tr>
                         <tr>
-                            <td>1</td>
-                            <td>Project Submission</td>
-                            <td>report.docx</td>
-                            <td id="type">10:00PM,26 May</td>
+                            <td><%=projectid%></td>
+                            <td><%=pname%></td>
+                            <td><%=plink%></td>
+                            <td><%=time%></td>
                             <td>Pending</td>
                         </tr>
 
@@ -85,7 +85,7 @@
                     <p>*You will be informed about your submission status when your report is evaluated.</p>
                 </div>
             </div>
-
+        <% } %> 
 
         </div>
 
