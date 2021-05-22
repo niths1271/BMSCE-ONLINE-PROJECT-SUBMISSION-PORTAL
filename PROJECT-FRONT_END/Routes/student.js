@@ -114,7 +114,7 @@ router.post('/submitteamdetails', function(req, res) {
         } else {
             console.log(result[0].PROJECT_ID);
             console.log(result[0].MEMBERS_NO);
-            insertMembers(result, result[0].MEMBERS_NO, res);
+            insertMembers(result, result[0].MEMBERS_NO, req, res);
         }
     });
 });
@@ -140,7 +140,7 @@ router.post('/report', function(req, res) {
                 else {
                     file.mv('public/docs/' + uuidname + file.name);
                     console.log("Inserted Successfully");
-                    res.redirect("/report");
+                    res.redirect("/student/report");
                 }
             });
         }
