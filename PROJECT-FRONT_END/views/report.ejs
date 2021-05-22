@@ -46,7 +46,7 @@
                     <li><a href="/">Logout</a></li>
                 </ul>
             </div>
-            <% if(result==0){%>
+            <% if(result===0){%>
             <div class="main">
                 <h1 style="color:#593535; padding-top: 2%; padding-left: 2%;">UPLOAD YOUR REPORT:</h1>
 
@@ -60,7 +60,6 @@
                     </ol>
                 </div>
 
-<<<<<<< Updated upstream
                 <form action="/student/report" onsubmit="return Validate(this);" method="post" enctype="multipart/form-data" >
                 <div class="drop-zone">
                     <span class="drop-zone__prompt">Drop file here or click to upload</span>
@@ -70,17 +69,6 @@
             </form>
 <%}else{%>
        <div class="table">
-=======
-                <form action="/student/report" onsubmit="return Validate(this);" method="post" enctype="multipart/form-data">
-                    <div class="drop-zone">
-                        <span class="drop-zone__prompt">Drop file here or click to upload</span>
-                        <input type="file" name="myFile" class="drop-zone__input">
-                    </div>
-                    <input type="submit" value="SUBMIT" class="disap btn">
-                </form>
-
-                <div class="table">
->>>>>>> Stashed changes
                     <table>
                         <caption>Submitted details</caption>
                         <tr>
@@ -93,7 +81,7 @@
                         <tr>
                             <td><%=projectid%></td>
                             <td><%=pname%></td>
-                            <td><%=plink%></td>
+                            <td><a href="<%=plink%>"><%=plink%></a></td>
                             <td><%=time%></td>
                             <td>Pending</td>
                         </tr>

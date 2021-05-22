@@ -1,7 +1,7 @@
 const connection = require("../configs/connection");
 const mysql = require('mysql2');
 
-module.exports = function(result, members, res) {
+module.exports = function(result, members,req,res) {
     switch (members) {
         case 4:
             var post4 = {
