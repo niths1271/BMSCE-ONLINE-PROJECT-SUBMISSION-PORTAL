@@ -16,32 +16,32 @@ router.get("/submitprojectdetails", function(req, res) {
 
 router.get("/report", function(req, res) {
     if (req.isAuthenticated) {
-        connection.query(`SELECT PROJECT_TITLE,PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID ='${req.user.id}' ;`, function(err,result) {
+        connection.query(`SELECT PROJECT_TITLE,PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID ='${req.user.id}' ;`, function(err, result) {
             if (err) {
                 console.log(err);
             } else {
-<<<<<<< Updated upstream
-                 connection.query(`SELECT LINK,TIMEOFUPLOAD,STATUS FROM DOCUMENTS WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(err,result1) {
-                if (err) {
-                    console.log(err);
-                } else {
-                    if(result1.length>0){
-                    res.render("report",{result:result1.length,
-                                        pname:result[0].PROJECT_TITLE,
-                                        projectid:result[0].PROJECT_ID,
-                                        plink:result1[0].LINK,
-                                        time:result1[0].TIMEOFUPLOAD,
-                                        status:result1[0].STATUS});
-                }else{
-                    res.render("report",{result:result1.length,
-                                         pname:result[0].PROJECT_TITLE,
-                                         projectid:result[0].PROJECT_ID}); 
-                }
-            }
-            });
-=======
-                res.render("report", { pname: result[0].PROJECT_TITLE });
->>>>>>> Stashed changes
+                connection.query(`SELECT LINK,TIMEOFUPLOAD,STATUS FROM DOCUMENTS WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(err, result1) {
+                    if (err) {
+                        console.log(err);
+                    } else {
+                        if (result1.length > 0) {
+                            res.render("report", {
+                                result: result1.length,
+                                pname: result[0].PROJECT_TITLE,
+                                projectid: result[0].PROJECT_ID,
+                                plink: result1[0].LINK,
+                                time: result1[0].TIMEOFUPLOAD,
+                                status: result1[0].STATUS
+                            });
+                        } else {
+                            res.render("report", {
+                                result: result1.length,
+                                pname: result[0].PROJECT_TITLE,
+                                projectid: result[0].PROJECT_ID
+                            });
+                        }
+                    }
+                });
             }
         });
     } else {
@@ -123,45 +123,24 @@ router.post('/report', function(req, res) {
     let file = req.files.myFile
     console.log(file);
     var uuidname = uuid.v1(); // this is used for unique file name
-<<<<<<< Updated upstream
-                 var filesrc = 'http://127.0.0.1:3000/docs/'+uuidname+file.name;
-                 connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        var date=new Date().toString();
-                        var insertData = {
-                            PROJECT_ID:result[0].PROJECT_ID,
-                            TYPE:"Report",
-                            LINK:filesrc,
-                            TIMEOFUPLOAD:date,
-                        };
-                        connection.query('INSERT INTO DOCUMENTS SET ?',insertData, (err) => {
-                         if (err) throw err
-                         else{
-                        file.mv('public/docs/'+uuidname+file.name);
-                        console.log("Inserted Successfully");
-                        res.redirect("/report");
-                         }
-        });
-                    }
-                });
-=======
     var filesrc = 'http://127.0.0.1:3000/docs/' + uuidname + file.name;
     connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
         if (err) {
             console.log(err);
         } else {
+            var date = new Date().toString();
             var insertData = {
                 PROJECT_ID: result[0].PROJECT_ID,
-                REPORT: filesrc,
+                TYPE: "Report",
+                LINK: filesrc,
+                TIMEOFUPLOAD: date,
             };
             connection.query('INSERT INTO DOCUMENTS SET ?', insertData, (err) => {
                 if (err) throw err
                 else {
                     file.mv('public/docs/' + uuidname + file.name);
                     console.log("Inserted Successfully");
-
+                    res.redirect("/report");
                 }
             });
         }
@@ -195,7 +174,8 @@ router.post("/appointment", function(req, res) {
             });
         }
     });
->>>>>>> Stashed changes
+
 });
+
 
 module.exports = router;
