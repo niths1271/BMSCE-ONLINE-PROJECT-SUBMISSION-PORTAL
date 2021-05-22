@@ -159,7 +159,7 @@ router.post("/appointment", function(req, res) {
                 PROJECT_ID: result[0].PROJECT_ID,
                 TYPEOFAPP: type,
                 ADATE: date.substring(0, 10),
-                APPROVAL: "PENDING..",
+                // APPROVAL: "PENDING..",
                 SCHEDULED_BY_ADMIN: 0
             };
             console.log(insertData);
