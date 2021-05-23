@@ -7,7 +7,7 @@ var uuid = require('uuid');
 const { report } = require(".");
 
 router.get("/submitprojectdetails", function(req, res) {
-    if (req.isAuthenticated) {
+    if (req.isAuthenticated()) {
         res.render("submitprojectdetails");
     } else {
         res.redirect("/suser/login");
@@ -15,7 +15,8 @@ router.get("/submitprojectdetails", function(req, res) {
 });
 
 router.get("/report", function(req, res) {
-    if (req.isAuthenticated) {
+    if (req.isAuthenticated()) {
+        console.log("authenticated");
         connection.query(`SELECT PROJECT_TITLE,PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID ='${req.user.id}' ;`, function(err, result) {
             if (err) {
                 console.log(err);
@@ -50,7 +51,7 @@ router.get("/report", function(req, res) {
 });
 
 router.get("/appointment", function(req, res) {
-    if (req.isAuthenticated) {
+    if (req.isAuthenticated()) {
         connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
             if (err) {
                 console.log(err);
