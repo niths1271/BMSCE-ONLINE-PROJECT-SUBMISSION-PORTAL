@@ -98,6 +98,7 @@ router.get("/psub", function(req, res){
                 connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
                     if (error) {
                         console.log(error);
+<<<<<<< Updated upstream
                     } else {
 
                         
@@ -129,6 +130,10 @@ router.get("/grades", function(req, res){
                         
                         res.render("grades");
 
+=======
+                    } else {                    
+                        res.render("psub", done);
+>>>>>>> Stashed changes
                     }
                 });
 
@@ -182,7 +187,7 @@ router.post('/report', function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            var date = new Date().toString();
+            var date = new Date().toLocaleDateString()+new Date().toLocaleTimeString();
             var insertData = {
                 PROJECT_ID: result[0].PROJECT_ID,
                 TYPE: "Report",
@@ -220,10 +225,8 @@ router.post("/appointment", function(req, res) {
             connection.query('INSERT INTO APPOINTMENT SET ?', insertData, (err) => {
                 if (err) throw err
                 else {
-
                     console.log("Inserted Successfully");
                     res.redirect("/student/appointment");
-
                 }
             });
         }
