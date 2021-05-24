@@ -101,7 +101,7 @@ router.get("/psub", function(req, res){
                     } else {
 
                         
-                        res.render("psub", done);
+                        res.render("psub");
 
                     }
                 });
@@ -127,7 +127,7 @@ router.get("/grades", function(req, res){
                     } else {
 
                         
-                        res.render("grades", done);
+                        res.render("grades");
 
                     }
                 });
