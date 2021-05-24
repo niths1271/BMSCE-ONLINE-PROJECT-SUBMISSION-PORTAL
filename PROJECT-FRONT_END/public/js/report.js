@@ -26,8 +26,6 @@ function Validate(oForm) {
     return true;
 }
 
-
-
 //for drag and drop
 document.querySelectorAll(".drop-zone__input").forEach((inputElement) => {
     const dropZoneElement = inputElement.closest(".drop-zone");
