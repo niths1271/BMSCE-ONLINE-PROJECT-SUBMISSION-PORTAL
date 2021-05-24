@@ -1,9 +1,22 @@
+const connection = require("../configs/connection");
 const { body, validationResult } = require('express-validator');
 
 let validateSignup =[
-    body('username')
-    .exists()
-    .withMessage('Invalid USERNAME'),
+    // body('username').exists().custom((value) => {
+    //     connection.query(`SELECT USERNAME FROM STUDENT_USER_DETAILS;`,function(error,results){
+    //         if(error){
+    //             console.log(error);
+    //         }
+    //         else{
+    //             results.forEach((res)=>{
+    //             if (value === res.USERNAME) 
+    //              throw new Error('The Username already exists,Please try other usernames');
+    //             });
+    //     return true;
+    // }
+    // });
+    // }),
+    // .withMessage('Invalid USERNAME'),
     body('spassword')
     .exists()
     .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$/, "i")
