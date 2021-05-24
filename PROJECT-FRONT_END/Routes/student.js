@@ -86,6 +86,31 @@ router.get("/appointment", function(req, res) {
 
 });
 
+router.get("/psub", function(req, res){
+    if(req.isAuthenticated()){
+        connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
+            if (err) {
+                console.log(err);
+            } else{
+                 
+                connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+
+                        
+                        res.render("psub", done);
+
+                    }
+                });
+
+            }
+        });
+    }else{
+        res.redirect("/suser/login");
+    }
+});
+
 router.post('/submitprojectdetails', function(req, res) {
     console.log(req.body);
     console.log(req.user);
