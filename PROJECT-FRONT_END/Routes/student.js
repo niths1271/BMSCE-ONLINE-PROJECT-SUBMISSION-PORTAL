@@ -93,17 +93,12 @@ router.get("/psub", function(req, res){
         connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
             if (err) {
                 console.log(err);
-            } else{
-                 
+            } else{               
                 connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
                     if (error) {
                         console.log(error);
-<<<<<<< Updated upstream
-                    } else {
-
-                        
+                    } else {                       
                         res.render("psub");
-
                     }
                 });
 
@@ -120,20 +115,12 @@ router.get("/grades", function(req, res){
         connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
             if (err) {
                 console.log(err);
-            } else{
-                 
+            } else{              
                 connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
                     if (error) {
                         console.log(error);
-                    } else {
-
-                        
+                    } else {                        
                         res.render("grades");
-
-=======
-                    } else {                    
-                        res.render("psub", done);
->>>>>>> Stashed changes
                     }
                 });
 
@@ -233,6 +220,5 @@ router.post("/appointment", function(req, res) {
     });
 
 });
-
 
 module.exports = router;
