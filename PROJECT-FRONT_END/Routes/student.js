@@ -95,8 +95,27 @@ router.get("/psub", function(req, res){
                 console.log(err);
 
             } else{
-                console.log("came");
-                res.render("psub", {pname: result[0].PROJECT_TITLE});
+                var send = {pname: result[0].PROJECT_TITLE, submitted : 0};
+                
+                  connection.query(`SELECT * FROM PROJECTS WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
+                    if (error) {
+                        console.log(error);
+                    } else {
+
+                        if (reslt.length > 0) {
+                            console.log(reslt[0]);
+                            send.pid = reslt[0].PROJECT_ID;
+                            send.submitted = 1;
+                            send.link = reslt[0].LINK;
+                            send.status= reslt[0].STATUS;
+                            send.structure= reslt[0].STRUCTURE;
+                            send.date= reslt[0].PDATE;
+
+                        }
+                        res.render("psub", send);
+
+                    }
+                });
 
             } 
         });
@@ -116,8 +135,10 @@ router.get("/grades", function(req, res){
                     if (err) {
                         console.log(err);
                     } else{              
-                        console.log(result1);
-                            res.render("pregrades",{pname:result[0].PROJECT_TITLE,res:result1});                                           
+                        if(result1==0)
+                            res.render("pregrades",{projtitle:result[0].PROJECT_TITLE});                      
+                        else
+                            res.render("grades");                       
                     }
         });
     }
