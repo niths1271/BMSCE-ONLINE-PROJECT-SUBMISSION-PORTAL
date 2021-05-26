@@ -111,9 +111,7 @@ ul li.active a {
     transform: scale(1.1);
 }
 
-.fileuploader {
-    max-width: 100%;
-}
+
 
 .instruc ul {
     list-style: circle;
@@ -145,4 +143,10 @@ ul li.active a {
 .main{
     margin-left: 2%;
     margin-right: 2%;
+}
+
+
+.instructions {
+    padding-left: 10%;
+    padding-top: 5%;
 }
