@@ -2,6 +2,7 @@
     <title>Grades</title>
     <link rel="stylesheet" href="/css/pregrades.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/7909e8b9ea.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -11,10 +12,13 @@
     <div class="container">
      <div class="sidebar">
           <div class="name">
-              <h3>Welcome</h3>
-              <p><i class="fa fa-user" aria-hidden="true"></i>XYZ <br>XYZ.cs19@bmsce.ac.in
-              </p>
-          </div>
+               <p><i class="fas fa-project-diagram"></i>
+                   <h2>PROJECT NAME:</h2>
+                   <h3>
+                       <%=pname%>
+                   </h3>
+               </p>
+           </div>
           <div class="notifications">
               <h3 style="color: #593535;">NOTIFICATIONS:</h3>
               <ul>
@@ -41,7 +45,22 @@
             </ul>
         </div>
         <div class="main">
+             <%if(res==0){%>
            <h1>NOT YET GRADED</h1>
+           <%}else{%>
+               <div class="g-container b">
+                    <h2>GRADES:</h2>
+                    <h3>Team Members</h3>
+                    <ul class="g-ul g-card-4 g-white">
+                         <%for(var i=0;i<res.length;i++){%>                         
+                        <li class="g-padding-16">
+                            <img src="/photos/avatar1.png" class="g-left g-circle g-margin-right" style="width:40px">
+                            <span class="g-xlarge"><%=res[i].NAME%></span><br>
+                         </li>
+                            <%}%>
+                    </ul>
+                </div>
+               <%}%>
     </div>
 
 <%- include('partials/footer') %>
