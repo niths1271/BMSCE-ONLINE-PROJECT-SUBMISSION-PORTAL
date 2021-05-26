@@ -127,7 +127,7 @@ router.get("/grades", function(req, res){
                     }
         });
     }
-        )};
+});
     }
     else{
         res.redirect("/suser/login");
