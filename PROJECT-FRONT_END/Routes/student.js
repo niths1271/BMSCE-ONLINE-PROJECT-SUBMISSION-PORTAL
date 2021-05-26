@@ -222,4 +222,31 @@ router.post("/appointment", function(req, res) {
 
 });
 
+router.post("/psub", function(req, res){
+    connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
+        if (err) {
+            console.log(err);
+        } else {
+            var d = new Date();
+            var date = d.getFullYear()+"-"+ (d.getMonth()+1) +"-"+d.getDate();
+            var insertData = {
+                PROJECT_ID: result[0].PROJECT_ID,
+                LINK:req.body.link,
+                PDATE: date,
+                STRUCTURE: req.body.structure
+            };
+            console.log(insertData);
+            connection.query('INSERT INTO PROJECTS SET ?', insertData, (error) => {
+                if (error) {
+                    console.log(error);
+                }
+                else {
+                    console.log("Inserted Successfully");
+                    res.redirect("/student/psub");
+                }
+            });
+        }
+    });
+});
+
 module.exports = router;
