@@ -93,9 +93,20 @@ router.get("/psub", function(req, res){
         connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
             if (err) {
                 console.log(err);
+<<<<<<< Updated upstream
             } else{
                 console.log("came");
                 res.render("psub");
+=======
+            } else{               
+                connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
+                    if (error) {
+                        console.log(error);
+                    } else {                       
+                        res.render("psub");
+                    }
+                });
+>>>>>>> Stashed changes
             }
         });
     }else{

@@ -20,9 +20,11 @@
      text-align: center;
  }
 
- .main header{
+ .main h1{
      text-align: center;
-     margin: auto;
+     margin-top:20%;
+     color:#593535;
+     font-size:5rem;
  }
  
  .container {
