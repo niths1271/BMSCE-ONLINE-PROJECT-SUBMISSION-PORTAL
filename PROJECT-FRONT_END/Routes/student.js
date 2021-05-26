@@ -96,7 +96,7 @@ router.get("/psub", function(req, res){
 
             } else{
                 console.log("came");
-                res.render("psub");
+                res.render("psub", {pname: result[0].PROJECT_TITLE});
 
             } 
         });
