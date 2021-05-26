@@ -119,7 +119,7 @@ ul li.active a {
 
 .btn {
     margin-top: 10px;
-    margin-left: 45%;
+    /* margin-left: 10%; */
     padding: 10px;
     width: 100px;
     border-radius: 49px;
@@ -140,13 +140,25 @@ ul li.active a {
     transform: scale(0.9);
 }
 
-.main{
+/* .main{
     margin-left: 2%;
     margin-right: 2%;
-}
-
+} */
 
 .instructions {
     padding-left: 10%;
     padding-top: 5%;
+}
+
+.main {
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+form{
+    padding-left: 10%;
+}
+
+#link{
+    width: 60%;
 }

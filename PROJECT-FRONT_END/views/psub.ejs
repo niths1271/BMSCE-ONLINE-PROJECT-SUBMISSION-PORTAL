@@ -3,25 +3,16 @@
 
     <title>Student Tab</title>
     <link rel="stylesheet" href="/css/psub.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+   
     <script type="text/javascript" src="/js/psub.js"></script>
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <link href="./dist/font/font-fileuploader.css" rel="stylesheet">
-
-    <!-- styles -->
-    <link href="./dist/jquery.fileuploader.min.css" media="all" rel="stylesheet">
-
-    <!-- js -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-    <script src="./dist/jquery.fileuploader.min.js" type="text/javascript"></script>
+   
 
 
 
 </head>
 
 <body>
+    <% console.log("hooo"); %>
     <header>
         <h1>BMSCE ONLINE PROJECT SUBMISSION PORTAL</h1>
     </header>
@@ -57,6 +48,7 @@
                 <li><a href="/suser/logout">Logout</a></li>
             </ul>
         </div>
+        <div class="main">
         <div class="instructions">
             <h3 style="color:#593535;">Instructions:</h3>
             <ol>
@@ -65,14 +57,25 @@
                 <li>THE REPO SHOULD CONTAIN ALL THE FILES PERTAINING TO THE CURRENT PROJECT.</li>
                 <li>ADD A DESCRIPTION OF THE FILE STRUCTURE.</li>
             </ol>
+            <br>
+            
         </div>
-
+        
         <form action="/student/psub" method="post">
             <label for="link">URL:</label>
-        <input type="url" name="link" id="link">
-        <textarea name="structure" id="" cols="30" rows="10"></textarea>
-        <input type="submit" value="submit" class="btn">
+            <input type="url" name="link" id="link">
+            <br>
+            <br>
+            
+            <textarea name="structure" id="" cols="120" rows="10" placeholder="Describe file structure"></textarea>
+            <br>
+            <input type="submit" value="submit" class="btn">
         </form>
+        </div>
+
+        
+        
+        
 
     </div>
 

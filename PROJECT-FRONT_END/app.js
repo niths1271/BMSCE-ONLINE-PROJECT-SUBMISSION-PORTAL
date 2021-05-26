@@ -52,14 +52,14 @@ app.use("/student", require("./Routes/student"));
 //     next();
 // });
 
-app.use(function(req, res, next) {
-  res.set({
-    'Cache-Control': 'no-cache, no-store, must-revalidate',
-    'Pragma' : 'no-cache',
-    'Expires' : '0',
-    });
-//   next();
-});
+// app.use(function(req, res, next) {
+//   res.set({
+//     'Cache-Control': 'no-cache, no-store, must-revalidate',
+//     'Pragma' : 'no-cache',
+//     'Expires' : '0',
+//     });
+// //   next();
+// });
 
 app.listen(port, function() {
     console.log("Server started Successfully");
