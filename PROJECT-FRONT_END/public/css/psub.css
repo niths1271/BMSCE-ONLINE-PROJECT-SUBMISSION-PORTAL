@@ -162,3 +162,33 @@ form{
 #link{
     width: 60%;
 }
+
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+table {
+    width: 80%;
+    margin-left: 9%;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 15px;
+}
+
+.table p {
+    margin-left: 9%;
+}
+
+
+/* .disap {
+    display: none;
+} */
+
+.table {
+    margin-top: 4%;
+}

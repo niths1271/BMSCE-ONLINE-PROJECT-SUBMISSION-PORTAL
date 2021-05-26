@@ -54,6 +54,7 @@
         </div>
         <div class="main">
         <div class="instructions">
+            <% if(submitted === 0){ %>
             <h3 style="color:#593535;">Instructions:</h3>
             <ol>
                 <li>UPLOAD A LINK TO YOUR PROJECT FILES HERE.</li>
@@ -61,10 +62,51 @@
                 <li>THE REPO SHOULD CONTAIN ALL THE FILES PERTAINING TO THE CURRENT PROJECT.</li>
                 <li>ADD A DESCRIPTION OF THE FILE STRUCTURE.</li>
             </ol>
-            <br>
-            
-        </div>
         
+            <br>
+            <% }else{ %>
+                <div class="table">
+                    <table>
+                        <caption>Submitted details</caption>
+                        <tr>
+                            <th>Project_ID</th>
+                            <th>LINK</th>
+                            <th>Date</th>
+                        
+                            <th>Status</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%=pid%>
+                            </td>
+                            <td>
+                                <a target="_blank" href="<%=link%>">
+                                    <%=link%>
+                                </a>
+                            </td>
+                            <td>
+                                <%=date%>
+                            </td>
+                            
+                            <td>
+                                <%=status%>
+                            </td>
+                            
+                        </tr>
+                
+                    </table>
+                    <p>*You will be informed about your submission status when your project is evaluated.</p>
+                    <div class="descrip">
+                        <p>
+                            <%= structure %>
+                        </p>
+                    </div>
+                </div>
+                
+
+            <% } %>
+        </div>
+        <% if(submitted===0){ %>
         <form action="/student/psub" method="post">
             <label for="link">URL:</label>
             <input type="url" name="link" id="link">
@@ -75,6 +117,7 @@
             <br>
             <input type="submit" value="submit" class="btn">
         </form>
+        <% } %>
         </div>
 
         
