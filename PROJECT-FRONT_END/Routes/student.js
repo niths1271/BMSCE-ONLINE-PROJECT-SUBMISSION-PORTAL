@@ -267,7 +267,18 @@ router.post("/psub", function(req, res){
 });
 
 router.post("/grades",function(req,res){
-    console.log("hi",req);
+    console.log(req.body);
+    const query=`SELECT HTML,JAVASCRIPT,CSS,REPORT,ORALCOMMUNICATION,
+                (HTML+JAVASCRIPT+CSS+REPORT+ORALCOMMUNICATION) AS TOTAL_CIE,
+                TOTAL_SEE,(TOTAL_CIE+TOTAL_SEE) AS TOTAL_MARKS FROM GRADES WHERE STUD_ID ='${req.body.memberid}';`;
+    connection.query(query,function(err, result) {
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(result);
+        }
+    });
 });
 
 module.exports = router;
