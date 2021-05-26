@@ -65,9 +65,13 @@ router.post('/login',
         });
     });
 
-router.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
+router.get('/logout', function(req, res){  
+
+    req.logout();
+    // res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    // res.header('Expires', '-1');
+    // res.header('Pragma', 'no-cache');
+    res.redirect('/');
   console.log("Successfully Logged Out");
 });
 

@@ -46,7 +46,20 @@ app.use("/", require("./Routes/index"));
 app.use("/suser", require("./Routes/suser"));
 app.use("/student", require("./Routes/student"));
 
+// app.use(function(req, res, next) {
+//     if (!req.user)
+//         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+//     next();
+// });
 
+app.use(function(req, res, next) {
+  res.set({
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    'Pragma' : 'no-cache',
+    'Expires' : '0',
+    });
+//   next();
+});
 
 app.listen(port, function() {
     console.log("Server started Successfully");
