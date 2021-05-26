@@ -52,15 +52,17 @@
                     <h2>GRADES:</h2>
                     <h3>Team Members</h3>
                     <ul class="g-ul g-card-4 g-white">
-                         <%for(var i=0;i<res.length;i++){%>                         
-                        <li class="g-padding-16">
+                         <%for(var i=0;i<res.length;i++){%>      
+                         <form action="/student/grades" method="post"></form>                   
+                        <li type="submit" class="g-padding-16">
                             <img src="/photos/avatar1.png" class="g-left g-circle g-margin-right" style="width:40px">
                             <span class="g-xlarge"><%=res[i].NAME%></span><br>
                          </li>
+                         <input type="hidden" name="memberid" value="<%=res[i].STUD_ID%>"></input>
+                    </form>
                             <%}%>
-                    </ul>
+                    </ul>            
                 </div>
                <%}%>
     </div>
-
 <%- include('partials/footer') %>

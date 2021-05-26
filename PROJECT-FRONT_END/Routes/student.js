@@ -112,7 +112,7 @@ router.get("/grades", function(req, res){
             if (err) {
                 console.log(err);
             } else{              
-                connection.query(`SELECT S.NAME FROM GRADES G,STUDENT_DETAILS S WHERE G.STUDENT_ID=S.STUD_ID ;`, function(err, result1){
+                connection.query(`SELECT S.NAME,S.STUD_ID FROM GRADES G,STUDENT_DETAILS S WHERE G.STUDENT_ID=S.STUD_ID ;`, function(err, result1){
                     if (err) {
                         console.log(err);
                     } else{              
@@ -245,6 +245,10 @@ router.post("/psub", function(req, res){
             });
         }
     });
+});
+
+router.post("/grades",function(req,res){
+    console.log(req);
 });
 
 module.exports = router;
