@@ -267,7 +267,7 @@ router.post("/psub", function(req, res){
 });
 
 router.post("/grades",function(req,res){
-    console.log(req);
+    console.log("hi",req);
 });
 
 module.exports = router;
