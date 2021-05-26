@@ -112,24 +112,29 @@ router.get("/psub", function(req, res){
 
 router.get("/grades", function(req, res){
     if(req.isAuthenticated()){
-        connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
+        connection.query(`SELECT PROJECT_TITLE,PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
             if (err) {
                 console.log(err);
             } else{              
-                connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
-                    if (error) {
-                        console.log(error);
-                    } else {                        
-                        res.render("grades");
+                connection.query(`SELECT GRADES_ID FROM GRADES WHERE PROJECT_ID ='${result[0].PROJECT_ID}' ;`, function(err, result1){
+                    if (err) {
+                        console.log(err);
+                    } else{              
+                        if(result1==0)
+                            res.render("pregrades",{projtitle:result[0].PROJECT_TITLE});                      
+                        else
+                            res.render("grades");                       
                     }
-                });
-
-            }
         });
-    }else{
+    }
+        )};
+    }
+    else{
         res.redirect("/suser/login");
     }
 });
+
+
 
 router.post('/submitprojectdetails', function(req, res) {
     console.log(req.body);

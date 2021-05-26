@@ -3,60 +3,57 @@
     <link rel="stylesheet" href="/css/grades.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-    <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['corechart']
-        });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Task', 'Marks per Criteria'],
-                ['Navigation', 9],
-                ['Javascript(Validation of fields)', 8],
-                ['Css(Background)', 7],
-                ['Report', 9],
-                ['Presentation', 10]
-            ]);
-
-            var options = {
-                'title': 'FINAL MARKS DISTRIBUTION ',
-                'width': 600,
-                'height': 400,
-                is3D: true,
-                legend: 'none',
-                fontSize: 20,
-                height: 400,
-                slices: [{
-                    color: 'black'
-                }, {
-                    color: 'red'
-                }, {
-                    color: 'yellow'
-                }, {
-                    color: 'blue'
-                }, {
-                    color: 'green'
-                }],
-            };
-
-
-            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-            chart.draw(data, options);
-        }
-    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
 
-    <script src="./js/grades.js"></script>
+    <script src="/js/grades.js"></script>
+<script>
+    //For Google Pie Chart
+google.charts.load('current', {
+    'packages': ['corechart']
+});
+google.charts.setOnLoadCallback(drawChart);
 
+function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Marks per Criteria'],
+        ['Navigation', 9],
+        ['Javascript(Validation of fields)', 8],
+        ['Css(Background)', 7],
+        ['Report', 9],
+        ['Presentation', 10]
+    ]);
+
+    var options = {
+        'title': 'FINAL MARKS DISTRIBUTION ',
+        'width': 600,
+        'height': 400,
+        is3D: true,
+        legend: 'none',
+        fontSize: 20,
+        height: 400,
+        slices: [{
+            color: 'black'
+        }, {
+            color: 'red'
+        }, {
+            color: 'yellow'
+        }, {
+            color: 'blue'
+        }, {
+            color: 'green'
+        }],
+    };
+
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(data, options);
+}
+</script>
     <script>
         $(function () {
-
             $('.circlechart').circlechart();
-
         });
     </script>
 
@@ -95,6 +92,7 @@
             <div class="piemain">
                 <div id="piechart"></div>
             </div>
+
             <div class="tbl-main">
                 <div class="table">
                     <table>
@@ -136,7 +134,7 @@
                 <h3>Instructor Remarks</h3>
                 <div class="g-row">
                     <div class="m2">
-                        <img class="g-circle" src="./photos/avatar3.png" style="width:96px;height:96px">
+                        <img class="g-circle" src="/photos/avatar3.png" style="width:96px;height:96px">
                     </div>
                     <div class="m10">
                         <h4>Dr.Umadevi <span class="g-opacity g-medium">Sep 29, 2020, 9:12 PM</span></h4>
@@ -146,7 +144,7 @@
 
                 <div class="g-row">
                     <div class="m2">
-                        <img class="g-circle" src="./photos/avatar1.png" style="width:96px;height:96px">
+                        <img class="g-circle" src="/photos/avatar1.png" style="width:96px;height:96px">
                     </div>
                     <div class="m10">
                         <h4>Bhoomika A P <span class="g-opacity g-medium">Sep 28, 2020, 10:15 PM</span></h4>
@@ -158,15 +156,15 @@
                 <h3>Team Members</h3>
                 <ul class="g-ul g-card-4 g-white">
                     <li class="g-padding-16">
-                        <img src="./photos/avatar1.png" class="g-left g-circle g-margin-right" style="width:40px">
+                        <img src="/photos/avatar1.png" class="g-left g-circle g-margin-right" style="width:40px">
                         <span class="g-xlarge">XYZ</span><br>
                     </li>
                     <li class="g-padding-16">
-                        <img src="./photos/avatar1.png" class="g-left g-circle g-margin-right" style="width:40px">
+                        <img src="/photos/avatar1.png" class="g-left g-circle g-margin-right" style="width:40px">
                         <span class="g-xlarge">ABC</span><br>
                     </li>
                     <li class="g-padding-16">
-                        <img src="./photos/avatar1.png" class="g-left g-circle g-margin-right" style="width:40px">
+                        <img src="/photos/avatar1.png" class="g-left g-circle g-margin-right" style="width:40px">
                         <span class="g-xlarge">PQR</span><br>
                     </li>
                 </ul>

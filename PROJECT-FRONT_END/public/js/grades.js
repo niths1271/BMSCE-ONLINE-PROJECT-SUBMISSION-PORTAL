@@ -1,3 +1,4 @@
+//For circle charts
 function makesvg(percentage, inner_text = "") {
 
     var abs_percentage = Math.abs(percentage).toString();
@@ -40,3 +41,4 @@ function makesvg(percentage, inner_text = "") {
     };
 
 }(jQuery));
+
