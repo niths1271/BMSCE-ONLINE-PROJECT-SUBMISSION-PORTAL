@@ -280,12 +280,12 @@ router.post("/grades",function(req,res){
                 ['Task', 'Marks per Criteria'],
                 ['HTML',result[0].HTML],
                 ['CSS',result[0].CSS],
-                ['JAVASCRIPT'[0],result.JAVASCRIPT],
-                ['Report'[0],result.REPORT],
-                ['ORALCOMMUNICATION'[0],result.ORALCOMMUNICATION]
+                ['JAVASCRIPT',result[0].JAVASCRIPT],
+                ['Report',result[0].REPORT],
+                ['ORALCOMMUNICATION',result[0].ORALCOMMUNICATION]
             ]
          const totalMarks=result[0].TOTAL_CIE+result[0].TOTAL_SEE;
-           res.render("grades",{dataArray:googleChartArray,
+           res.render("grades",{dataArray:JSON.stringify(googleChartArray),
                                 cie:result[0].TOTAL_CIE*2,
                                 see:result[0].TOTAL_SEE*2,
                                 total:totalMarks});

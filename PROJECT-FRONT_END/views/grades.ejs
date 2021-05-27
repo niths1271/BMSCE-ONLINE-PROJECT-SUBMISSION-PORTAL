@@ -6,16 +6,18 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
         </script>
-
     <script src="/js/grades.js"></script>
-<script>
-    //For Google Pie Chart
+
+    <!-- //For Google Pie Chart -->
+<script data-dataArray="<%=dataArray%>">
 google.charts.load('current', {
     'packages': ['corechart']
 });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
+    var array=JSON.parse(document.currentScript.dataset.dataArray);
+    console.log(array);
     var data = google.visualization.arrayToDataTable(array);
     var options = {
         'title': 'FINAL MARKS DISTRIBUTION ',
@@ -37,7 +39,6 @@ function drawChart() {
             color: 'green'
         }],
     };
-
 
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
     chart.draw(data, options);
@@ -78,6 +79,7 @@ function drawChart() {
                     <div class="circlechart" data-percentage="<%=total%>">TOTAL</div>
                 </div>
             </div>
+           
             <div class="piemain">
                 <div id="piechart"></div>
             </div>
