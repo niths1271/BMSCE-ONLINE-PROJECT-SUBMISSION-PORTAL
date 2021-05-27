@@ -285,12 +285,24 @@ router.post("/grades",function(req,res){
                 ['ORALCOMMUNICATION',result[0].ORALCOMMUNICATION]
             ]
          const totalMarks=result[0].TOTAL_CIE+result[0].TOTAL_SEE;
+         connection.query(`SELECT NAME,USN,EMAIL,PHONE_NO FROM STUDENT_DETAILS WHERE STUD_ID='${req.body.memberid}';`,function(err,result1){
+             if(err){
+                 console.log(err);
+             }
+             else{
+             console.log(result1);
            res.render("grades",{dataArray:JSON.stringify(googleChartArray),
                                 cie:result[0].TOTAL_CIE*2,
                                 see:result[0].TOTAL_SEE*2,
-                                total:totalMarks});
-        }
+                                total:totalMarks,
+                                name:result1[0].NAME,
+                                usn:result1[0].USN,
+                                email:result1[0].EMAIL,
+                                phoneno:result1[0].PHONE_NO});
+           }
     });
+}
+});
 });
 
 module.exports = router;
