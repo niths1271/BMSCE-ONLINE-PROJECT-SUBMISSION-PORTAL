@@ -131,7 +131,7 @@ router.get("/grades", function(req, res){
             if (err) {
                 console.log(err);
             } else{              
-                connection.query(`SELECT S.NAME,S.STUD_ID FROM GRADES G,STUDENT_DETAILS S WHERE G.STUDENT_ID=S.STUD_ID ;`, function(err, result1){
+                connection.query(`SELECT S.NAME,S.STUD_ID FROM GRADES G,STUDENT_DETAILS S WHERE G.STUDENT_ID=S.STUD_ID AND G.PROJECT_ID= '${result[0].PROJECT_ID}' ;`, function(err, result1){
                     if (err) {
                         console.log(err);
                     } else{                   
