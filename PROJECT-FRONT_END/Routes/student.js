@@ -276,9 +276,21 @@ router.post("/grades",function(req,res){
         }
         else{
             console.log(result);
+            const googleChartArray=[
+                ['Task', 'Marks per Criteria'],
+                ['HTML',result[0].HTML],
+                ['CSS',result[0].CSS],
+                ['JAVASCRIPT'[0],result.JAVASCRIPT],
+                ['Report'[0],result.REPORT],
+                ['ORALCOMMUNICATION'[0],result.ORALCOMMUNICATION]
+            ]
+         const totalMarks=result[0].TOTAL_CIE+result[0].TOTAL_SEE;
+           res.render("grades",{dataArray:googleChartArray,
+                                cie:result[0].TOTAL_CIE*2,
+                                see:result[0].TOTAL_SEE*2,
+                                total:totalMarks});
         }
     });
 });
-
 
 module.exports = router;
