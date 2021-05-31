@@ -45,7 +45,8 @@ app.use("/", require("./Routes/index"));
 
 app.use("/suser", require("./Routes/suser"));
 app.use("/student", require("./Routes/student"));
-
+app.use("/teacheruser", require("./Routes/teacheruser"));
+app.use("/teacher",require("./Routes/teacher"));
 // app.use(function(req, res, next) {
 //     if (!req.user)
 //         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
@@ -60,7 +61,6 @@ app.use("/student", require("./Routes/student"));
 //     });
 // //   next();
 // });
-
 app.listen(port, function() {
     console.log("Server started Successfully");
 });

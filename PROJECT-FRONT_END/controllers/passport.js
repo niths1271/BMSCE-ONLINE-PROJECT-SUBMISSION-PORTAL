@@ -6,6 +6,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 module.exports = function(passport) {
+    //strategy for login
     passport.use('local', new LocalStrategy({
             // by default, local strategy uses username and password, we will override with email
             usernameField: 'username',
@@ -14,7 +15,7 @@ module.exports = function(passport) {
         },
         function(req, username, password, done) { // callback with username and password from our form
 
-            connection.query(`SELECT * FROM STUDENT_USER_DETAILS WHERE USERNAME =  '${username}' ;`, function(err, rows) {
+            connection.query(`SELECT * FROM USER_DETAILS WHERE USERNAME =  '${username}' ;`, function(err, rows) {
                 // console.log(rows);
                 // console.log(password);
                 if (err)
@@ -38,7 +39,6 @@ module.exports = function(passport) {
 
         }));
 
-
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
         // console.log(user);
@@ -46,9 +46,9 @@ module.exports = function(passport) {
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function(id, done) {
-        connection.query("select * from STUDENT_USER_DETAILS where id = " + id, function(err, rows) {
+    passport.deserializeUser(function(obj,id,done) {
+        connection.query("Select * from USER_DETAILS where id = " + id, function(err, rows) {
             done(err, rows[0]);
-        });
+    });  
     });
 };

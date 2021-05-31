@@ -7,7 +7,7 @@ var uuid = require('uuid');
 const { report } = require(".");
 
 router.get("/submitprojectdetails", function(req, res) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() && req.user.ROLE==="STUDENT") {
         res.render("submitprojectdetails");
     } else {
         res.redirect("/suser/login");
@@ -15,7 +15,7 @@ router.get("/submitprojectdetails", function(req, res) {
 });
 
 router.get("/report", function(req, res) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() && req.user.ROLE==="STUDENT") {
         console.log("authenticated");
         connection.query(`SELECT PROJECT_TITLE,PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID ='${req.user.id}' ;`, function(err, result) {
             if (err) {
@@ -53,7 +53,7 @@ router.get("/report", function(req, res) {
 
 
 router.get("/appointment", function(req, res) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() && req.user.ROLE==="STUDENT") {
         connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result) {
             if (err) {
                 console.log(err);
@@ -89,7 +89,7 @@ router.get("/appointment", function(req, res) {
 });
 
 router.get("/psub", function(req, res){
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated() && req.user.ROLE==="STUDENT"){
         connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
             if (err) {
                 console.log(err);
@@ -126,7 +126,7 @@ router.get("/psub", function(req, res){
 
 
 router.get("/grades", function(req, res){
-    if(req.isAuthenticated()){
+    if (req.isAuthenticated() && req.user.ROLE==="STUDENT"){
         connection.query(`SELECT PROJECT_TITLE,PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
             if (err) {
                 console.log(err);

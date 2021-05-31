@@ -1,16 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<%- include('partials/header') %>
   <title>Teacher home page</title>
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-  <link rel="stylesheet" href="./public/css/viewreport.css" />
+  <link rel="stylesheet" href="/css/viewreport.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
-
 <body>
   <div style="background-image: url(./photos/email-pattern.png);">
   <div class="header">
@@ -57,11 +51,11 @@
 
       <div class="column middle">
         <div class="topnav">
-          <a class="active" href="viewreport.html" style="color: black">View Reports</a>
-          <a href="appointment.html">Appointments</a>
-          <a href="viewproject.html">View Projects</a>
-          <a href="grading.html">Grading </a>
-          <a href="alogin.html">Logout </a>
+          <a class="active" href="/teacher/viewreport" style="color: black">View Reports</a>
+          <a href="/teacher/viewappointment">Appointments</a>
+          <a href="/teacher/viewproject">View Projects</a>
+          <a href="/teacher/grading">Grading </a>
+          <a href="/teacheruser/logout">Logout </a>
         </div>
 
         <h2 style="font-size: 20px">
@@ -178,6 +172,4 @@
     </div>
   </div>
   <div>
-</body>
-
-</html>
+     <%- include('partials/footer') %>

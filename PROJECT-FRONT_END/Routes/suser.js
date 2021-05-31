@@ -33,8 +33,8 @@ router.post("/signup",
             const username = req.body.username;
             const password = req.body.spassword;
             bcrypt.hash(password, saltRounds, function(err, hash) {
-                var post = { USERNAME: username, PASSWORD: hash };
-                var query = connection.query('INSERT INTO STUDENT_USER_DETAILS SET ?', post, function(error, results, fields) {
+                var post = { USERNAME: username, PASSWORD: hash ,ROLE: "STUDENT" };
+                var query = connection.query('INSERT INTO USER_DETAILS SET ?', post, function(error, results, fields) {
                     if (error) {
                         console.log(error);
                     } else {
@@ -46,7 +46,6 @@ router.post("/signup",
             });
         }
     });
-
 
 
 router.post('/login',
@@ -65,8 +64,8 @@ router.post('/login',
         });
     });
 
-router.get('/logout', function(req, res){  
 
+router.get('/logout', function(req, res){  
     req.logout();
     // res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
     // res.header('Expires', '-1');
@@ -76,3 +75,4 @@ router.get('/logout', function(req, res){
 });
 
 module.exports = router;
+
