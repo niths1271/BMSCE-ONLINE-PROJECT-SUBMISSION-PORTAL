@@ -9,7 +9,7 @@ const connectFlash = require("connect-flash");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const fileUpload = require('express-fileupload');
-const nocache = require('nocache')
+const nocache = require('nocache');
 
 const app = express();
 const port = 3000;
