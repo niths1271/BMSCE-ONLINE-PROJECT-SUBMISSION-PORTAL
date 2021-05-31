@@ -41,11 +41,11 @@ body {
 }
 
 .column.side {
-  width: 20%;
+  width: 30%;
 }
 
 .column.middle {
-  width: 69.2%;
+  width: 60%;
 }
 
 .row:after {
