@@ -14,11 +14,9 @@ router.get("/login", function(req, res) {
  router.post("/login",
  passport.authenticate('local',{ failureRedirect:'/teacheruser/login' }),
  function(req, res) {
-     if(err){
-       console.log(err);
-     }else{
+     
        res.redirect("/teacher/viewreport");
-     }
+     
      });
  
 

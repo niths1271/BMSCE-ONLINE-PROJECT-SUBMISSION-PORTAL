@@ -14,9 +14,9 @@ module.exports = function(passport) {
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
         function(req, username, password, done) { // callback with username and password from our form
-
+            
             connection.query(`SELECT * FROM USER_DETAILS WHERE USERNAME =  '${username}' ;`, function(err, rows) {
-                // console.log(rows);
+                console.log(rows);
                 // console.log(password);
                 if (err)
                     return done(err);
