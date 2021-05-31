@@ -95,13 +95,11 @@ router.get("/psub", function(req, res){
                 console.log(err);
 
             } else{
-                var send = {pname: result[0].PROJECT_TITLE, submitted : 0};
-                
+                var send = {pname: result[0].PROJECT_TITLE, submitted : 0};             
                   connection.query(`SELECT * FROM PROJECTS WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
                     if (error) {
                         console.log(error);
                     } else {
-
                         if (reslt.length > 0) {
                             console.log(reslt[0]);
                             send.pid = reslt[0].PROJECT_ID;
@@ -110,10 +108,8 @@ router.get("/psub", function(req, res){
                             send.status= reslt[0].STATUS;
                             send.structure= reslt[0].STRUCTURE;
                             send.date= reslt[0].PDATE;
-
                         }
                         res.render("psub", send);
-
                     }
                 });
 
@@ -134,7 +130,14 @@ router.get("/grades", function(req, res){
                 connection.query(`SELECT S.NAME,S.STUD_ID FROM GRADES G,STUDENT_DETAILS S WHERE G.STUDENT_ID=S.STUD_ID AND G.PROJECT_ID= '${result[0].PROJECT_ID}' ;`, function(err, result1){
                     if (err) {
                         console.log(err);
-                    } else{                   
+                    } else{        
+                        connection.query(`UPDATE PROJECTS SET STATUS="GRADED" WHERE PROJECT_ID='${result[0].PROJECT_ID}';`,function(req,res2){
+                              if(err){
+                                  console.log(err)
+                              }else{
+                                  console.log(res2);
+                              }
+                        });          
                         console.log(result1);                
                             res.render("pregrades",{pname:result[0].PROJECT_TITLE,res:result1});                                        
                     }

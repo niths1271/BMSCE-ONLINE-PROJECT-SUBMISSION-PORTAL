@@ -13,8 +13,7 @@ module.exports = function(passport) {
             passwordField: 'password',
             passReqToCallback: true // allows us to pass back the entire request to the callback
         },
-        function(req, username, password, done) { // callback with username and password from our form
-            
+        function(req, username, password, done) { // callback with username and password from our form          
             connection.query(`SELECT * FROM USER_DETAILS WHERE USERNAME =  '${username}' ;`, function(err, rows) {
                 console.log(rows);
                 // console.log(password);
@@ -36,9 +35,7 @@ module.exports = function(passport) {
                     }
                 });
             });
-
         }));
-
     // used to serialize the user for the session
     passport.serializeUser(function(user, done) {
         // console.log(user);
@@ -46,7 +43,7 @@ module.exports = function(passport) {
     });
 
     // used to deserialize the user
-    passport.deserializeUser(function(obj,id,done) {
+    passport.deserializeUser(function(id,done) {
         connection.query("Select * from USER_DETAILS where id = " + id, function(err, rows) {
             done(err, rows[0]);
     });  
