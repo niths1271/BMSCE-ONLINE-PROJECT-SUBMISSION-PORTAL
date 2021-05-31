@@ -9,12 +9,13 @@ const connectFlash = require("connect-flash");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const fileUpload = require('express-fileupload');
+const nocache = require('nocache')
 
 const app = express();
 const port = 3000;
 
 // app.use(express.static(__dirname + '/public'));
-
+app.use(nocache());
 //for bodyparser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUpload());
