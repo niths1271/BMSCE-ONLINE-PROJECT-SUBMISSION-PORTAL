@@ -9,15 +9,25 @@
     <script src="/js/grades.js"></script>
 
     <!-- //For Google Pie Chart -->
-<script data-dataArray="<%=dataArray%>">
+    <% console.log(dataArray); %>
+<script >
+    var newArr = ['Task', 'HTML', 'CSS', 'JAVASCRIPT', 'Report', 'ORALCOMMUNICATION', 'Marks per Criteria'];
+    var array = <%= dataArray %>;
+    for(let i = 0; i < array.length; i++){
+        array[i][0] = newArr[i];
+    }
+    array[0][1] = newArr[6];
+
+        console.log("hi", array);
 google.charts.load('current', {
     'packages': ['corechart']
 });
 google.charts.setOnLoadCallback(drawChart);
 
+
 function drawChart() {
-    var array=JSON.parse(document.currentScript.dataset.dataArray);
-    console.log(array);
+    
+    
     var data = google.visualization.arrayToDataTable(array);
     var options = {
         'title': 'FINAL MARKS DISTRIBUTION ',

@@ -276,13 +276,14 @@ router.post("/grades",function(req,res){
         }
         else{
             console.log(result);
+            
             const googleChartArray=[
-                ['Task', 'Marks per Criteria'],
-                ['HTML',result[0].HTML],
-                ['CSS',result[0].CSS],
-                ['JAVASCRIPT',result[0].JAVASCRIPT],
-                ['Report',result[0].REPORT],
-                ['ORALCOMMUNICATION',result[0].ORALCOMMUNICATION]
+                [0,1 ],
+                [2,result[0].HTML],
+                [3,result[0].CSS],
+                [4,result[0].JAVASCRIPT],
+                [5,result[0].REPORT],
+                [6,result[0].ORALCOMMUNICATION]
             ]
          const totalMarks=result[0].TOTAL_CIE+result[0].TOTAL_SEE;
          connection.query(`SELECT NAME,USN,EMAIL,PHONE_NO FROM STUDENT_DETAILS WHERE STUD_ID='${req.body.memberid}';`,function(err,result1){
@@ -291,6 +292,7 @@ router.post("/grades",function(req,res){
              }
              else{
              console.log(result1);
+             console.log(JSON.stringify(googleChartArray));
            res.render("grades",{dataArray:JSON.stringify(googleChartArray),
                                 cie:result[0].TOTAL_CIE*2,
                                 see:result[0].TOTAL_SEE*2,
