@@ -120,7 +120,6 @@ router.get("/psub", function(req, res){
     }
 });
 
-
 router.get("/grades", function(req, res){
     if (req.isAuthenticated() && req.user.ROLE==="STUDENT"){
         connection.query(`SELECT PROJECT_TITLE,PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
@@ -130,14 +129,7 @@ router.get("/grades", function(req, res){
                 connection.query(`SELECT S.NAME,S.STUD_ID FROM GRADES G,STUDENT_DETAILS S WHERE G.STUDENT_ID=S.STUD_ID AND G.PROJECT_ID= '${result[0].PROJECT_ID}' ;`, function(err, result1){
                     if (err) {
                         console.log(err);
-                    } else{        
-                        connection.query(`UPDATE PROJECTS SET STATUS="GRADED" WHERE PROJECT_ID='${result[0].PROJECT_ID}';`,function(req,res2){
-                              if(err){
-                                  console.log(err)
-                              }else{
-                                  console.log(res2);
-                              }
-                        });          
+                    } else{               
                         console.log(result1);                
                             res.render("pregrades",{pname:result[0].PROJECT_TITLE,res:result1});                                        
                     }
