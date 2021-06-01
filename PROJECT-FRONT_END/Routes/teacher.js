@@ -6,20 +6,29 @@ const router = express.Router();
 
 router.get("/viewreport",function(req,res){
   if (req.isAuthenticated() && req.user.ROLE==="TEACHER"){
-  connection.query(`SELECT T.TEACHER_ID,T.NAME,T.EMAIL,P.PROJECT_ID,P.MEMBERS_NO FROM TEACHER_DETAILS T,PROJECT_DETAILS P WHERE T.TEACHER_ID=P.TEACHER_ID AND T.USER_ID='${req.user.id}';`,function(err,result1){
+  connection.query(`SELECT T.TEACHER_ID,T.NAME,T.EMAIL,P.PROJECT_ID, P.PROJECT_TITLE, P.MEMBERS_NO FROM TEACHER_DETAILS T,PROJECT_DETAILS P WHERE T.TEACHER_ID=P.TEACHER_ID AND T.USER_ID='${req.user.id}';`,function(err,result1){
     if(err){
-      console.log(err);
+      console.log("me",err);
     }else{
       console.log(result1);
-    const query1=`SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result1[0].PROJECT_ID}';`;
+      var detailArr = [];
+      result1.forEach(subResult=>{
+        const query1=`SELECT PROJECT_ID,NAME, LINK FROM STUDENT_DETAILS S, DOCUMENTS D WHERE S.PROJECT_ID='${subResult.PROJECT_ID}' AND D.PROJECT_ID='${subResult.PROJECT_ID}';`;
                   connection.query(query1,function(err,result2){
-                    if(err){
+                    if("ne",err){
                       console.log(err);
                     }else{
                       console.log(result2);
-                      res.render("treport");
+                      var anObj = {
+                        ...result2, PROJECT_TITLE:result1.PROJECT_TITLE
+                      };
+                      detailArr.push(anObj);
                     }
                   });
+      });
+      var Obb = {...[detailArr]};
+      console.log(Obb);
+      res.render("treport", Obb);
     }
   });
   }else{
