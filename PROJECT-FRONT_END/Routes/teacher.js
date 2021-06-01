@@ -11,16 +11,18 @@ router.get("/viewreport",function(req,res){
       console.log("me",err);
     }else{
       console.log(result1);
+      var namesObj=[];
       result1.forEach((result)=>{
         const query1=`SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result.PROJECT_ID}';`;
         connection.query(query1,function(err,result2){
           if(err){
             console.log(err);
-          }else{
-            console.log(result2);
+          }else{   
+              namesObj.push(result2);
           }
         });
-      }); 
+      });
+      console.log(namesObj); 
       res.render("treport");
     }
   });
