@@ -8,7 +8,7 @@ router.get("/viewreport",function(req,res){
   if (req.isAuthenticated() && req.user.ROLE==="TEACHER"){
   connection.query(`SELECT T.TEACHER_ID,T.NAME,T.EMAIL,P.PROJECT_TITLE,P.PROJECT_ID,P.MEMBERS_NO FROM TEACHER_DETAILS T,PROJECT_DETAILS P WHERE T.TEACHER_ID=P.TEACHER_ID AND T.USER_ID='${req.user.id}';`,function(err,result1){
     if(err){
-      console.log(err);
+      console.log("me",err);
     }else{
       console.log(result1);
       result1.forEach((result)=>{
