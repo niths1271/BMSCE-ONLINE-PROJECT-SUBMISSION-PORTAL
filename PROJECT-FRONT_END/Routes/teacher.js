@@ -45,9 +45,29 @@ router.get("/viewreport",function(req,res){
         resolve(docsobj);
         });      
     }
+<<<<<<< HEAD
     
       console.log(namesObj);
       console.log(docsObj); 
+=======
+    names().then((name)=>{
+      namesObj.push(name);
+      console.log("aa",namesObj);
+    });
+    docs().then((doc)=>{
+      docsObj.push(doc);
+      console.log("bb",docsObj);
+    });
+      // namesObj.push(await names());
+      // docsObj.push(await docs());
+       
+       
+    
+    
+      });
+      console.log("z",namesObj);
+      console.log("z",docsObj); 
+>>>>>>> 526e03d4befa608b5bccb6d23e7bffdf26c73129
       res.render("treport",{tname:result1[0].NAME,temail:result1[0].EMAIL});
     }
   });
