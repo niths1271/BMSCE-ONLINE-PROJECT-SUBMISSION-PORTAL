@@ -6,6 +6,7 @@
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
+  <% console.log("jingalala", values) %>
   <div style="background-image: url(./photos/email-pattern.png);">
   <div class="header">
     <h1>BMSCE ONLINE PROJECT SUBMISSION PORTAL</h1>
@@ -72,25 +73,27 @@
             </tr>
           </thead>
           <tbody>
-
+            <% values.forEach((team)=>{ %>
             <tr>
               <td>
                 <ul>
-                  <li>Ajay</li>
-                  <li>Vijay</li>
-                  <li>Sujay</li>
-                  <li>Uday</li>
+                 <% for(let i = 0; i< team.length-1;i++){ %>
+                    <li><%= team[i].NAME %></li>
+                 <% }  %>
                 </ul>
               </td>
-              <td>Exam application form submission system</td>
+              <td><%= team[3].TITLE %></td>
               <td>
                 <a href="#"><i class="fas fa-file-alt" style="font-size: 22px">
-                    Report.docx</i></a>
+                    <%= team[2].LINK %></i></a>
               </td>
               <td class="approval">
-                <input type="checkbox" class="checkbox" name="checkBox2"  />
+                <input type="checkbox" class="checkbox" name="checkBox2" />
               </td>
             </tr>
+
+            <% }); %>
+            
 
             
           </tbody>
