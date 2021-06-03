@@ -13,59 +13,35 @@ router.get("/viewreport",function(req,res){
       //console.log(result1);
       var namesObj=[];
       var docsObj=[];
-<<<<<<< Updated upstream
-=======
       function getFinal(){
         return new Promise(function(resolve,reject){
            result1.forEach((result, index)=>{
->>>>>>> Stashed changes
         function names(){
           return new Promise(function(resolve,reject){
-            result1.forEach((result)=>{
             const query1=`SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result.PROJECT_ID}';`;
             connection.query(query1,function(err,result2){
               if(err){
                 console.log(err);
               }else{   
-<<<<<<< Updated upstream
-                console.log(result2);
-                namesObj.push(result2);
-=======
                 //console.log(result2);
                 resolve(result2);
->>>>>>> Stashed changes
               }
             });
-          });
-             resolve(namesObj);
           });      
       }
       function docs(){
         return new Promise(function(resolve,reject){
-          result1.forEach((result)=>{
           const query2=`SELECT D.LINK,D.STATUS FROM DOCUMENTS D WHERE PROJECT_ID='${result.PROJECT_ID}'`;
           connection.query(query2,function(err,result2){
             if(err){
               console.log(err);
             }else{   
-<<<<<<< Updated upstream
-              console.log(result2[0]);
-              docsObj.push(result2[0]);
-=======
               //console.log(result2[0]);
               resolve(result2[0]);
->>>>>>> Stashed changes
             }
           });
-        });
-        resolve(docsobj);
         });      
     }
-<<<<<<< HEAD
-    
-      console.log(namesObj);
-      console.log(docsObj); 
-=======
     names().then((name)=>{
       //namesObj.push(name);
       docs().then((doc)=>{
@@ -86,12 +62,6 @@ router.get("/viewreport",function(req,res){
     
     
       });
-<<<<<<< Updated upstream
-      console.log("z",namesObj);
-      console.log("z",docsObj); 
->>>>>>> 526e03d4befa608b5bccb6d23e7bffdf26c73129
-      res.render("treport",{tname:result1[0].NAME,temail:result1[0].EMAIL});
-=======
           
         });
       }
@@ -103,7 +73,6 @@ router.get("/viewreport",function(req,res){
      // console.log("z",namesObj);
       
       
->>>>>>> Stashed changes
     }
   });
   }else{
