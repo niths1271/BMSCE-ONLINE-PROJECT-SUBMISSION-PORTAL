@@ -38,7 +38,8 @@ router.get("/report", function(req, res) {
                             res.render("report", {
                                 result: result1.length,
                                 pname: result[0].PROJECT_TITLE,
-                                projectid: result[0].PROJECT_ID
+                                projectid: result[0].PROJECT_ID,
+                                status:result[0].STATUS,
                             });
                         }
                     }

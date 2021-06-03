@@ -11,7 +11,6 @@ router.get("/viewreport",function(req,res){
       console.log(err);
     }else{
       //console.log(result1);
-      var namesObj=[];
       var docsObj=[];
       function getFinal(){
         return new Promise(function(resolve,reject){
@@ -48,7 +47,7 @@ router.get("/viewreport",function(req,res){
     names().then((name)=>{
       //namesObj.push(name);
       docs().then((doc)=>{
-      docsObj.push([...name, doc, {TITLE:result1[0].PROJECT_TITLE}]);
+      docsObj.push([...name, doc]);
       //console.log("z",docsObj); 
       console.log("holaaaa",index, " ", result1.length );
       if(index==result1.length-1){
@@ -62,17 +61,26 @@ router.get("/viewreport",function(req,res){
       }
       getFinal().then(()=>{
         console.log("got", docsObj);
-        res.render("treport",{tname:result1[0].NAME,temail:result1[0].EMAIL, values:docsObj});
-      });
-     
+        res.render("treport",{result:result1,values:docsObj});
+      }); 
      // console.log("z",namesObj);
-      
-      
     }
   });
   }else{
     res.redirect("/teacheruser/login");
   }
+});
+
+router.post("/viewreport",function(req,res){
+  console.log(req.body);
+  connection.query(`UPDATE DOCUMENTS SET STATUS="APPROVED" WHERE PROJECT_ID='${req.body.projectId}'`,function(err,result){
+    if(err){
+      console.log(err);
+    }else{
+      console.log("Updated successfully");
+      res.redirect("viewreport");
+    }
+  });
 });
 
 module.exports = router;
