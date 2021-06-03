@@ -14,27 +14,43 @@ router.get("/viewreport",function(req,res){
       var namesObj=[];
       var docsObj=[];
       result1.forEach((result)=>{
-        const query1=`SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result.PROJECT_ID}';`;
-        connection.query(query1,function(err,result2){
-          if(err){
-            console.log(err);
-          }else{   
-            console.log(result2);
-            // namesObj.push(result2);
-          }
-        });
-        const query2=`SELECT D.LINK,D.STATUS FROM DOCUMENTS D WHERE PROJECT_ID='${result.PROJECT_ID}'`;
-        connection.query(query2,function(err,result2){
-          if(err){
-            console.log(err);
-          }else{   
-            console.log(result2);
-            // docsObj.push(result2);
-          }
-        });
+        function names(){
+          return new Promise(function(resolve,reject){
+            const query1=`SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result.PROJECT_ID}';`;
+            connection.query(query1,function(err,result2){
+              if(err){
+                console.log(err);
+              }else{   
+                console.log(result2);
+                resolve(result2);
+              }
+            });
+          });      
+      }
+      function docs(){
+        return new Promise(function(resolve,reject){
+          const query2=`SELECT D.LINK,D.STATUS FROM DOCUMENTS D WHERE PROJECT_ID='${result.PROJECT_ID}'`;
+          connection.query(query2,function(err,result2){
+            if(err){
+              console.log(err);
+            }else{   
+              console.log(result2[0]);
+              resolve(result2[0]);
+            }
+          });
+        });      
+    }
+    async function main(){
+      namesObj.push(await names());
+      docsObj.push(await docs());
+       console.log(namesObj);
+       console.log(docsObj);
+    }
+    main();
       });
-      // console.log(namesObj); 
-      res.render("treport");
+      // console.log(namesObj);
+      // console.log(docsObj); 
+      res.render("treport",{tname:result1[0].NAME,temail:result1[0].EMAIL});
     }
   });
   }else{
