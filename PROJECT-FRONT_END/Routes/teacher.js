@@ -1,7 +1,7 @@
 const connection = require("../configs/connection");
 const mysql = require('mysql2');
 const express = require('express');
-const { result } = require("lodash");
+const { result, functions } = require("lodash");
 const router = express.Router();
 
 router.get("/viewreport",function(req,res){
@@ -29,6 +29,9 @@ router.get("/viewreport",function(req,res){
             });
           });      
       }
+      names().then(function(rows){
+             namesObj.push(rows);
+      }) 
       function docs(){
         return new Promise(function(resolve,reject){
           const query2=`SELECT D.LINK,D.STATUS FROM DOCUMENTS D WHERE PROJECT_ID='${result.PROJECT_ID}'`;
@@ -53,16 +56,8 @@ router.get("/viewreport",function(req,res){
         resolve();
       }
     });
-    });
-    
-      // namesObj.push(await names());
-      // docsObj.push(await docs());
-       
-       
-    
-    
-      });
-          
+    });    
+      });        
         });
       }
       getFinal().then(()=>{
