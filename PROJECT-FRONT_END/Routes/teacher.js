@@ -40,16 +40,23 @@ router.get("/viewreport",function(req,res){
           });
         });      
     }
-    async function main(){
-      namesObj.push(await names());
-      docsObj.push(await docs());
-       console.log(namesObj);
-       console.log(docsObj);
-    }
-    main();
+    names().then((name)=>{
+      namesObj.push(name);
+      console.log("aa",namesObj);
+    });
+    docs().then((doc)=>{
+      docsObj.push(doc);
+      console.log("bb",docsObj);
+    });
+      // namesObj.push(await names());
+      // docsObj.push(await docs());
+       
+       
+    
+    
       });
-      // console.log(namesObj);
-      // console.log(docsObj); 
+      console.log("z",namesObj);
+      console.log("z",docsObj); 
       res.render("treport",{tname:result1[0].NAME,temail:result1[0].EMAIL});
     }
   });
