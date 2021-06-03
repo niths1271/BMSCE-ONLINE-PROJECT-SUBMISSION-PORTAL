@@ -48,7 +48,7 @@ router.get("/viewreport",function(req,res){
     names().then((name)=>{
       //namesObj.push(name);
       docs().then((doc)=>{
-      docsObj.push([...name, doc, {TITLE:result1.PROJECT_TITLE}]);
+      docsObj.push([...name, doc, {TITLE:result1[0].PROJECT_TITLE}]);
       //console.log("z",docsObj); 
       console.log("holaaaa",index, " ", result1.length );
       if(index==result1.length-1){
