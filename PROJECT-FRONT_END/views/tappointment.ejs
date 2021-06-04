@@ -6,6 +6,7 @@
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
+    <% console.log("kulu", vals); %>
      <div style="background-image: url(./photos/email-pattern.png);">
           <div class="header">
                <h1>BMSCE ONLINE PROJECT SUBMISSION PORTAL</h1>
@@ -42,7 +43,7 @@
                          <div class="set">
                               <ul>
                                    <li>
-                                        <form action="#">
+                                        <form action="/teacher/scheduleappointment" method="POST">
                                              <div id="header">
                                                   <label for="setappointment">Set appointment date and time:</label>
                                                   <input type="datetime-local" id="setappointment" name="setappointment"
@@ -51,7 +52,7 @@
                                    </li>
                                    <br>
                                    <li>
-                                        </form>
+                                        
                                         <label for="purpose">Purpose of the appointment:</label>
 
                                         <select id="purpose" style="font-size: 25px;">
@@ -59,21 +60,20 @@
                                              <option value="2">To view Presentations</option>
                                         </select>
                                         <br>
-                                        <br>
+                                        
                                    </li>
                                    <li>
-                                        <label for="section">Section</label>
-
-                                        <select id="section" style="font-size: 25px;">
-                                             <option value="3" name="sctn">A </option>
-                                             <option value="4" name="sctn">B</option>
-                                             <option value="5" name="sctn">C</option>
-                                             <option value="6" name="sctn">D</option>
-                                        </select>
+                                        
+                                        <p>Select Teams</p>
+                                       <% vals.forEach((val, index)=>{ %>
+                                             <input type="checkbox" id="group<%=index%>" name="vehicle<%=index%>" value="<%=index%>">
+                                             <label for="group<%=index%>"> <%= val.PROJECT_TITLE %></label>
+                                        <%}) %>
                                         <br>
                                         <br>
                                    </li>
-                                   <div class="table1">
+                                   
+                                   <!-- <div class="table1">
                                         <table>
                                              <h5 style="text-align:left" style="font-size: 13px;">APPOINTMENT DETAILS:
                                              </h5>
@@ -95,24 +95,25 @@
 
                                         <p style="font-size: 15px;">**THE ABOVE APPOINTMENT DETAILS WILL BE NOTIFIED TO
                                              THE STUDENTS IN THE STUDENTS' NOTIFICATION SECTION </p>
-                                   </div>
+                                   </div> -->
 
                                    <div id="inst">
                                         <li>
-                                             <form action="#">
+                                             
                                                   <label for="add">Additional instructions regarding
                                                        appointment(optional):</label>
                                                   <br>
                                                   <textarea id="add" name="add" rows="6" cols="100"
                                                        style="border-width: 5px; border-color: black;">
         </textarea>
-                                             </form>
+                                             
                                         </li>
                                    </div>
                               </ul>
                               <div id="button">
-                                   <input type="button" value="SET THE APPOINTMENT" class="set1" onclick="validate();">
+                                   <input type="submit" value="SET THE APPOINTMENT" class="set1" onclick="validate();">
                               </div>
+                              </form>
                          </div>
                     </div>
                </div>

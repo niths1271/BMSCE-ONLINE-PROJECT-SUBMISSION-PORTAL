@@ -84,7 +84,19 @@ router.get("/viewreport", function (req, res) {
   }
 });
 router.get("/scheduleappointment", function (req, res) {
-  res.render("tappointment");
+  if (req.isAuthenticated() && req.user.ROLE === "TEACHER"){
+    connection.query(`SELECT T.TEACHER_ID, T.EMAIL, P.PROJECT_ID, P.PROJECT_TITLE FROM TEACHER_DETAILS T, PROJECT_DETAILS P WHERE T.TEACHER_ID=P.TEACHER_ID AND T.USER_ID='${req.user.id}';`, function(err, reslt){
+      if(err){
+        console.log(err);
+      }else{
+        //console.log("kiki",reslt);
+        res.render("tappointment", {vals:reslt});
+      }
+    });
+  }else{
+    res.redirect("/teacheruser/login");
+  }
+ 
 });
 router.get("/viewappointmentreqs", function (req, res) {
   res.render("tappointmentreqs");
@@ -183,6 +195,11 @@ router.post("/viewreport", function (req, res) {
       });
     }
   });
+});
+
+
+router.post("/scheduleappointment", function(req, res){
+   console.log("lolo",req.body);
 });
 
 module.exports = router;
