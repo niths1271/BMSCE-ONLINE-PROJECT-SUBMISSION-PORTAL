@@ -44,7 +44,7 @@ router.get("/viewreport", function (req, res) {
                       if (result2.length > 0)
                         resolve(result2[0]);
                       else {
-                        reject("No document uploaded");
+                        reject("No document uploaded for Project id:"+result.PROJECT_ID);
                       }
                     }
                   });
@@ -58,7 +58,7 @@ router.get("/viewreport", function (req, res) {
                     console.log("loop done");
                     resolve();
                   }
-                }, (err) => {
+                },(err) => {
                   console.log(err);
                   docsObj.push([...name]);
                   if (index == result1.length - 1) {
@@ -90,6 +90,13 @@ router.get("/scheduleappointment", function (req, res) {
 router.get("/viewappointmentreqs", function (req, res) {
   res.render("tappointmentreqs");
 });
+router.get("/viewproject", function (req, res) {
+  res.render("tviewprojects");
+});
+
+
+
+
 router.post("/viewreport", function (req, res) {
   console.log(req.body.approval);
   connection.query(`UPDATE DOCUMENTS SET STATUS='${req.body.approval}' WHERE PROJECT_ID='${req.body.projectId}'`, function (err, result) {
