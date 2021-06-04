@@ -1,5 +1,5 @@
 <%- include('partials/header') %>
-<title>Teacher home page</title>
+<title>View projects page</title>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <link rel="stylesheet" href="/css/viewproject.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -18,9 +18,9 @@
                <div class="row">
                     <div class="column side">
                          <div class="border">
-                              <h1 style="font-size: 25px">Dr.Umadevi</h1>
+                              <h1 style="font-size: 25px"><%=result[0].NAME%></h1>
                               <i class="fa fa-user" style="font-size: 21px">
-                                   umadevi.cse@bmsce.ac.in</i>
+                                   <%=result[0].EMAIL%></i>
                               <br />
                               <br />
                               <br />
@@ -69,135 +69,39 @@
                                         <th>Section</th>
                                         <th>Teams</th>
                                         <th>Topics</th>
-                                        <th>Source code</th>
-                                        <th>Link of website</th>
+                                        <th>Structure</th>
+                                        <th>Link</th>
                                    </tr>
                               </thead>
                               <tbody>
+                                   <%for(var i=0;i<docs.length;i++){%>
                                    <tr>
-                                        <td>A</td>
+                                        <td><%=result[i].SECTION%></td>
                                         <td>
                                              <ul>
-                                                  <li>Ajay</li>
-                                                  <li>Vijay</li>
-                                                  <li>Sujay</li>
-                                                  <li>Uday</li>
+                                                  <% for(let j = 0; j<result[i].MEMBERS_NO;j++){ %>
+                                                  <li><%= docs[i][j].NAME %></li>
+                                                  <% }  %>
                                              </ul>
                                         </td>
-                                        <td>Exam application form submission system</td>
-                                        <td>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       log.html</i></a>
-                                             <br>
-                                             <br>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       style.css</i>
-                                             </a>
-                                        </td>
-                                        <td class="Link of website" style="font-size: 18px;">
-                                             <a href="#">
-                                                  EXAM APPLICATION</a>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <td>B</td>
-                                        <td>
-                                             <ul>
-                                                  <li>Hemanth</li>
-                                                  <li>Priyanka</li>
-                                                  <li>Tejas</li>
-                                                  <li>Apoorva</li>
-                                             </ul>
-                                        </td>
-                                        <td>Department lab Stock Maintainance System</td>
-                                        <td>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       logD.html</i></a>
-                                             <br>
-                                             <br>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       logD.css</i></a>
-                                        </td>
-                                        <td class="Link of website" style="font-size: 18px;">
-                                             <a href="#">DEPARMENT LAB MAINTAINANCE</a>
-                                        </td>
-                                   </tr>
-                                   <tr>
-                                        <td>C</td>
-                                        <td>
-                                             <ul>
-                                                  <li>Harshitha</li>
-                                                  <li>Sanjay</li>
-                                                  <li>Gowtham</li>
-                                                  <li>Anirudh</li>
-                                             </ul>
-                                        </td>
-                                        <td>Department Faculty weekly report submission system</td>
-                                        <td>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       Delog.html</i></a>
-                                             <br>
-                                             <br>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       Delog.css</i></a>
-                                        </td>
-                                        <td class="Link of website" style="font-size: 18px;">
-                                             <a href="#">DEPARMENT FACULTY WEEKLY REPORT</a>
-                                             </a>
-                                        </td>
-                                   </tr>
+                                        <td><%=result[i].PROJECT_TITLE%></td>
 
-                                   <tr>
-                                        <td>D</td>
+                                        <%if((docs[i].length-result[i].MEMBERS_NO)!=0){%>
                                         <td>
-                                             <ul>
-                                                  <li>Rushali</li>
-                                                  <li>Sahana</li>
-                                                  <li>Manya</li>
-                                                  <li>Deepak</li>
-                                             </ul>
-                                        </td>
-                                        <td>
-                                             Departemt Faculty Self Assessment Report Submission System
-                                        </td>
-                                        <td>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       selfalog.html</i></a>
-                                             <br>
-                                             <br>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       selfalog.css</i></a>
+                                             <%var index=result[i].MEMBERS_NO;%>
+                                             <p><%=docs[i][index].STRUCTURE%></p>
                                         </td>
                                         <td class="Link of website" style="font-size: 18px;">
-                                             <a href="#">DEPARTMENT FACULTY SELF ASSESEMENT</a>
-                                        </td>
-                                   </tr>
-
-                                   <tr>
-                                        <td>A</td>
-                                        <td>
-                                             <ul>
-                                                  <li>Siri</li>
-                                                  <li>Deekshith</li>
-                                                  <li>Shashank</li>
-                                                  <li>Sampada</li>
-                                             </ul>
-                                        </td>
-                                        <td>
-                                             College TEQIP student project proposal submission sysytem
-                                        </td>
-                                        <td>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       TEQlog.html</i></a>
-                                             <br>
-                                             <br>
-                                             <a href="#"><i class="fas fa-file-alt" style="font-size: 20px">
-                                                       TEQlog.css</i></a>
-                                        </td>
-                                        <td class="Link of website" style="font-size: 18px;">
-                                             <a href="#">TEQIP STUDENT PROJECT SUBMISSION</a>
-                                        </td>
-                                   </tr>
+                                             <%var j=docs[i].length-1;%>
+                                             <a href="<%=docs[i][j].LINK%>" target="_blank" >
+                                                  <%=docs[i][j].LINK%></a>
+                                        </td>                               
+                              <%}else{%>
+                                    <td>NOT YET SUBMITTED</td>
+                                    <td>NOT YET SUBMITTED</td>
+                              <%}%>
+                                   <%}%>
+                              </tr>
                               </tbody>
                          </table>
                     </div>

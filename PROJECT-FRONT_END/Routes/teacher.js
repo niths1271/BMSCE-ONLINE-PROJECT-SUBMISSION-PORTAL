@@ -44,7 +44,7 @@ router.get("/viewreport", function (req, res) {
                       if (result2.length > 0)
                         resolve(result2[0]);
                       else {
-                        reject("No document uploaded for Project id:"+result.PROJECT_ID);
+                        reject("No document uploaded for Project id:" + result.PROJECT_ID);
                       }
                     }
                   });
@@ -53,12 +53,12 @@ router.get("/viewreport", function (req, res) {
               names().then((name) => {
                 //namesObj.push(name);
                 docs().then((doc) => {
-                  docsObj.push([...name,doc]);
+                  docsObj.push([...name, doc]);
                   if (index == result1.length - 1) {
                     console.log("loop done");
                     resolve();
                   }
-                },(err) => {
+                }, (err) => {
                   console.log(err);
                   docsObj.push([...name]);
                   if (index == result1.length - 1) {
@@ -77,7 +77,6 @@ router.get("/viewreport", function (req, res) {
             values: docsObj
           });
         });
-        // console.log("z",namesObj);
       }
     });
   } else {
@@ -91,10 +90,81 @@ router.get("/viewappointmentreqs", function (req, res) {
   res.render("tappointmentreqs");
 });
 router.get("/viewproject", function (req, res) {
-  res.render("tviewprojects");
+  if (req.isAuthenticated() && req.user.ROLE === "TEACHER") {
+    connection.query(`SELECT T.TEACHER_ID,T.NAME,T.EMAIL,P.SECTION,P.PROJECT_TITLE,P.PROJECT_ID,P.MEMBERS_NO FROM TEACHER_DETAILS T,PROJECT_DETAILS P WHERE T.TEACHER_ID=P.TEACHER_ID AND T.USER_ID='${req.user.id}';`, function (err, result1) {
+      if (err) {
+        console.log(err);
+      } else {
+        //console.log(result1);
+        var projdocsObj = [];
+
+        function getFinal() {
+          return new Promise(function (resolve, reject) {
+            result1.forEach((result, index) => {
+              function names() {
+                return new Promise(function (resolve, reject) {
+                  const query1 = `SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result.PROJECT_ID}';`;
+                  connection.query(query1, function (err, result2) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      //console.log(result2);
+                      resolve(result2);
+                    }
+                  });
+                });
+              }
+
+              function projdocs() {
+                return new Promise(function (resolve, reject) {
+                  const query2 = `SELECT LINK,STRUCTURE,STATUS FROM PROJECTS WHERE PROJECT_ID='${result.PROJECT_ID}'`;
+                  connection.query(query2, function (err, result2) {
+                    if (err) {
+                      console.log(err);
+                    } else {
+                      //console.log(result2[0]);
+                      if (result2.length > 0)
+                        resolve(result2[0]);
+                      else {
+                        reject("No projectdocs uploaded for Project id:" + result.PROJECT_ID);
+                      }
+                    }
+                  });
+                });
+              }
+              names().then((name) => {
+                //namesObj.push(name);
+                projdocs().then((projdoc) => {
+                  projdocsObj.push([...name, doc]);
+                  if (index == result1.length - 1) {
+                    console.log("loop done");
+                    resolve();
+                  }
+                }, (err) => {
+                  console.log(err);
+                  projdocsObj.push([...name]);
+                  if (index == result1.length - 1) {
+                    console.log("loop done");
+                    resolve();
+                  }
+                });
+              });
+            });
+          });
+        }
+        getFinal().then(() => {
+          console.log(projdocsObj);
+          res.render("tviewprojects", {
+            result:result1,
+            docs:projdocsObj
+          });
+        });
+      }
+    });
+  } else {
+    res.redirect("/teacheruser/login");
+  }
 });
-
-
 
 
 router.post("/viewreport", function (req, res) {

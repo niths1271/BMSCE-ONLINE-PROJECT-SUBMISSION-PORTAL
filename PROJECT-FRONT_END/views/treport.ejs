@@ -83,9 +83,9 @@
                   </ul>
                 </td>
                 <td><%= result[i].PROJECT_TITLE %></td>
-                <td>
-                  <%var index=values[i].length-1%>
-                  <%if(((index+1)-result[i].MEMBERS_NO)!=0){%>
+                <%var index=values[i].length-1%>
+                <%if(((index+1)-result[i].MEMBERS_NO)!=0){%>
+                <td>                 
                   <%var l=values[i][index].length%>
                   <a target="_blank" href="<%= values[i][index].LINK %>"><i class="fas fa-file-alt">
                       <%= values[i][index].LINK.substring(63,l) %></i></a>
@@ -112,7 +112,7 @@
                 </td>
                 <%}%>
                 <%}else{%>
-                  
+                     <td>NOT YET SUBMITTED</td>
                   <%}%>
             </tr>
             <% } %>
