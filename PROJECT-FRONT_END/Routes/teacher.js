@@ -41,7 +41,11 @@ router.get("/viewreport", function (req, res) {
                       console.log(err);
                     } else {
                       //console.log(result2[0]);
-                      resolve(result2[0]);
+                      if (result2.length > 0)
+                        resolve(result2[0]);
+                      else {
+                        reject("No document uploaded");
+                      }
                     }
                   });
                 });
@@ -49,7 +53,14 @@ router.get("/viewreport", function (req, res) {
               names().then((name) => {
                 //namesObj.push(name);
                 docs().then((doc) => {
-                  docsObj.push([...name, doc]);
+                  docsObj.push([...name,doc]);
+                  if (index == result1.length - 1) {
+                    console.log("loop done");
+                    resolve();
+                  }
+                }, (err) => {
+                  console.log(err);
+                  docsObj.push([...name]);
                   if (index == result1.length - 1) {
                     console.log("loop done");
                     resolve();
@@ -80,13 +91,19 @@ router.get("/viewappointmentreqs", function (req, res) {
   res.render("tappointmentreqs");
 });
 router.post("/viewreport", function (req, res) {
-  console.log(req.body);
-  connection.query(`UPDATE DOCUMENTS SET STATUS="APPROVED" WHERE PROJECT_ID='${req.body.projectId}'`, function (err, result) {
+  console.log(req.body.approval);
+  connection.query(`UPDATE DOCUMENTS SET STATUS='${req.body.approval}' WHERE PROJECT_ID='${req.body.projectId}'`, function (err, result) {
     if (err) {
       console.log(err);
     } else {
       console.log("Updated successfully");
-      res.redirect("viewreport");
+      connection.query(`DELETE FROM DOCUMENTS WHERE STATUS="DISAPPROVED"`, function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("viewreport");
+        }
+      });
     }
   });
 });

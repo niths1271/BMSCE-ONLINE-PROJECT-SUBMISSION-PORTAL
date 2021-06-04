@@ -85,6 +85,7 @@
                 <td><%= result[i].PROJECT_TITLE %></td>
                 <td>
                   <%var index=values[i].length-1%>
+                  <%if(((index+1)-result[i].MEMBERS_NO)!=0){%>
                   <%var l=values[i][index].length%>
                   <a target="_blank" href="<%= values[i][index].LINK %>"><i class="fas fa-file-alt">
                       <%= values[i][index].LINK.substring(63,l) %></i></a>
@@ -92,15 +93,26 @@
                 <%if(values[i][index].STATUS==="PENDING"){%>
                 <td class="approval">
                   <form action="/teacher/viewreport" method="POST">
-                    <input type="checkbox" class="checkbox" name="checkBox2" onchange="this.form.submit()" />
+                    <!-- <input type="checkbox" class="checkbox" name="checkBox2" onchange="this.form.submit()" /> -->
+                    <input type="radio" id="approve" name="approval" value="APPROVED" onchange="this.form.submit()">
+                    <label for="APPROVE">APPROVE</label><br>
+                    <input type="radio" id="disapprove" name="approval" value="DISAPPROVED"
+                      onchange="this.form.submit()">
+                    <label for="DISAPPROVE">DISAPPROVE</label><br>
                     <input type="hidden" name="projectId" value="<%=result[i].PROJECT_ID%>" />
                   </form>
                 </td>
+                <%}else if(values[i][index].STATUS==="APPROVED"){%>
+                <td>
+                  <p>APPROVED</p>
+                </td>
                 <%}else{%>
                 <td>
-                  <p>Approved</p>
+                  <p>DISAPPROVED</p>
                 </td>
                 <%}%>
+                <%}else{%>
+                  <%}%>
             </tr>
             <% } %>
             </tbody>
