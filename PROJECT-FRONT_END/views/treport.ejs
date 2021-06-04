@@ -86,7 +86,7 @@
                 <td>
                   <%var index=values[i].length-1%>
                   <a target="_blank" href="<%= values[i][index].LINK %>"><i class="fas fa-file-alt">
-                      <%= values[i][index].LINK %></i></a>
+                      <%= (values[i][index].LINK).substring(63) %></i></a>
                 </td>
                 <%if(values[i][index].STATUS==="PENDING"){%>
                 <td class="approval">
