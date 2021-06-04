@@ -73,7 +73,12 @@ router.get("/viewreport", function (req, res) {
     res.redirect("/teacheruser/login");
   }
 });
-
+router.get("/scheduleappointment", function (req, res) {
+  res.render("tappointment");
+});
+router.get("/viewappointmentreqs", function (req, res) {
+  res.render("tappointmentreqs");
+});
 router.post("/viewreport", function (req, res) {
   console.log(req.body);
   connection.query(`UPDATE DOCUMENTS SET STATUS="APPROVED" WHERE PROJECT_ID='${req.body.projectId}'`, function (err, result) {
