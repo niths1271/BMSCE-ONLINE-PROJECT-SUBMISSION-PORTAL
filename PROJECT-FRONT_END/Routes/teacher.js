@@ -147,7 +147,7 @@ router.get("/viewproject", function (req, res) {
               names().then((name) => {
                 //namesObj.push(name);
                 projdocs().then((projdoc) => {
-                  projdocsObj.push([...name, doc]);
+                  projdocsObj.push([...name, projdoc]);
                   if (index == result1.length - 1) {
                     console.log("loop done");
                     resolve();

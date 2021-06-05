@@ -79,9 +79,12 @@ table.table {
   border: 5px solid black;
 }
 
-table.table tbody,
-table.table thead {
+ table.table tbody{
   display: block;
+} 
+
+table.table thead{
+  display:block;
 }
 
 thead tr th {
