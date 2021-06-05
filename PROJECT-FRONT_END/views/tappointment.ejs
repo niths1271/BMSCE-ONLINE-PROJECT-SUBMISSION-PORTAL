@@ -46,7 +46,7 @@
                                         <form action="/teacher/scheduleappointment" method="POST">
                                              <div id="header">
                                                   <label for="setappointment">Set appointment date and time:</label>
-                                                  <input type="datetime-local" id="setappointment" name="setappointment"
+                                                  <input type="datetime-local" id="setappointment" name="ADATE"
                                                        style="font-size: 20px;" class="time">
                                              </div>
                                    </li>
@@ -55,9 +55,9 @@
                                         
                                         <label for="purpose">Purpose of the appointment:</label>
 
-                                        <select id="purpose" style="font-size: 25px;">
-                                             <option value="1">Doubt clarification </option>
-                                             <option value="2">To view Presentations</option>
+                                        <select id="purpose" name="TYPEOFAPP" style="font-size: 25px;">
+                                             <option value="Doubt clarification">Doubt clarification </option>
+                                             <option value="To view Presentations">To view Presentations</option>
                                         </select>
                                         <br>
                                         
@@ -66,7 +66,7 @@
                                         
                                         <p>Select Teams</p>
                                        <% vals.forEach((val, index)=>{ %>
-                                             <input type="checkbox" id="group<%=index%>" name="vehicle<%=index%>" value="<%=index%>">
+                                             <input type="checkbox" id="group<%=index%>" name="group<%=index%>" value="<%=val.PROJECT_ID%>">
                                              <label for="group<%=index%>"> <%= val.PROJECT_TITLE %></label>
                                         <%}) %>
                                         <br>

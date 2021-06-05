@@ -212,3 +212,9 @@ body {
   margin: 0.1cm;
   padding: 10px;
 }
+
+
+.all{
+  height: 60vh;
+  overflow: scroll;
+}

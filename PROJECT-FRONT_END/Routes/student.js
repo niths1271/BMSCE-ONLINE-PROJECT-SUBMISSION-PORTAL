@@ -60,7 +60,7 @@ router.get("/appointment", function(req, res) {
                 console.log(err);
             } else {
                 const done = { pname: result[0].PROJECT_TITLE, scheduled: 0 };
-                connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
+                connection.query(`SELECT * FROM APPOINTMENT WHERE PROJECT_ID ='${result[0].PROJECT_ID}' AND SCHEDULED_BY_ADMIN = 0;`, function(error, reslt) {
                     if (error) {
                         console.log(error);
                     } else {

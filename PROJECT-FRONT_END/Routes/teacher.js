@@ -46,7 +46,19 @@ router.get("/scheduleappointment", function (req, res) {
  
 });
 router.get("/viewappointmentreqs", function (req, res) {
-  res.render("tappointmentreqs");
+  if (req.isAuthenticated() && req.user.ROLE === "TEACHER") {
+    connection.query(`SELECT P.PROJECT_TITLE, A.ADATE, A.TYPEOFAPP, A.PROJECT_ID, A.APPROVAL, A.SCHEDULED_BY_ADMIN FROM APPOINTMENT A, PROJECT_DETAILS P, TEACHER_DETAILS T WHERE A.PROJECT_ID = P.PROJECT_ID AND P.TEACHER_ID = T.TEACHER_ID AND T.TEACHER_ID ='${req.user.id}';`, function(err, reslt){
+      if(err){
+        console.log(err);
+      }else{
+        //console.log(reslt);
+        res.render("tappointmentreqs", {vals:reslt});
+      }
+    });
+  }else{
+    res.redirect("/teacheruser/login");
+  }
+ 
 });
 router.get("/viewproject", function (req, res) {
   if (req.isAuthenticated() && req.user.ROLE === "TEACHER") {
@@ -91,7 +103,50 @@ router.post("/viewreport", function (req, res) {
 
 
 router.post("/scheduleappointment", function(req, res){
+  
    console.log("lolo",req.body);
+   var retDoc = req.body;
+   var teams = Object.values(retDoc).filter((ano)=>{return ano.length==1});
+   var inserted = 0;
+   teams.forEach(team=>{
+     var post = {     
+        ADATE: retDoc.ADATE.substring(0,10) + " "+ retDoc.ADATE.substring(11),
+        TYPEOFAPP: retDoc.TYPEOFAPP,
+        PROJECT_ID:team,
+        APPROVAL:"APPROVED",
+        SCHEDULED_BY_ADMIN:1
+     }
+     connection.query('INSERT INTO APPOINTMENT SET ?', post, function(error, results, fields){
+       if(error){
+         console.log(error);
+       }else{
+         inserted +=1;
+         console.log("successful!");
+         if(inserted===teams.length){
+           res.redirect("/teacher/scheduleappointment");
+         }
+       }
+     });
+   });
+});
+
+
+router.post("/viewappointmentreqs",function(req, res){
+  console.log("kilikili", req.body, "lplp", req.body.approval);
+   connection.query(`UPDATE APPOINTMENT SET APPROVAL='${req.body.approval}' WHERE PROJECT_ID='${req.body.projectId}' AND SCHEDULED_BY_ADMIN = 0`, function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("Updated successfully");
+      connection.query(`DELETE FROM APPOINTMENT WHERE APPROVAL="DISAPPROVED"`, function (err) {
+        if (err) {
+          console.log(err);
+        } else {
+          res.redirect("/teacher/viewappointmentreqs");
+        }
+        });
+    }
+  });
 });
 
 module.exports = router;
