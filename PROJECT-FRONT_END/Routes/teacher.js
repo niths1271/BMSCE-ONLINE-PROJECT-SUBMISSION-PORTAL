@@ -82,6 +82,19 @@ router.get("/viewproject", function (req, res) {
   }
 });
 
+router.get("/viewproject/:projName",function(req,res){
+  console.log(req.params.projName);
+  connection.query(`SELECT P.PROJECT_TITLE,R.STRUCTURE FROM PROJECTS R,PROJECT_DETAILS P WHERE R.PROJECT_ID=P.PROJECT_ID AND P.PROJECT_TITLE='${req.params.projName}';`, function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+        res.render("projectstructure",{
+          result:result,
+        });
+      }
+      });
+    });
+
 
 router.post("/viewreport", function (req, res) {
   console.log(req.body.approval);

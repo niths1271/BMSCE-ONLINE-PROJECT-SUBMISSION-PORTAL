@@ -89,7 +89,7 @@
                                         <%if((docs[i].length-result[i].MEMBERS_NO)!=0){%>
                                         <td>
                                              <%var index=result[i].MEMBERS_NO;%>
-                                             <p><%=docs[i][index].STRUCTURE%></p>
+                                             <p><%=docs[i][index].STRUCTURE.substring(0,20)%>...<a target="_blank" href="/teacher/viewproject/<%=result[i].PROJECT_TITLE%>">more</a></p>
                                         </td>
                                         <td class="Link of website" style="font-size: 18px;">
                                              <%var j=docs[i].length-1;%>
