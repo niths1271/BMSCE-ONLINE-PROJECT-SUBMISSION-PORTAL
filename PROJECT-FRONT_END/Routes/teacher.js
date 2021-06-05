@@ -1,5 +1,7 @@
 const connection = require("../configs/connection");
 const mysql = require('mysql2');
+const getreportFinal=require("../controllers/getreportdocs");
+const getprojFinal=require("../controllers/getprojdocs");
 const express = require('express');
 const {
   result,
@@ -15,62 +17,7 @@ router.get("/viewreport", function (req, res) {
       } else {
         //console.log(result1);
         var docsObj = [];
-
-        function getFinal() {
-          return new Promise(function (resolve, reject) {
-            result1.forEach((result, index) => {
-              function names() {
-                return new Promise(function (resolve, reject) {
-                  const query1 = `SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result.PROJECT_ID}';`;
-                  connection.query(query1, function (err, result2) {
-                    if (err) {
-                      console.log(err);
-                    } else {
-                      //console.log(result2);
-                      resolve(result2);
-                    }
-                  });
-                });
-              }
-
-              function docs() {
-                return new Promise(function (resolve, reject) {
-                  const query2 = `SELECT D.LINK,D.STATUS FROM DOCUMENTS D WHERE PROJECT_ID='${result.PROJECT_ID}'`;
-                  connection.query(query2, function (err, result2) {
-                    if (err) {
-                      console.log(err);
-                    } else {
-                      //console.log(result2[0]);
-                      if (result2.length > 0)
-                        resolve(result2[0]);
-                      else {
-                        reject("No document uploaded for Project id:" + result.PROJECT_ID);
-                      }
-                    }
-                  });
-                });
-              }
-              names().then((name) => {
-                //namesObj.push(name);
-                docs().then((doc) => {
-                  docsObj.push([...name, doc]);
-                  if (index == result1.length - 1) {
-                    console.log("loop done");
-                    resolve();
-                  }
-                }, (err) => {
-                  console.log(err);
-                  docsObj.push([...name]);
-                  if (index == result1.length - 1) {
-                    console.log("loop done");
-                    resolve();
-                  }
-                });
-              });
-            });
-          });
-        }
-        getFinal().then(() => {
+        getreportFinal(result1,docsObj).then(() => {
           console.log("got", docsObj);
           res.render("treport", {
             result: result1,
@@ -109,62 +56,7 @@ router.get("/viewproject", function (req, res) {
       } else {
         //console.log(result1);
         var projdocsObj = [];
-
-        function getFinal() {
-          return new Promise(function (resolve, reject) {
-            result1.forEach((result, index) => {
-              function names() {
-                return new Promise(function (resolve, reject) {
-                  const query1 = `SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result.PROJECT_ID}';`;
-                  connection.query(query1, function (err, result2) {
-                    if (err) {
-                      console.log(err);
-                    } else {
-                      //console.log(result2);
-                      resolve(result2);
-                    }
-                  });
-                });
-              }
-
-              function projdocs() {
-                return new Promise(function (resolve, reject) {
-                  const query2 = `SELECT LINK,STRUCTURE,STATUS FROM PROJECTS WHERE PROJECT_ID='${result.PROJECT_ID}'`;
-                  connection.query(query2, function (err, result2) {
-                    if (err) {
-                      console.log(err);
-                    } else {
-                      //console.log(result2[0]);
-                      if (result2.length > 0)
-                        resolve(result2[0]);
-                      else {
-                        reject("No projectdocs uploaded for Project id:" + result.PROJECT_ID);
-                      }
-                    }
-                  });
-                });
-              }
-              names().then((name) => {
-                //namesObj.push(name);
-                projdocs().then((projdoc) => {
-                  projdocsObj.push([...name, projdoc]);
-                  if (index == result1.length - 1) {
-                    console.log("loop done");
-                    resolve();
-                  }
-                }, (err) => {
-                  console.log(err);
-                  projdocsObj.push([...name]);
-                  if (index == result1.length - 1) {
-                    console.log("loop done");
-                    resolve();
-                  }
-                });
-              });
-            });
-          });
-        }
-        getFinal().then(() => {
+        getprojFinal(result1,projdocsObj).then(() => {
           console.log(projdocsObj);
           res.render("tviewprojects", {
             result:result1,
