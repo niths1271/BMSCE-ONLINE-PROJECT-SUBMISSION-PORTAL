@@ -131,7 +131,7 @@ td {
 }
 #teachers td {
   padding-top: 5px;
-  padding-bottom: px;
+  padding-bottom: 5px;
   width: 20.2%;
 }
 #teachers {
@@ -273,3 +273,4 @@ body {
   background-color: #ddd;
   color: black;
 }
+

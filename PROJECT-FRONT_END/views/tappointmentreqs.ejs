@@ -80,7 +80,7 @@
                </tbody>
             </table>
             <h2>
-               <span style="font-size: 20px">&#9733;</span>Appointments Scheduled by you:
+               <span style="font-size: 20px">&#9733;</span>Upcoming appointments:
             </h2>
             <table id="teachers" class="table">
                <thead>
@@ -93,7 +93,7 @@
                </thead>
                <tbody>
                   <% vals.forEach(val=>{ %>
-                     <% if(val.SCHEDULED_BY_ADMIN===1 ) {%>
+                     <% if(val.APPROVAL === 'APPROVED' ) {%>
                         <tr>
                            <td style="width: 235px;">
                               <%= val.PROJECT_TITLE %>
