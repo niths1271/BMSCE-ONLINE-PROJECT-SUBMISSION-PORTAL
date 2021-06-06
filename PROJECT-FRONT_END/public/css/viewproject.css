@@ -88,7 +88,7 @@ table.table thead {
   display: block;
 }
 
-thead tr th {
+ tr th {
   height: 50px;
   line-height: 40px;
 }
@@ -103,8 +103,8 @@ tbody {
   border-top: 2px solid black;
 }
 
-tbody td,
-thead th {
+ td,
+ th {
   width: 360px;
   border-right: 2px solid black;
 }
