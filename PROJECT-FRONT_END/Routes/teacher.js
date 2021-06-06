@@ -145,7 +145,6 @@ router.post("/scheduleappointment", function(req, res){
 
 
 router.post("/viewappointmentreqs",function(req, res){
-  console.log("kilikili", req.body, "lplp", req.body.approval);
    connection.query(`UPDATE APPOINTMENT SET APPROVAL='${req.body.approval}' WHERE PROJECT_ID='${req.body.projectId}' AND SCHEDULED_BY_ADMIN = 0`, function (err, result) {
     if (err) {
       console.log(err);
