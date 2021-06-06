@@ -8,11 +8,13 @@
 <body>
     <div class="container" id="container">
      <div class="form">
-     <%if(loginerrors !== ''){%>
+         <div class="errors">
+     <%if(loginerrors != ''){%>
           <div class="alert alert-danger" role="alert">
               <%= loginerrors %>
           </div>
-          <%} %>      
+          <%} %>   
+        </div>   
           <!-- onsubmit="return validatelog(); -->
             <form action="/teacheruser/login" class="log-in-form" name="log-in-form" method="POST">
                 <h2 class="title">Teacher Login</h2>
