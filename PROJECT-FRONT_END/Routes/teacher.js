@@ -95,6 +95,21 @@ router.get("/viewproject/:projName",function(req,res){
       });
     });
 
+router.get("/grading", function(req, res){
+  if (req.isAuthenticated() && req.user.ROLE === "TEACHER"){
+    connection.query(`SELECT * FROM PROJECT_DETAILS WHERE TEACHER_ID='${req.user.id}';`, function(err, reslt){
+      if(err){
+        console.log(err);
+      }else{
+        console.log(reslt);
+        res.render("grading", {vals:reslt});
+      }
+    });
+  }else{
+    res.redirect("/teacheruser/login");
+  }
+});
+
 
 router.post("/viewreport", function (req, res) {
   console.log(req.body.approval);
@@ -160,5 +175,10 @@ router.post("/viewappointmentreqs",function(req, res){
     }
   });
 });
+
+router.post("/grading", function(req, res){
+  console.log("huki",req.body);
+});
+
 
 module.exports = router;
