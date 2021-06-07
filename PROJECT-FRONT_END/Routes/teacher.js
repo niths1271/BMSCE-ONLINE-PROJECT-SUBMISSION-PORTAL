@@ -178,6 +178,13 @@ router.post("/viewappointmentreqs",function(req, res){
 
 router.post("/grading", function(req, res){
   console.log("huki",req.body);
+  connection.query(`SELECT * FROM STUDENT_DETAILS WHERE PROJECT_ID='${req.body.PROJECT_ID}';`, function(err, reslt){
+    if(err){
+      console.log(err);
+    }else{
+      res.render("tgrades", {vals:reslt});
+    }
+  });
 });
 
 

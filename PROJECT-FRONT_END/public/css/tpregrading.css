@@ -25,6 +25,7 @@
 	 min-height: 3rem;
 	 padding: 1rem 1rem 1rem 3rem;
 	 position: relative;
+	 cursor: pointer;
 }
  ul.gradient-list > form  > li::before, ul.gradient-list > form  > li::after {
 	 background: linear-gradient(135deg, #83e4e2 0%, #a2ed56 100%);
