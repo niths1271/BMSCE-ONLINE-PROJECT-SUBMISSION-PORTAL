@@ -187,5 +187,9 @@ router.post("/grading", function(req, res){
   });
 });
 
+router.post("/fgrade", function(req, res){
+  console.log("grade",req.body);
+});
+
 
 module.exports = router;

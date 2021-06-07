@@ -1,6 +1,7 @@
 <%- include('partials/header') %>
     <title>Grading</title>
     <link rel="stylesheet" href="/css/viewproject.css" />
+    <link rel="stylesheet" href="/css/fgrading.css" />
     
     </head>
 
@@ -21,5 +22,43 @@
         </div>
         <div class="grade">
             <% console.log("kikio",vals); %>
+            <table class="styled-table">
+                <thead>
+                <tr>
+                    <th>USN</th>
+                    <th>HTML</th>
+                    <th>JAVASCRIPT</th>
+                    <th>CSS</th>
+                    <th>REPORT</th>
+                    <th>ORAL COMMUNICATION</th>
+                    
+                </tr>
+                </thead>
+                <tbody>
+                <form action="/teacher/fgrade" method="post">
+                <% vals.forEach(val=>{ %>
+                    <tr>
+                        <td><%= val.USN %></td>
+                        <td>
+                            <input type="number" name="<%=val.STUD_ID%>HTML" id="HTML">
+                        </td>
+                        <td>
+                            <input type="number" name="<%=val.STUD_ID%>JAVASCRIPT" id="JAVASCRIPT">
+                        </td>
+                        <td>
+                            <input type="number" name="<%=val.STUD_ID%>CSS" id="CSS">
+                        </td>
+                        <td>
+                            <input type="number" name="<%=val.STUD_ID%>REPORT" id="REPORT">
+                        </td>
+                        <td>
+                            <input type="number" name="<%=val.STUD_ID%>ORALCOMMUNICATION" id="ORALCOMMUNICATION">
+                        </td>
+                    </tr>
+                <% }); %>
+                <input type="submit" value="SUBMIT">
+                </form>
+                </tbody>
+            </table>
         </div>
         <%- include('partials/footer') %>
