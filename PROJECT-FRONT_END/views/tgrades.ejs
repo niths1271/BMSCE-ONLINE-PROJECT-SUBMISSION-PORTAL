@@ -22,6 +22,7 @@
         </div>
         <div class="grade">
             <% console.log("kikio",vals); %>
+            <form action="/teacher/fgrade" method="post">
             <table class="styled-table">
                 <thead>
                 <tr>
@@ -35,30 +36,34 @@
                 </tr>
                 </thead>
                 <tbody>
-                <form action="/teacher/fgrade" method="post">
+                
                 <% vals.forEach(val=>{ %>
                     <tr>
                         <td><%= val.USN %></td>
                         <td>
-                            <input type="number" name="<%=val.STUD_ID%>HTML" id="HTML">
+                            <input type="number" name="HTML" id="HTML">
                         </td>
                         <td>
-                            <input type="number" name="<%=val.STUD_ID%>JAVASCRIPT" id="JAVASCRIPT">
+                            <input type="number" name="JAVASCRIPT" id="JAVASCRIPT">
                         </td>
                         <td>
-                            <input type="number" name="<%=val.STUD_ID%>CSS" id="CSS">
+                            <input type="number" name="CSS" id="CSS">
                         </td>
                         <td>
-                            <input type="number" name="<%=val.STUD_ID%>REPORT" id="REPORT">
+                            <input type="number" name="REPORT" id="REPORT">
                         </td>
                         <td>
-                            <input type="number" name="<%=val.STUD_ID%>ORALCOMMUNICATION" id="ORALCOMMUNICATION">
+                            <input type="number" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION">
                         </td>
+                        <input type="hidden" value=<%=val.STUD_ID%> name="STUD_IDs">
+                        <input type="hidden" value=<%=val.PROJECT_ID%> name="PROJECT_ID">
                     </tr>
                 <% }); %>
-                <input type="submit" value="GRADE">
-                </form>
+                
+                
                 </tbody>
             </table>
+            <input type="submit" value="GRADE">
+            </form>
         </div>
         <%- include('partials/footer') %>

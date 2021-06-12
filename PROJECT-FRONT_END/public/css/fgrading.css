@@ -37,4 +37,5 @@ input[type=submit] {
     font-size: 1em; /* Size of text */
     padding: 10px 15px; /* Distance between text and border */
     border-radius: 40px;
+    float: right;
 }

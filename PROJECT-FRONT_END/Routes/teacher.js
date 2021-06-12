@@ -188,7 +188,49 @@ router.post("/grading", function(req, res){
 });
 
 router.post("/fgrade", function(req, res){
-  console.log("grade",req.body);
+  
+  var grades = req.body;
+  console.log("grade", grades);
+  var inserted = 0;
+  grades.STUD_IDs.forEach((student, index)=>{
+    var html = parseInt(grades.HTML[index]);
+    var css = parseInt(grades.CSS[index]);
+    var js = parseInt(grades.JAVASCRIPT[index]);
+    var report = parseInt(grades.REPORT[index]);
+    var oc = parseInt(grades.ORALCOMMUNICATION[index]);
+    var total = html + css+ js + oc + report;
+    var marks = {
+      HTML:html,
+      JAVASCRIPT:js,
+      CSS:css,
+      REPORT:report,
+      ORALCOMMUNICATION:oc,
+      PROJECT_ID:parseInt(grades.PROJECT_ID[index]),
+      STUDENT_ID:parseInt(student),
+      TOTAL_SEE: total
+    };
+    console.log("niru",marks);
+    connection.query(`INSERT INTO GRADES SET ?`, marks, function(error, result, fields){
+      if(error){
+        console.log(error);
+      }else{
+        console.log("inserted!");
+        inserted = inserted +1;
+      
+        if(inserted===grades.STUD_IDs.length){
+          connection.query(`UPDATE PROJECTS SET STATUS = 'GRADED' WHERE PROJECT_ID='${marks.PROJECT_ID}'`, function(errr, ress){
+            if(errr){
+              console.log(errr);
+            }else{
+              console.log("projects updated");
+              res.redirect("/teacher/grading");
+            }
+          });
+          
+        }
+      }
+    });
+  });
 });
 
 
