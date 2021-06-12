@@ -182,7 +182,14 @@ router.post("/grading", function(req, res){
     if(err){
       console.log(err);
     }else{
-      res.render("tgrades", {vals:reslt});
+      connection.query(`SELECT * FROM GRADES WHERE PROJECT_ID = '${reslt[0].PROJECT_ID}'`, function(eror, resst){
+        if(eror){
+          console.log(eror);
+        }else{
+          res.render("tgrades", {vals:reslt, gds:resst, title:req.body.PROJECT_TITLE});
+        }
+      });
+      
     }
   });
 });

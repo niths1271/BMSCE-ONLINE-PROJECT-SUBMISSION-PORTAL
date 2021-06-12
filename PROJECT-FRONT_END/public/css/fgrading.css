@@ -39,3 +39,10 @@ input[type=submit] {
     border-radius: 40px;
     float: right;
 }
+
+.cptn{
+    color: #772f1a;
+    font-weight: bolder;
+    font-size: larger;
+    text-align:left;
+}

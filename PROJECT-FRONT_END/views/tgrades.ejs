@@ -17,53 +17,105 @@
             <a href="/teacher/viewreport">View Reports</a>
             <a href="/teacher/scheduleappointment">Appointments</a>
             <a href="/teacher/viewproject">View Projects</a>
-            <a class="active" href="/teacher/grading" style="color: black">Grade </a>
+            <a href="/teacher/grading" >Grade </a>
             <a href="/teacheruser/logout">Logout </a>
         </div>
         <div class="grade">
-            <% console.log("kikio",vals); %>
-            <form action="/teacher/fgrade" method="post">
-            <table class="styled-table">
-                <thead>
-                <tr>
-                    <th>USN</th>
-                    <th>HTML</th>
-                    <th>JAVASCRIPT</th>
-                    <th>CSS</th>
-                    <th>REPORT</th>
-                    <th>ORAL COMMUNICATION</th>
-                    
-                </tr>
-                </thead>
-                <tbody>
+            <% console.log("kikio",vals, gds); %>
+            <%if(gds.length===0){ %>
+                <form action="/teacher/fgrade" method="post">
+                    <table class="styled-table">
+                        <caption class="cptn">Project Title: <%= title %></caption>
+                        <thead>
+                            <tr>
+                                <th>USN</th>
+                                <th>HTML</th>
+                                <th>JAVASCRIPT</th>
+                                <th>CSS</th>
+                                <th>REPORT</th>
+                                <th>ORAL COMMUNICATION</th>
                 
-                <% vals.forEach(val=>{ %>
-                    <tr>
-                        <td><%= val.USN %></td>
-                        <td>
-                            <input type="number" name="HTML" id="HTML">
-                        </td>
-                        <td>
-                            <input type="number" name="JAVASCRIPT" id="JAVASCRIPT">
-                        </td>
-                        <td>
-                            <input type="number" name="CSS" id="CSS">
-                        </td>
-                        <td>
-                            <input type="number" name="REPORT" id="REPORT">
-                        </td>
-                        <td>
-                            <input type="number" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION">
-                        </td>
-                        <input type="hidden" value=<%=val.STUD_ID%> name="STUD_IDs">
-                        <input type="hidden" value=<%=val.PROJECT_ID%> name="PROJECT_ID">
-                    </tr>
-                <% }); %>
+                            </tr>
+                        </thead>
+                        <tbody>
+                
+                            <% vals.forEach(val=>{ %>
+                                <tr>
+                                    <td>
+                                        <%= val.USN %>
+                                    </td>
+                                    <td>
+                                        <input type="number" name="HTML" id="HTML">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="JAVASCRIPT" id="JAVASCRIPT">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="CSS" id="CSS">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="REPORT" id="REPORT">
+                                    </td>
+                                    <td>
+                                        <input type="number" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION">
+                                    </td>
+                                    <input type="hidden" value=<%=val.STUD_ID%> name="STUD_IDs">
+                                    <input type="hidden" value=<%=val.PROJECT_ID%> name="PROJECT_ID">
+                                </tr>
+                                <% }); %>
                 
                 
-                </tbody>
-            </table>
-            <input type="submit" value="GRADE">
-            </form>
+                        </tbody>
+                    </table>
+                    <input type="submit" value="GRADE">
+                </form>
+            <% }else{ %>
+                <h2>Graded</h2>
+                <table class="styled-table">
+                    <caption class="cptn">
+                       Project Title: <%= title %>
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th>USN</th>
+                            <th>HTML</th>
+                            <th>JAVASCRIPT</th>
+                            <th>CSS</th>
+                            <th>REPORT</th>
+                            <th>ORAL COMMUNICATION</th>
+                
+                        </tr>
+                    </thead>
+                    <tbody>
+                
+                        <% gds.forEach((gd, index)=>{ %>
+                            <tr>
+                                <td>
+                                    <%= vals[index].USN %>
+                                </td>
+                                <td>
+                                    <p class="marks"><%= gd.HTML %></p>
+                                </td>
+                                <td>
+                                    <p class="marks"><%= gd.JAVASCRIPT %></p>
+                                </td>
+                                <td>
+                                    <p class="marks"><%= gd.CSS %></p>
+                                </td>
+                                <td>
+                                    <p class="marks"><%= gd.REPORT %></p>
+                                </td>
+                                <td>
+                                    <p class="marks"><%= gd.ORALCOMMUNICATION %></p>
+                                </td>
+                                
+                            </tr>
+                            <% }); %>
+                
+                
+                    </tbody>
+                </table>
+                <% } %>
+            
         </div>
         <%- include('partials/footer') %>
