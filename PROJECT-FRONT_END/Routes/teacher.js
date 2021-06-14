@@ -240,5 +240,31 @@ router.post("/fgrade", function(req, res){
   });
 });
 
+router.post("/patchgrade", function(req, res){
+  console.log(req.body);
+  var grades = req.body;
+  var inserted = 0;
+  grades.STUD_IDs.forEach((id, index)=>{
+      var html = parseInt(grades.HTML[index]);
+    var css = parseInt(grades.CSS[index]);
+    var js = parseInt(grades.JAVASCRIPT[index]);
+    var report = parseInt(grades.REPORT[index]);
+    var oc = parseInt(grades.ORALCOMMUNICATION[index]);
+    var total = html + css+ js + oc + report;
+    
+    connection.query(`UPDATE GRADES SET HTML = '${html}', CSS = '${css}', JAVASCRIPT = '${js}', REPORT = '${report}', ORALCOMMUNICATION = '${oc}',TOTAL_SEE='${total}' WHERE STUDENT_ID='${parseInt(id)}'`, function(error, reslt){
+      if(error){
+        console.log(error);
+      }else{
+        console.log("updated!");
+        inserted = inserted +1;
+      
+        if(inserted===grades.STUD_IDs.length){
+          res.redirect("/teacher/grading");
+        }
+      }
+    });
+  });
+});
 
 module.exports = router;

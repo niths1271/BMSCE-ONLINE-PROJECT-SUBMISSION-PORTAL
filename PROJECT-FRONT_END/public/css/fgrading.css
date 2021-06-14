@@ -46,3 +46,19 @@ input[type=submit] {
     font-size: larger;
     text-align:left;
 }
+
+#change{
+     background-color: rgb(57, 2, 255); /* Grey background */
+    border: 1px solid #ddd; /* Dark grey border */
+    color: #fff; /* Black text color */
+    font-size: 1em; /* Size of text */
+    padding: 10px 15px; /* Distance between text and border */
+    border-radius: 40px;
+    float: right;
+    width: 120px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+
+}

@@ -71,7 +71,8 @@
                 </form>
             <% }else{ %>
                 <h2>Graded</h2>
-                <table class="styled-table">
+                <form action="/teacher/patchgrade" method="post">
+                <table class="styled-table done">
                     <caption class="cptn">
                        Project Title: <%= title %>
                     </caption>
@@ -93,29 +94,35 @@
                                 <td>
                                     <%= vals[index].USN %>
                                 </td>
+                               
                                 <td>
-                                    <p class="marks"><%= gd.HTML %></p>
+                                    <input type="number" class="edit" name="HTML" id="HTML" value="<%= gd.HTML %>" readonly>
                                 </td>
                                 <td>
-                                    <p class="marks"><%= gd.JAVASCRIPT %></p>
+                                    <input type="number" class="edit" name="JAVASCRIPT" id="JAVASCRIPT" value="<%= gd.JAVASCRIPT %>" readonly>
                                 </td>
                                 <td>
-                                    <p class="marks"><%= gd.CSS %></p>
+                                    <input type="number" class="edit" name="CSS" id="CSS" value="<%= gd.CSS %>" readonly>
                                 </td>
                                 <td>
-                                    <p class="marks"><%= gd.REPORT %></p>
+                                    <input type="number" class="edit" name="REPORT" id="REPORT" value="<%= gd.REPORT %>" readonly>
                                 </td>
                                 <td>
-                                    <p class="marks"><%= gd.ORALCOMMUNICATION %></p>
+                                    <input type="number" class="edit" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION" value="<%= gd.ORALCOMMUNICATION %>" readonly>
                                 </td>
-                                
+                                <input type="hidden" value=<%=vals[index].STUD_ID%> name="STUD_IDs">
+                                <input type="hidden" value=<%=vals[index].PROJECT_ID%> name="PROJECT_ID">
+                                <input type="hidden" name="patch" value="yes">
                             </tr>
                             <% }); %>
                 
                 
                     </tbody>
                 </table>
+                <input  value="CHANGE" id="change">
+                </form>
                 <% } %>
             
         </div>
+        <script src="/js/patch.js"></script>
         <%- include('partials/footer') %>
