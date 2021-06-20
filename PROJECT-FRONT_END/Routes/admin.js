@@ -10,9 +10,28 @@ const saltRounds = 10;
 
 router.get("/admindashboard", function(req, res) {
     if (req.isAuthenticated() && req.user.ROLE==="ADMIN") {
-        res.render("admindb");
-    } else {
-        res.redirect("/adminuser/login");
+     connection.query(`SELECT COUNT(*) AS TOTAL FROM USER_DETAILS`, function(err, result1) {
+          if(err){
+               console.log(err);
+          }else{
+     connection.query(`SELECT PROJECT_ID,PROJECT_TITLE,MEMBERS_NO,SECTION FROM PROJECT_DETAILS;`, function(err, result2) {
+          if (err) {
+              console.log(err);
+          } else {
+              connection.query(`SELECT DISTINCT NAME,USN,EMAIL,PHONE_NO FROM STUDENT_DETAILS`, function(err, result3) {
+                  if (err) {
+                      console.log(err);
+                  } else {
+                       console.log(result1);
+                       console.log(result2);
+                       console.log(result3);
+                       res.render("admindb",{usersno:result1[0].TOTAL,project:result2,student:result3});
+                  }
+              });
+          }
+      });
+     }
+});
     }
 });
 
