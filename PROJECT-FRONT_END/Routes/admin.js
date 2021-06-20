@@ -25,6 +25,14 @@ router.get("/addTeacher", function(req, res){
     }
 });
 
+router.get("/appointTeacher", function(req, res){
+    if (req.isAuthenticated() && req.user.ROLE==="ADMIN"){
+        res.render("appointTeacher");
+    }else{
+        res.redirect("/adminuser/login");
+    }
+});
+
 router.post("/addTeacher", function(req, res){
     console.log("mamu",req.body);
     var details = req.body;
@@ -59,5 +67,7 @@ router.post("/addTeacher", function(req, res){
     });
     
 });
+
+
 
 module.exports = router;
