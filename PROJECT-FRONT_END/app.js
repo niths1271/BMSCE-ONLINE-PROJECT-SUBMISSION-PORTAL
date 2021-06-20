@@ -48,6 +48,8 @@ app.use("/suser", require("./Routes/suser"));
 app.use("/student", require("./Routes/student"));
 app.use("/teacheruser", require("./Routes/teacheruser"));
 app.use("/teacher",require("./Routes/teacher"));
+app.use("/adminuser",require("./Routes/adminuser"));
+app.use("/admin",require("./Routes/admin"));
 // app.use(function(req, res, next) {
 //     if (!req.user)
 //         res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
