@@ -14,4 +14,8 @@ router.get("/admindashboard", function(req, res) {
     }
 });
 
+router.post("/admindashboard", function(req, res) {
+     
+})
+
 module.exports = router;
