@@ -25,4 +25,12 @@ router.get("/login", function(req, res) {
      });
  });
 
+
+router.get('/logout', function(req, res){  
+    req.logout();
+    
+    res.redirect('/adminuser/login');
+  console.log("Successfully Logged Out");
+});
+
  module.exports = router;
