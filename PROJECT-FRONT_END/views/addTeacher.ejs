@@ -68,27 +68,33 @@
                                     <p class="card-category">Complete this profile</p>
                                 </div>
                                 <div class="card-body">
-                                    <form>
+                                    <form action="/admin/addTeacher" method="POST">
                                         <div class="row">
                                             
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Username</label>
-                                                    <input type="text" class="form-control" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');">
+                                                    <input type="text" name="username" class="form-control" autocomplete="false" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Email address</label>
-                                                    <input type="email" class="form-control" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');">
+                                                    <input type="email" name="email" class="form-control" autocomplete="false" >
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
+                                                    <label class="bmd-label-floating">Name</label>
+                                                    <input type="text" name="name" class="form-control" autocomplete="false">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
                                                     <label class="bmd-label-floating">Password</label>
-                                                    <input type="password" class="form-control" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');"autocomplete="off">
+                                                    <input type="password" name="password" class="form-control" autocomplete="false" >
                                                 </div>
                                             </div>
                                             
@@ -98,13 +104,13 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Phone</label>
-                                                    <input type="long" class="form-control" autocomplete="false" readonly onfocus="this.removeAttribute('readonly');">
+                                                    <input type="long" name="phone" class="form-control" autocomplete="false" >
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="bmd-label-floating">Role</label>
-                                                    <input type="text" class="form-control" value="TEACHER" readonly>
+                                                    <input type="text" name="role" class="form-control" value="TEACHER" readonly>
                                                 </div>
                                             </div>
                                             
