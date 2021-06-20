@@ -14,8 +14,19 @@ router.get("/admindashboard", function(req, res) {
     }
 });
 
+<<<<<<< Updated upstream
 router.post("/admindashboard", function(req, res) {
      
 })
+=======
+
+router.get("/addTeacher", function(req, res){
+    if (req.isAuthenticated() && req.user.ROLE==="ADMIN") {
+        res.render("addTeacher");
+    }else{
+        res.redirect("/adminuser/login");
+    }
+});
+>>>>>>> Stashed changes
 
 module.exports = router;
