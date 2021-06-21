@@ -69,7 +69,8 @@
                                                 <button onclick="myFunction()" class="dropbtn">Select email id to receive reset link</button>
                                                 <div id="myDropdown" class="dropdown-content">
                                                     <% vals.forEach(val=>{ %>
-                                                        <form action="/suser/gotmail" method="post" ><input type="text" name="mailid" id="mailid" value="<%= val.EMAIL %>" readonly onclick="this.form.submit();"></form>
+                                                        <form action="/suser/gotmail" method="post" ><input type="text" name="mailid" id="mailid" value="<%= val.EMAIL %>" readonly onclick="this.form.submit();">
+                                                        <input type="hidden" name="id" value="<%=uid%>"></form>
                                                     <% }); %>
                                                     
                                         

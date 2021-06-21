@@ -102,7 +102,7 @@ router.post("/gotmail", function(req, res){
     to: req.body.mailid, // list of receivers
     subject: "Hello ✔", // Subject line
     text: "Hello world?", // plain text body
-    html: "<b>Hello world?</b>", // html body
+    html: `<a href = "http://localhost:3000/suser/changepw/${req.body.id}">change password</a>`, // html body
   });
 
   console.log("Message sent: %s", info.messageId);
@@ -124,9 +124,13 @@ router.post('/reset', function(req, res){
             console.log(error);
         }else{
             console.log("mails",reslt);
-            res.render('reset', {email:1, vals:reslt});
+            res.render('reset', {email:1, vals:reslt, uid:uid});
         }
     });
+});
+
+router.get("/changepw/:team", function(req,res){
+    console.log(req.body.params);
 });
 
 module.exports = router;
