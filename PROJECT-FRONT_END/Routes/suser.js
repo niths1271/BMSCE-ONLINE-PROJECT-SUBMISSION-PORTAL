@@ -114,6 +114,7 @@ router.post("/gotmail", function(req, res){
 }
 
 sendmail().catch(console.error);
+res.redirect("/suser/login")
 });
 
 router.post('/reset', function(req, res){
@@ -132,6 +133,27 @@ router.post('/reset', function(req, res){
 router.get("/changepw/:team", function(req,res){
     console.log(req.params.team);
     var team = req.params.team;
+    res.render('reset', {email:2, team:team});
+});
+
+router.post("/changepw", function(req, res){
+    console.log("came");
+    var pw = req.body.pw;
+    bcrypt.hash(pw, saltRounds, function(err, hash){
+        if(err){
+            console.log(err);
+        }else{
+            connection.query(`UPDATE USER_DETAILS SET PASSWORD = '${hash}' WHERE USERNAME = '${req.body.id}';`, function(error, reslt){
+                if(error){
+                    console.log(error);
+                }else{
+                    console.log("Update successful!!!!!!!");
+                    res.redirect("/suser/login");
+                }
+            });
+        }
+    });
+
 });
 
 module.exports = router;
