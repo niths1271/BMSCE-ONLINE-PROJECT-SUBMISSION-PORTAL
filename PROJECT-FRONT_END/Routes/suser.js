@@ -6,6 +6,7 @@ const validateSignup = require('../validation/validator');
 const {validationResult}= require('express-validator');
 const router = express.Router();
 const saltRounds = 10;
+const nodemailer = require("nodemailer");
 
 
 router.get("/signup", function(req, res) {
@@ -72,6 +73,60 @@ router.get('/logout', function(req, res){
     // res.header('Pragma', 'no-cache');
     res.redirect('/');
   console.log("Successfully Logged Out");
+});
+
+router.get('/reset', function(req, res){
+    res.render('reset', {email:0});
+});
+router.post("/gotmail", function(req, res){
+    console.log(req.body);
+    async function sendmail() {
+  // Generate test SMTP service account from ethereal.email
+  // Only needed if you don't have a real mail account for testing
+  let testAccount = await nodemailer.createTestAccount();
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    secure: false, // true for 465, false for other ports
+    auth: {
+      user: testAccount.user, // generated ethereal user
+      pass: testAccount.pass, // generated ethereal password
+    },
+  });
+
+  // send mail with defined transport object
+  let info = await transporter.sendMail({
+    from: 'System', // sender address
+    to: req.body.mailid, // list of receivers
+    subject: "Hello ✔", // Subject line
+    text: "Hello world?", // plain text body
+    html: "<b>Hello world?</b>", // html body
+  });
+
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+  // Preview only available when sending through an Ethereal account
+  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+}
+
+sendmail().catch(console.error);
+});
+
+router.post('/reset', function(req, res){
+    console.log("aaa",req.body);
+    var uid = req.body.id;
+    connection.query(`SELECT S.EMAIL FROM STUDENT_DETAILS S, PROJECT_DETAILS P, USER_DETAILS U WHERE U.ID = P.USER_ID AND S.PROJECT_ID = P.PROJECT_ID AND U.USERNAME='${uid}';`, function(error, reslt){
+        if(error){
+            console.log(error);
+        }else{
+            console.log("mails",reslt);
+            res.render('reset', {email:1, vals:reslt});
+        }
+    });
 });
 
 module.exports = router;
