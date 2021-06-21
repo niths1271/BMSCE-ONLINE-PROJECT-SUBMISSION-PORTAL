@@ -130,7 +130,8 @@ router.post('/reset', function(req, res){
 });
 
 router.get("/changepw/:team", function(req,res){
-    console.log(req.body.params);
+    console.log(req.params.team);
+    var team = req.params.team;
 });
 
 module.exports = router;
