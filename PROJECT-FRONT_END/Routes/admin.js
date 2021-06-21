@@ -47,7 +47,19 @@ router.get("/addTeacher", function(req, res){
 
 router.get("/appointTeacher", function(req, res){
     if (req.isAuthenticated() && req.user.ROLE==="ADMIN"){
-        res.render("appointTeacher");
+     connection.query(`SELECT TEACHER_ID,NAME,EMAIL,PHONE_NO FROM TEACHER_DETAILS;`, function(err, result) {
+          if(err){
+               console.log(err);
+          }else{
+               connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE TEACHER_ID IS NULL;`, function(err, result1) {
+                    if(err){
+                         console.log(err);
+                    }else{
+                         res.render("appointTeacher",{teacher:result,project:result1});
+                    }
+               });
+          }
+     });
     }else{
         res.redirect("/adminuser/login");
     }
@@ -85,8 +97,24 @@ router.post("/addTeacher", function(req, res){
     });
         }
     });
-    
 });
+
+router.post("/appointTeacher", function(req, res){
+     console.log(req.body);
+     var result=Object.values(req.body);
+     console.log(result);
+     for(var i=1;i<result.length;i++){
+             connection.query(`INSERT INTO PROJECT_DETAILS SET TEACHER_ID='${result[0]}' WHERE PROJECT_ID='${result[i]}'`, err=>{
+         if(err){
+             console.log(err);
+         }else{
+             console.log("Insert successful!");
+             res.redirect("/admin/appointTeacher");
+         }
+     });
+}
+});
+        
 
 
 module.exports = router;
