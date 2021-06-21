@@ -132,6 +132,7 @@
                                     <p class="card-category">Assign teacher to different projects</p>
                                 </div>
                                 <div class="card-body">
+                                    <%if(project.length>0){%>
                                     <form action="/admin/appointTeacher" method="POST">
                                         <div class="row">                                          
                                             <div class="col-md-6">
@@ -160,6 +161,9 @@
                                         <button type="submit" class="btn btn-primary pull-right" onclick="md.showNotification('top','center')">Add User</button>
                                         <div class="clearfix"></div>
                                     </form>
+                                    <%}else{%>
+                                        <label class="bmd-label-floating">NO NEW PROJECTS AVAILABLE</label>
+                                    <%}%>
                                 </div>
                             </div>
                         </div>

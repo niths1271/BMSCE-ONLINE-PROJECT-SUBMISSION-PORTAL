@@ -104,17 +104,16 @@ router.post("/appointTeacher", function(req, res){
      var result=Object.values(req.body);
      console.log(result);
      for(var i=1;i<result.length;i++){
-             connection.query(`INSERT INTO PROJECT_DETAILS SET TEACHER_ID='${result[0]}' WHERE PROJECT_ID='${result[i]}'`, err=>{
+             connection.query(`UPDATE PROJECT_DETAILS SET TEACHER_ID=${result[0]} WHERE PROJECT_ID=${result[i]}`, err=>{
          if(err){
              console.log(err);
          }else{
              console.log("Insert successful!");
-             res.redirect("/admin/appointTeacher");
          }
      });
 }
+res.redirect("/admin/appointTeacher");
 });
         
-
 
 module.exports = router;
