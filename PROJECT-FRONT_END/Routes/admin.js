@@ -22,9 +22,9 @@ router.get("/admindashboard", function(req, res) {
                   if (err) {
                       console.log(err);
                   } else {
-                       console.log(result1);
-                       console.log(result2);
-                       console.log(result3);
+                    //    console.log(result1);
+                    //    console.log(result2);
+                    //    console.log(result3);
                        let teachers=result1[0].TOTAL-result2.length-1;
                        res.render("admindb",{usersno:result1[0].TOTAL,project:result2,student:result3,teachers:teachers});
                   }
