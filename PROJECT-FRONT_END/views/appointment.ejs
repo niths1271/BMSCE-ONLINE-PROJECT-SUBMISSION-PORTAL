@@ -1,19 +1,25 @@
 <%- include('partials/header') %>
     <title>Schedule Appointment Tab</title>
+    <!-- for date picker -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <!--  -->
     <link rel="stylesheet" href="/css/app.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7909e8b9ea.js" crossorigin="anonymous"></script>
-    <script src="/js/app.js"></script>
     </head>
-
     <body>
         <header>
             <h1>BMSCE ONLINE PROJECT SUBMISSION PORTAL</h1>
         </header>
-        <div class="container">
-            <div class="sidebar">
-                <div class="name">
+        <div class="container1">
+            <div class="sidebar1">
+                <div class="name1">
                     <p><i class="fas fa-project-diagram"></i>
                         <h2>PROJECT NAME:</h2>
                         <h3>
@@ -21,7 +27,7 @@
                         </h3>
                     </p>
                 </div>
-                <div class="notifications">
+                <div class="notifications1">
                     <h3 style="color: #593535;">NOTIFICATIONS:</h3>
                     <ul>
                         <li>LAST DAY TO SUBMIT YOUR REPORT IS-29TH SEPTEMBER</li>
@@ -37,7 +43,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="menu">
+            <div class="menu1">
                 <ul>
                     <li><a href="/student/report">Report Submission</a></li>
                     <li class="active"><a href="/student/appointment">Schedule an Appointment</a></li>
@@ -46,7 +52,7 @@
                     <li><a href="/suser/logout">Logout</a></li>
                 </ul>
             </div>
-            <div class="main">
+            <div class="main1">
                 
                     <% if(scheduled === 0){ %>
 
@@ -61,11 +67,23 @@
                             <div id="header">
                                 <h2>SELECT DATE AND TIME FOR THE APPOINTMENT:</h2>
                             </div>
-                            <div class="time">
+                            <!-- <div class="time">
                                 <input type="datetime-local" id="appointmenttime" name="appointmenttime" required><br><br>
+                            </div> -->
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepickerDemo'>
+                                            <input type='text' class="form-control" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div id="button">
-                                <input type="submit" value="SUBMIT" class="disap btn" onclick="validate();">
+                                <input type="submit" value="SUBMIT" class="disap btn1" onclick="validate();">
                             </div>
                         </form>
                         <% }else {  %>
@@ -105,5 +123,5 @@
 
             </div>
         </div>
-
+        <script src="/js/app.js"></script>
         <%- include('partials/footer') %>
