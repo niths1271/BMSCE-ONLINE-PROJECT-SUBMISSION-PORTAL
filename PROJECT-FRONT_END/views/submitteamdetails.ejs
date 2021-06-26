@@ -16,10 +16,10 @@
                 <div class="fieldsteam">
                     <h3>ENTER THE DETAILS OF MEMBERS AS FOLLOWS:</h3>
                 </div>
-                <form action="/student/submitteamdetails" method="POST">
+                <form action="/student/submitteamdetails" method="POST" onsubmit="return Validate1(this);">
                     <% var i; %>
                         <%for(i=1;i<=members;i++){%>
-                            <div class="memeber<%i%>">
+                            <div class="memeber<%=i%>">
                                 <hr>
                                 <h3 style="font-size: larger;">Member
                                     <%= i %>
