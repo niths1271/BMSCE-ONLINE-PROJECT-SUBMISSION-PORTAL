@@ -12,7 +12,7 @@
             </div>
             <div class=container>
                 <div class="fields">
-                    <form action="/student/submitprojectdetails" method="Post">
+                    <form action="/student/submitprojectdetails" method="Post" onsubmit="return Validate(this);">
                         <label for="projecttitle">ENTER THE PROJECT TITLE:</label>
                         <input type="text" placeholder="ENTER PROJECT TITLE" name="projectitle" id="projecttitle" autocomplete="off"><br><br>
                         <label for="sections">ENTER THE SECTION:</label>
@@ -29,7 +29,7 @@
     <option value="4">4</option><br><br>
      </select>
                 </div>
-                <div class=sub1> <button type="submit" onclick="Validate();" class="submitbtn1">SUBMIT</button> </div>
+                <div class=sub1> <button type="submit" class="submitbtn1">SUBMIT</button> </div>
                 </form>
             </div>
 
