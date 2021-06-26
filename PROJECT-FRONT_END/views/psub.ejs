@@ -103,28 +103,21 @@
                         </p>
                     </div>
                 </div>
-                
-
             <% } %>
         </div>
         <% if(submitted===0){ %>
         <form action="/student/psub" method="post">
             <label for="link">URL:</label>
-            <input type="url" name="link" id="link">
+            <input type="url" name="link" id="link" required>
             <br>
             <br>
             
-            <textarea name="structure" id="" cols="120" rows="10" placeholder="Describe file structure"></textarea>
+            <textarea name="structure" id="" cols="120" rows="10" placeholder="Describe file structure" required></textarea>
             <br>
             <input type="submit" value="submit" class="btn">
         </form>
         <% } %>
         </div>
-
-        
-        
-        
-
     </div>
 
     <%- include('partials/footer') %>

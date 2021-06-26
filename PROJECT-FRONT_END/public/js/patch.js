@@ -8,6 +8,9 @@ function myfn() {
   var inputs = document.getElementsByClassName("edit").length;
   for(let i = 0; i < inputs; i++){
       document.getElementsByClassName("edit")[i].removeAttribute("readonly");
+      // document.getElementsByClassName("edit")[i].setAttribute("required");
+      document.getElementsByClassName("edit")[i].setAttribute("min","0");
+      document.getElementsByClassName("edit")[i].setAttribute("max","10");
   }
   
 setTimeout(submitting, 2000);

@@ -28,7 +28,7 @@
                         <caption class="cptn">Project Title: <%= title %></caption>
                         <thead>
                             <tr>
-                            <th>USN (0-10)</th>
+                            <th>USN</th>
                             <th>HTML (0-10)</th>
                             <th>JAVASCRIPT (0-10)</th>
                             <th>CSS (0-10)</th>
@@ -45,19 +45,19 @@
                                         <%= val.USN %>
                                     </td>
                                     <td>
-                                        <input type="number" name="HTML" id="HTML">
+                                        <input type="number" name="HTML" id="HTML" required min="0" max="10">
                                     </td>
                                     <td>
-                                        <input type="number" name="JAVASCRIPT" id="JAVASCRIPT">
+                                        <input type="number" name="JAVASCRIPT" id="JAVASCRIPT" required min="0" max="10">
                                     </td>
                                     <td>
-                                        <input type="number" name="CSS" id="CSS">
+                                        <input type="number" name="CSS" id="CSS" required min="0" max="10">
                                     </td>
                                     <td>
-                                        <input type="number" name="REPORT" id="REPORT">
+                                        <input type="number" name="REPORT" id="REPORT" required min="0" max="10">
                                     </td>
                                     <td>
-                                        <input type="number" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION">
+                                        <input type="number" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION" required min="0" max="10">
                                     </td>
                                     <input type="hidden" value=<%=val.STUD_ID%> name="STUD_IDs">
                                     <input type="hidden" value=<%=val.PROJECT_ID%> name="PROJECT_ID">

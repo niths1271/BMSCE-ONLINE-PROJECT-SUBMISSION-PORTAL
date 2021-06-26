@@ -12,6 +12,7 @@
     color: #ffffff;
     text-align: left;
 }
+
 .styled-table th,
 .styled-table td {
     padding: 12px 15px;
@@ -30,29 +31,39 @@
 }
 
 input[type=submit] {
-  
-   background-color: rgb(57, 2, 255); /* Grey background */
-    border: 1px solid #ddd; /* Dark grey border */
-    color: #fff; /* Black text color */
-    font-size: 1em; /* Size of text */
-    padding: 10px 15px; /* Distance between text and border */
+
+    background-color: rgb(57, 2, 255);
+    /* Grey background */
+    border: 1px solid #ddd;
+    /* Dark grey border */
+    color: #fff;
+    /* Black text color */
+    font-size: 1em;
+    /* Size of text */
+    padding: 10px 15px;
+    /* Distance between text and border */
     border-radius: 40px;
     float: right;
 }
 
-.cptn{
+.cptn {
     color: #772f1a;
     font-weight: bolder;
     font-size: larger;
-    text-align:left;
+    text-align: left;
 }
 
-#change{
-     background-color: rgb(57, 2, 255); /* Grey background */
-    border: 1px solid #ddd; /* Dark grey border */
-    color: #fff; /* Black text color */
-    font-size: 1em; /* Size of text */
-    padding: 10px 15px; /* Distance between text and border */
+#change {
+    background-color: rgb(57, 2, 255);
+    /* Grey background */
+    border: 1px solid #ddd;
+    /* Dark grey border */
+    color: #fff;
+    /* Black text color */
+    font-size: 1em;
+    /* Size of text */
+    padding: 10px 15px;
+    /* Distance between text and border */
     border-radius: 40px;
     float: right;
     width: 120px;
@@ -61,4 +72,18 @@ input[type=submit] {
     cursor: pointer;
     text-align: center;
 
+}
+
+/* for forms validation */
+/* input:invalid {
+    border: solid red 3px;
+} */
+
+input:in-range {
+    background-color: rgba(0, 255, 0, 0.25);
+}
+
+input:out-of-range {
+    background-color: rgba(255, 0, 0, 0.25);
+    border: 2px solid red;
 }
