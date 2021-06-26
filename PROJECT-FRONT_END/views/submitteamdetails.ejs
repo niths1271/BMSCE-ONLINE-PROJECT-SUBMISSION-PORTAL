@@ -16,7 +16,7 @@
                 <div class="fieldsteam">
                     <h3>ENTER THE DETAILS OF MEMBERS AS FOLLOWS:</h3>
                 </div>
-                <form action="/student/submitteamdetails" method="POST" onsubmit="return Validate1(this);">
+                <form action="/student/submitteamdetails" method="POST" onsubmit="return validate1();" enctype="multipart/form-data">
                     <% var i; %>
                         <%for(i=1;i<=members;i++){%>
                             <div class="memeber<%=i%>">
@@ -26,26 +26,26 @@
                                 </h3>
                                 <br>
                                 <label for="name<%= i %>" style="font-size: larger;"><b>NAME:</b></label>
-                                <input type="text" placeholder="Enter NAME" name="name<%= i %>" id="name<%= i %>" autocomplete="off" required>
+                                <input type="text" placeholder="Enter NAME" name="name<%= i %>" id="name<%= i %>" autocomplete="off" >
                                 <br>
                                 <label for="usn<%= i %>" style="font-size: larger;"><b>USN:</b></label>
-                                <input type="text" placeholder="Enter USN" name="usn<%= i %>" id="usn<%= i %>" required>
+                                <input type="text" placeholder="Enter USN" name="usn<%= i %>" id="usn<%= i %>" >
                                 <div id="USN_error<%= i %>">Invalid USN</div>
                                 <br>
                                 <label for="e<%= i %>" style="font-size: larger;"><b>EMAIL ID:</b></label>
-                                <input type="text" placeholder="Enter EMAIL ID" name="e<%= i %>" id="e<%= i %>" autocomplete="off" required>
+                                <input type="text" placeholder="Enter EMAIL ID" name="e<%= i %>" id="e<%= i %>" autocomplete="off" >
                                 <div id="semail_error<%= i %>">Invalid Email</div>
                                 <br>
 
                                 <label for="phone<%= i %>" style="font-size: larger;"><b>PHONE NUMBER:</b></label>
-                                <input type="tel" placeholder="Enter PHONE NUMBER" id="phone<%= i %>" name="phone<%= i %>" pattern="[0-9]{10}" required>
+                                <input type="tel" placeholder="Enter PHONE NUMBER" id="phone<%= i %>" name="phone<%= i %>" >
                                 <div id="ph_error<%= i %>">Invalid PHONE NUMBER</div>
                                 <br>
                                 <hr>
                             </div>
                             <%}%>
                                 <div class=sub>
-                                    <div class=sub> <input type="submit" class="submitbtn" value="SUBMIT" /> </div>
+                                    <div class=sub> <button type="submit" class="submitbtn">SUBMIT</button> </div>
                                 </div>
                 </form>
             </div>

@@ -8,34 +8,13 @@ function Validate() {
     }
     if (no == 2) {
         alert("YOU HAVE SELECTED ONLY TWO MEMBERS IN YOUR TEAM");
-        // document.getElementsByClassName('sub1')[0].style.display = 'none';
-        // document.getElementsByClassName('fields')[0].style.display = 'none';
-        // document.getElementsByClassName('fields4')[0].style.display = 'block';
-        // document.getElementsByClassName('member1')[0].style.display = 'block';
-        // document.getElementsByClassName('member2')[0].style.display = 'block';
-        // document.getElementsByClassName('sub')[0].style.display = 'block';
     }
      else if (no == 3) {
         alert("YOU HAVE SELECTED THREE MEMBERS IN YOUR TEAM");
-        // document.getElementsByClassName('sub1')[0].style.display = 'none';
-        // document.getElementsByClassName('fields')[0].style.display = 'none';
-        // document.getElementsByClassName('fields4')[0].style.display = 'block';
-        // document.getElementsByClassName('member1')[0].style.display = 'block';
-        // document.getElementsByClassName('member2')[0].style.display = 'block';
-        // document.getElementsByClassName('member3')[0].style.display = 'block';
-        // document.getElementsByClassName('sub')[0].style.display = 'block';
     }
     
      else if (no == 4) {
         alert("YOU HAVE SELECTED FOUR MEMBERS IN YOUR TEAM");
-        // document.getElementsByClassName('sub1')[0].style.display = 'none';
-        // document.getElementsByClassName('fields')[0].style.display = 'none';
-        // document.getElementsByClassName('fields4')[0].style.display = 'block';
-        // document.getElementsByClassName('member1')[0].style.display = 'block';
-        // document.getElementsByClassName('member2')[0].style.display = 'block';
-        // document.getElementsByClassName('member3')[0].style.display = 'block';
-        // document.getElementsByClassName('member4')[0].style.display = 'block';
-        // document.getElementsByClassName('sub')[0].style.display = 'block';
     }
 
 
@@ -75,6 +54,57 @@ function Validate() {
       var u4result= usn4.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
       var e4result = email4.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
       var p4result=phno4.value.match('[0-9]{10}');
+
+// var flag=0;
+// for(var i=0;i<=no;i++){
+//     if(document.getElementById("usn"+i).value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}')==document.getElementById("usn"+i).value)
+//            {
+//             document.getElementById('USN_error1').style.display='none';
+//             if(flag==1){
+//                 flag=1
+//             }
+//             else{
+//                 flag=0;
+//             }
+//            }
+//            else{
+//             document.getElementById('USN_error1').style.display='block';
+//            }
+//            if(document.getElementById("email"+i).value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in')==document.getElementById("email"+i).value){
+//             document.getElementById('semail_error1').style.display='none';
+//             if(flag==1){
+//                 flag=1
+//             }
+//             else{
+//                 flag=0;
+//             }
+//            }
+//            else{
+//             document.getElementById('semail_error1').style.display='block';
+//             flag=0;
+//            } 
+//            if(document.getElementById("phone"+i).value.match('[0-9]{10}')==document.getElementById("phone"+i).value){
+//             document.getElementById('ph_error1').style.display='none';
+//             if(flag==1){
+//                 flag=1
+//             }
+//             else{
+//                 flag=0;
+//             }
+//            }
+//            else{
+//             document.getElementById('ph_error1').style.display='block';
+//             flag=0;
+//            }
+// }
+// if(flag==0){
+//         return false;
+//     }
+// if(flag==1){
+//         return true;
+//         // window.location.href="report.html";
+//     }
+
      if(no==2)
      {
          var flag=0;
@@ -163,8 +193,7 @@ if(flag==0){
     return false;
 }
 if(flag==1){
-    //return true;
-    window.location.href="report.html";
+    return true;
 }   
      }
 
@@ -299,8 +328,7 @@ else if(no==3)
         return false;
     }
     if(flag==1){
-        //return true;
-        window.location.href="report.html";
+        return true;
     }   
 }
 
@@ -477,8 +505,7 @@ else if(no==4){
         return false;       
     }
     if(flag==1){
-        //return true;
-        window.location.href="report.html";
+        return true;
     }   
 }
     }
