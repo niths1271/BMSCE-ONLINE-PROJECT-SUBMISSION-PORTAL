@@ -126,7 +126,8 @@ router.get("/viewproject/:projName",function(req,res){
 
 router.get("/grading", function(req, res){
   if (req.isAuthenticated() && req.user.ROLE === "TEACHER"){
-    connection.query(`SELECT * FROM PROJECT_DETAILS WHERE TEACHER_ID='${req.user.id}';`, function(err, reslt){
+    // console.log(req.user.id);
+    connection.query(`SELECT * FROM PROJECT_DETAILS WHERE TEACHER_ID=(SELECT TEACHER_ID FROM TEACHER_DETAILS WHERE USER_ID='${req.user.id}');`, function(err, reslt){
       if(err){
         console.log(err);
       }else{
@@ -147,7 +148,6 @@ router.post("/viewreport", function (req, res) {
       console.log(err);
     } else {
       console.log("Updated successfully");
-<<<<<<< Updated upstream
       var dat = {PROJECT_ID:req.body.projectId, TEXT:"your report has been approved" };
       connection.query(`INSERT INTO NOTIFICATION SET ?`, dat, function(eror){
         if(eror){
@@ -184,21 +184,11 @@ router.post("/viewreport", function (req, res) {
                         res.redirect("viewreport");
                          }
                     });
-              }
-              
+              }            
             }
-          });
-         
-=======
-      connection.query(`DELETE FROM DOCUMENTS WHERE STATUS="DISAPPROVED"`, function (err) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.redirect("viewreport");
->>>>>>> Stashed changes
+          });        
         }
-      });
-      
+      });     
     }
   });
 });
