@@ -47,7 +47,7 @@ router.get("/viewreport", function (req, res) {
 });
 router.get("/scheduleappointment", function (req, res) {
   if (req.isAuthenticated() && req.user.ROLE === "TEACHER"){
-    connection.query(`SELECT T.TEACHER_ID, T.EMAIL, P.PROJECT_ID, P.PROJECT_TITLE FROM TEACHER_DETAILS T, PROJECT_DETAILS P WHERE T.TEACHER_ID=P.TEACHER_ID AND T.USER_ID='${req.user.id}';`, function(err, reslt){
+    connection.query(`SELECT T.TEACHER_ID,T.NAME,T.EMAIL,P.PROJECT_ID,P.PROJECT_TITLE FROM TEACHER_DETAILS T, PROJECT_DETAILS P WHERE T.TEACHER_ID=P.TEACHER_ID AND T.USER_ID='${req.user.id}';`, function(err, reslt){
       if(err){
         console.log(err);
       }else{
