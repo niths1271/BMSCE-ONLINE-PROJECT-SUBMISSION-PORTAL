@@ -10,7 +10,7 @@ const saltRounds = 10;
 
 router.get("/admindashboard", function(req, res) {
     if (req.isAuthenticated() && req.user.ROLE==="ADMIN") {
-     connection.query(`SELECT COUNT(*) AS TOTAL FROM USER_DETAILS`, function(err, result1) {
+     connection.query(`SELECT COUNT(*) AS TEACHERNO FROM USER_DETAILS WHERE ROLE="TEACHER"`, function(err, result1) {
           if(err){
                console.log(err);
           }else{
@@ -25,8 +25,8 @@ router.get("/admindashboard", function(req, res) {
                     //    console.log(result1);
                     //    console.log(result2);
                     //    console.log(result3);
-                       let teachers=result1[0].TOTAL-result2.length-1;
-                       res.render("admindb",{usersno:result1[0].TOTAL,project:result2,student:result3,teachers:teachers});
+                       let total=result1[0].TEACHERNO+result2.length;
+                       res.render("admindb",{usersno:total,project:result2,student:result3,teachers:result1[0].TEACHERNO});
                   }
               });
           }
