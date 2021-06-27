@@ -90,33 +90,33 @@
                                     <p class="card-category">Complete this User profile</p>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/admin/addTeacher" method="POST">
+                                    <form action="/admin/addTeacher" id="RegisterValidation" method="POST">
                                         <div class="row">
                                             
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Username</label>
-                                                    <input type="text" name="username" class="form-control" autocomplete="off" >
+                                                <div class="form-group has-label">
+                                                    <label class="bmd-label-floating">Username*</label>
+                                                    <input type="text" name="username" class="form-control" autocomplete="off" required="true">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Email address</label>
-                                                    <input type="email" name="email" class="form-control" autocomplete="off" >
+                                                <div class="form-group has-label">
+                                                    <label class="bmd-label-floating">Email address*</label>
+                                                    <input type="email" name="email" class="form-control" autocomplete="off" required="true">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Name</label>
-                                                    <input type="text" name="name" class="form-control" autocomplete="false">
+                                                <div class="form-group has-label">
+                                                    <label class="bmd-label-floating">Name*</label>
+                                                    <input type="text" name="name" class="form-control" autocomplete="false" required="true">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Password</label>
-                                                    <input type="password" name="password" class="form-control" autocomplete="false" >
+                                                <div class="form-group has-label">
+                                                    <label class="bmd-label-floating">Password*</label>
+                                                    <input type="password" name="password" class="form-control" autocomplete="false" required="true">
                                                 </div>
                                             </div>
                                             
@@ -124,18 +124,19 @@
                                        
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="bmd-label-floating">Phone</label>
-                                                    <input type="long" name="phone" class="form-control" autocomplete="false" >
+                                                <div class="form-group has-label">
+                                                    <label class="bmd-label-floating">Phone*</label>
+                                                    <input type="long" name="phone" class="form-control" autocomplete="false" required="true">
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group has-label">
                                                     <label class="bmd-label-floating">Role</label>
                                                     <input type="text" name="role" class="form-control" value="TEACHER" readonly>
                                                 </div>
                                             </div>                                         
-                                        </div>                                  
+                                        </div>  
+                                        <div class="category form-category">* Required fields</div>                                
                                         <button type="submit" class="btn btn-primary pull-right" onclick="md.showNotification('top','center')">Add User</button>
                                         <div class="clearfix"></div>
                                     </form>
@@ -147,7 +148,6 @@
             </div>
         </div>
     </div>
-    <script src="/js/admin.js"></script>
     <!--   Core JS Files   -->
   <script src="/assets/js/core/jquery.min.js"></script>
   <script src="/assets/js/core/popper.min.js"></script>
@@ -157,6 +157,24 @@
   <script src="/assets/js/plugins/jquery.validate.min.js"></script>
     <!--  Notifications Plugin    -->
   <script src="/assets/js/plugins/bootstrap-notify.js"></script>
+  <!-- Bootstrap Notify -->
+  <script>
+      function showNotification(from, align){
+
+$.notify({
+    icon: "add_alert",
+    message: "Welcome to <b>Material Dashboard Pro</b> - a beautiful freebie for every web developer."
+
+},{
+    type: 'success',
+    timer: 4000,
+    placement: {
+        from: from,
+        align: align
+    }
+});
+}
+  </script>
 </body>
 
 </html>

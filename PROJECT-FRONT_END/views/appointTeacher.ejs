@@ -136,9 +136,9 @@
                                     <form action="/admin/appointTeacher" method="POST">
                                         <div class="row">                                          
                                             <div class="col-md-6">
-                                                <div class="form-group">
+                                                <div class="form-group has-label">
                                                     <label class="bmd-label-floating">Enter Teacher ID</label>
-                                                    <input type="text" name="teacherid" class="form-control" autocomplete="off" >
+                                                    <input type="text" name="teacherid" class="form-control" autocomplete="off" required="true">
                                                 </div>
                                             </div>
                                         </div>
@@ -181,6 +181,24 @@
   <script src="/assets/js/plugins/jquery.validate.min.js"></script>
     <!--  Notifications Plugin    -->
   <script src="/assets/js/plugins/bootstrap-notify.js"></script>
-  <script src="/js/admin.js"></script>
+  <!-- Bootstrap Notify -->
+  <!-- <script src="/js/admin.js"></script> -->
+  <script>
+      function showNotification(from, align){
+
+$.notify({
+    icon: "add_alert",
+    message: "Welcome to <b>Material Dashboard Pro</b> - a beautiful freebie for every web developer."
+
+},{
+    type: 'success',
+    timer: 4000,
+    placement: {
+        from: from,
+        align: align
+    }
+});
+}
+  </script>
 </body>
 </html>
