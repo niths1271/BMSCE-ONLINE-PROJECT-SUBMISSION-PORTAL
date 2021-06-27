@@ -90,7 +90,7 @@
                                     <p class="card-category">Complete this User profile</p>
                                 </div>
                                 <div class="card-body">
-                                    <form action="/admin/addTeacher" id="RegisterValidation" method="POST">
+                                    <form action="/admin/addTeacher" id="RegisterValidation" method="POST" onsubmit="showNotification('top','center')">
                                         <div class="row">
                                             
                                             <div class="col-md-6">
@@ -137,7 +137,7 @@
                                             </div>                                         
                                         </div>  
                                         <div class="category form-category">* Required fields</div>                                
-                                        <button type="submit" class="btn btn-primary pull-right" onclick="md.showNotification('top','center')">Add User</button>
+                                        <button type="submit" class="btn btn-primary pull-right">Add User</button>
                                         <div class="clearfix"></div>
                                     </form>
                                 </div>
@@ -160,18 +160,22 @@
   <!-- Bootstrap Notify -->
   <script>
       function showNotification(from, align){
-
 $.notify({
     icon: "add_alert",
-    message: "Welcome to <b>Material Dashboard Pro</b> - a beautiful freebie for every web developer."
-
+    message: "ADDED TEACHER SUCCESSFULLY"
 },{
     type: 'success',
-    timer: 4000,
+    delay: 20000,
+    allow_dismiss: true,
+	timer: 10000,
     placement: {
         from: from,
         align: align
-    }
+    },
+    animate: {
+		enter: 'animated fadeInDown',
+		exit: 'animated fadeOutUp'
+	}, 
 });
 }
   </script>

@@ -23,7 +23,7 @@
         <div class="grade">
             <% console.log("kikio",vals, gds); %>
             <%if(gds.length===0){ %>
-                <form action="/teacher/fgrade" method="post">
+                <form action="/teacher/fgrade" method="post" onsubmit="return func1();">
                     <table class="styled-table">
                         <caption class="cptn">Project Title: <%= title %></caption>
                         <thead>
@@ -71,7 +71,7 @@
                 </form>
             <% }else{ %>
                 <h2>Graded</h2>
-                <form action="/teacher/patchgrade" method="post">
+                <form action="/teacher/patchgrade" method="post" onsubmit="return func2();">
                 <table class="styled-table done">
                     <caption class="cptn">
                        Project Title: <%= title %>

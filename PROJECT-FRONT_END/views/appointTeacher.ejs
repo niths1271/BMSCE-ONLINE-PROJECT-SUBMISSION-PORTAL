@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="card-body">
                                     <%if(project.length>0){%>
-                                    <form action="/admin/appointTeacher" method="POST">
+                                    <form action="/admin/appointTeacher" method="POST" onsubmit="md.showNotification('top','center')">
                                         <div class="row">                                          
                                             <div class="col-md-6">
                                                 <div class="form-group has-label">
@@ -158,7 +158,7 @@
                                             <%}%>
                                         </div>
                                     </div>                                      
-                                        <button type="submit" class="btn btn-primary pull-right" onclick="md.showNotification('top','center')">Assign Teacher</button>
+                                        <button type="submit" class="btn btn-primary pull-right">Assign Teacher</button>
                                         <div class="clearfix"></div>
                                     </form>
                                     <%}else{%>
@@ -182,21 +182,24 @@
     <!--  Notifications Plugin    -->
   <script src="/assets/js/plugins/bootstrap-notify.js"></script>
   <!-- Bootstrap Notify -->
-  <!-- <script src="/js/admin.js"></script> -->
   <script>
       function showNotification(from, align){
-
 $.notify({
     icon: "add_alert",
-    message: "Welcome to <b>Material Dashboard Pro</b> - a beautiful freebie for every web developer."
-
+    message: "ASSIGNED TEACHER SUCCESSFULLY"
 },{
     type: 'success',
-    timer: 4000,
+    delay: 20000,
+    allow_dismiss: true,
+	timer: 10000,
     placement: {
         from: from,
         align: align
-    }
+    },
+    animate: {
+		enter: 'animated fadeInDown',
+		exit: 'animated fadeOutUp'
+	}, 
 });
 }
   </script>

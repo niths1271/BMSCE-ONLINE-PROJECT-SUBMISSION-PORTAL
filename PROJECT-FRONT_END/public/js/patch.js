@@ -20,3 +20,11 @@ setTimeout(submitting, 2000);
 function submitting(){
     document.getElementById("change").setAttribute("type", "submit");
 }
+
+function func1(){
+  alert("MARKS SUBMITTED SUCCESSFULLY");
+}
+
+function func2(){
+  alert("MARKS CHANGED SUCCESSFULLY");
+}
