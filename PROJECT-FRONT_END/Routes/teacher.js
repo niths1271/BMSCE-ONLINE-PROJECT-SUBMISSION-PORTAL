@@ -147,14 +147,50 @@ router.post("/viewreport", function (req, res) {
       console.log(err);
     } else {
       console.log("Updated successfully");
-      connection.query(`DELETE FROM DOCUMENTS WHERE STATUS="DISAPPROVED"`, function (err) {
-        if (err) {
-          console.log(err);
-        } else {
+      var dat = {PROJECT_ID:req.body.projectId, TEXT:"your report has been approved" };
+      connection.query(`INSERT INTO NOTIFICATION SET ?`, dat, function(eror){
+        if(eror){
+          console.log(eror);
+        }else{
+          console.log("notification pushed 1");
+          connection.query(`SELECT PROJECT_ID FROM DOCUMENTS WHERE STATUS = 'DISAPPROVED'`, function (ner, resll) {
+            if(ner){
+              console.log(ner);
+            }else{
+              if(resll.length > 0){
+                var dat2 = {PROJECT_ID:resll[0].PROJECT_ID, TEXT:"your report has been disapproved" };
+                connection.query(`INSERT INTO NOTIFICATION SET ?`, dat2, function(erora){
+                  if(erora){
+                    console.log(erora);
+                  }else{
+                    console.log("notification pushed 2" );
+                     connection.query(`DELETE FROM DOCUMENTS WHERE STATUS="DISAPPROVED"`, function (err) {
+                        if (err) {
+                        console.log(err);
+                        } else {
           
-          res.redirect("viewreport");
+                        res.redirect("viewreport");
+                         }
+                    });
+                  }
+                });
+              }else{
+                connection.query(`DELETE FROM DOCUMENTS WHERE STATUS="DISAPPROVED"`, function (err) {
+                        if (err) {
+                        console.log(err);
+                        } else {
+          
+                        res.redirect("viewreport");
+                         }
+                    });
+              }
+              
+            }
+          });
+         
         }
       });
+      
     }
   });
 });
@@ -178,11 +214,20 @@ router.post("/scheduleappointment", function(req, res){
        if(error){
          console.log(error);
        }else{
-         inserted +=1;
+         var dat = {PROJECT_ID:team, TEXT:"Teacher has scheduled a new appointment"};
+         connection.query(`INSERT INTO NOTIFICATION SET ?`, dat, function(eror){
+           if(eror){
+             console.log(eror);
+           }else{
+             console.log("noti pushed");
+             inserted +=1;
          console.log("successful!");
          if(inserted===teams.length){
            res.redirect("/teacher/scheduleappointment");
          }
+           }
+         });
+         
        }
      });
    });
@@ -195,13 +240,21 @@ router.post("/viewappointmentreqs",function(req, res){
       console.log(err);
     } else {
       console.log("Updated successfully");
-      connection.query(`DELETE FROM APPOINTMENT WHERE APPROVAL="DISAPPROVED"`, function (err) {
+      var dat = {PROJECT_ID:req.body.projectId, TEXT:`your app req has been ${req.body.approval}`};
+      connection.query(`INSERT INTO NOTIFICATION SET ?`, dat, function(eror){
+        if(eror){
+          console.log(eror);
+        }else{
+            connection.query(`DELETE FROM APPOINTMENT WHERE APPROVAL="DISAPPROVED"`, function (err) {
         if (err) {
           console.log(err);
         } else {
           res.redirect("/teacher/viewappointmentreqs");
         }
         });
+        }
+      });
+      
     }
   });
 });
@@ -260,7 +313,16 @@ router.post("/fgrade", function(req, res){
               console.log(errr);
             }else{
               console.log("projects updated");
-              res.redirect("/teacher/grading");
+              var dat = {PROJECT_ID:marks.PROJECT_ID, TEXT:`your project has been graded`};
+              connection.query(`INSERT INTO NOTIFICATION SET ?`, dat, function(eror){
+                if(eror){
+                  console.log(eror);
+                }else{
+                  console.log("noti pushed");
+                    res.redirect("/teacher/grading");
+                }
+              });
+              
             }
           });
           

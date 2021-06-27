@@ -22,7 +22,11 @@ router.get("/report", function(req, res) {
             if (err) {
                 console.log(err);
             } else {
-                connection.query(`SELECT LINK,TIMEOFUPLOAD,STATUS FROM DOCUMENTS WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(err, result1) {
+               connection.query(`SELECT TEXT FROM NOTIFICATION WHERE PROJECT_ID = '${result[0].PROJECT_ID}';`, function(eror, ress){
+                   if(eror){
+                       console.log(eror);
+                   }else{
+                        connection.query(`SELECT LINK,TIMEOFUPLOAD,STATUS FROM DOCUMENTS WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(err, result1) {
                     if (err) {
                         console.log(err);
                     } else {
@@ -33,7 +37,8 @@ router.get("/report", function(req, res) {
                                 projectid: result[0].PROJECT_ID,
                                 plink: result1[0].LINK,
                                 time: result1[0].TIMEOFUPLOAD,
-                                status: result1[0].STATUS
+                                status: result1[0].STATUS,
+                                noti: ress
                             });
                         } else {
                             res.render("report", {
@@ -41,10 +46,13 @@ router.get("/report", function(req, res) {
                                 pname: result[0].PROJECT_TITLE,
                                 projectid: result[0].PROJECT_ID,
                                 status:result[0].STATUS,
+                                noti:ress
                             });
                         }
                     }
                 });
+                   }
+               });
             }
         });
     } else {
@@ -65,8 +73,11 @@ router.get("/appointment", function(req, res) {
                     if (error) {
                         console.log(error);
                     } else {
-
-                        if (reslt.length > 0) {
+                        connection.query(`SELECT TEXT FROM NOTIFICATION WHERE PROJECT_ID = '${result[0].PROJECT_ID}';`, function(eror, ress){
+                   if(eror){
+                       console.log(eror);
+                   }else{
+                     if (reslt.length > 0) {
                             console.log(reslt[0]);
                             done.scheduled = 1;
                             done.pid = reslt[0].PROJECT_ID;
@@ -76,7 +87,12 @@ router.get("/appointment", function(req, res) {
                             done.approval = reslt[0].APPROVAL;
 
                         }
+                        done.noti = ress;
                         res.render("appointment", done);
+                   }
+                });
+
+                       
 
                     }
                 });
@@ -102,7 +118,11 @@ router.get("/psub", function(req, res){
                     if (error) {
                         console.log(error);
                     } else {
-                        if (reslt.length > 0) {
+                        connection.query(`SELECT TEXT FROM NOTIFICATION WHERE PROJECT_ID = '${result[0].PROJECT_ID}';`, function(eror, ress){
+                   if(eror){
+                       console.log(eror);
+                   }else{
+                    if (reslt.length > 0) {
                             console.log(reslt[0]);
                             send.pid = reslt[0].PROJECT_ID;
                             send.submitted = 1;
@@ -111,7 +131,11 @@ router.get("/psub", function(req, res){
                             send.structure= reslt[0].STRUCTURE;
                             send.date= reslt[0].PDATE;
                         }
+                        send.noti = ress;
                         res.render("psub", send);
+                   }
+                });
+                        
                     }
                 });
 
@@ -202,7 +226,7 @@ router.post('/report', function(req, res) {
                     file.mv('public/docs/' + uuidname + file.name);
                     console.log("Inserted Successfully");
                     var line = {TEXT: "Your report has been submitted for verification", PROJECT_ID:result[0].PROJECT_ID};
-                    connection.query(`INSERT INTO NOTIFICATION ?`, line , (eror)=>{
+                    connection.query(`INSERT INTO NOTIFICATION SET ?`, line , (eror)=>{
                         if(eror){
                             console.log("notification error!");
                         }else{
@@ -238,7 +262,7 @@ router.post("/appointment", function(req, res) {
                 else {
                     console.log("Inserted Successfully");
                     var line = {TEXT: "You have requested for an appointment", PROJECT_ID:result[0].PROJECT_ID};
-                    connection.query(`INSERT INTO NOTIFICATION ?`, line , (eror)=>{
+                    connection.query(`INSERT INTO NOTIFICATION SET ?`, line , (eror)=>{
                         if(eror){
                             console.log("notification error!");
                         }else{
@@ -275,9 +299,9 @@ router.post("/psub", function(req, res){
                 else {
                     console.log("Inserted Successfully");
                     var line = {TEXT: "You have submitted your project", PROJECT_ID:result[0].PROJECT_ID};
-                    connection.query(`INSERT INTO NOTIFICATION ?`, line , (eror)=>{
+                    connection.query(`INSERT INTO NOTIFICATION SET ?`, line , (eror)=>{
                         if(eror){
-                            console.log("notification error!");
+                            console.log(eror);
                         }else{
                             console.log("notification pushed!");
                             res.redirect("/student/psub");

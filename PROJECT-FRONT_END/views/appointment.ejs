@@ -30,16 +30,12 @@
                 <div class="notifications1">
                     <h3 style="color: #593535;">NOTIFICATIONS:</h3>
                     <ul>
-                        <li>LAST DAY TO SUBMIT YOUR REPORT IS-29TH SEPTEMBER</li>
-                        <hr>
-                        <li>APPOINTMENT HAS BEEN SCHEDULED AT 14TH NOV-5:45PM</li>
-                        <hr>
-                        <li>LAST DAY TO SUBMIT YOUR PROJECT IS-29TH NOVEMBER</li>
-                        <hr>
-                        <li>PRESENTATION HAS BEEN SCHEDULED AT:17TH OCTOBER-3:45PM</li>
-                        <hr>
-                        <li>FINAL GRADES HAVE BEEN GIVEN FOR YOUR PROJECT SUBMISSION</li>
-                        <hr>
+                        <% noti.forEach(not=>{ %>
+                            <li>
+                                <%= not.TEXT %>
+                            </li>
+                            <hr>
+                            <%}); %>
                     </ul>
                 </div>
             </div>
