@@ -64,44 +64,49 @@
                               submitted by teams:
                          </h2>
                          <table id="teachers" class="table">
-                              
-                                   <tr>
-                                        <th>Section</th>
-                                        <th>Teams</th>
-                                        <th>Topics</th>
-                                        <th>Structure</th>
-                                        <th>Link</th>
-                                   </tr>
-                         
-                                   <%for(var i=0;i<docs.length;i++){%>
-                                   <tr>
-                                        <td><%=result[i].SECTION%></td>
-                                        <td>
-                                             <ul>
-                                                  <% for(let j = 0; j<result[i].MEMBERS_NO;j++){ %>
-                                                  <li><%= docs[i][j].NAME %></li>
-                                                  <% }  %>
-                                             </ul>
-                                        </td>
-                                        <td><%=result[i].PROJECT_TITLE%></td>
 
-                                        <%if((docs[i].length-result[i].MEMBERS_NO)!=0){%>
-                                        <td>
-                                             <%var index=result[i].MEMBERS_NO;%>
-                                             <p><%=docs[i][index].STRUCTURE.substring(0,20)%>...<a target="_blank" href="/teacher/viewproject/<%=result[i].PROJECT_TITLE%>">more</a></p>
-                                        </td>
-                                        <td class="Link of website" style="font-size: 18px;">
-                                             <%var j=docs[i].length-1;%>
-                                             <a href="<%=docs[i][j].LINK%>" target="_blank" >
-                                                  <%=docs[i][j].LINK%></a>
-                                        </td>                               
+                              <tr>
+                                   <th>Section</th>
+                                   <th>Teams</th>
+                                   <th>Topics</th>
+                                   <th>Structure</th>
+                                   <th>Link</th>
+                              </tr>
+                              <%if(result2.length==0){%>
+                              <tr>
+
+                              </tr>
                               <%}else{%>
-                                    <td>NOT YET SUBMITTED</td>
-                                    <td>NOT YET SUBMITTED</td>
-                              <%}%>
+                              <%for(var i=0;i<docs.length;i++){%>
+                              <tr>
+                                   <td><%=result[i].SECTION%></td>
+                                   <td>
+                                        <ul>
+                                             <% for(let j = 0; j<result[i].MEMBERS_NO;j++){ %>
+                                             <li><%= docs[i][j].NAME %></li>
+                                             <% }  %>
+                                        </ul>
+                                   </td>
+                                   <td><%=result[i].PROJECT_TITLE%></td>
+
+                                   <%if((docs[i].length-result[i].MEMBERS_NO)!=0){%>
+                                   <td>
+                                        <%var index=result[i].MEMBERS_NO;%>
+                                        <p><%=docs[i][index].STRUCTURE.substring(0,20)%>...<a target="_blank"
+                                                  href="/teacher/viewproject/<%=result[i].PROJECT_TITLE%>">more</a></p>
+                                   </td>
+                                   <td class="Link of website" style="font-size: 18px;">
+                                        <%var j=docs[i].length-1;%>
+                                        <a href="<%=docs[i][j].LINK%>" target="_blank">
+                                             <%=docs[i][j].LINK%></a>
+                                   </td>
+                                   <%}else{%>
+                                   <td>NOT YET SUBMITTED</td>
+                                   <td>NOT YET SUBMITTED</td>
+                                   <%}%>
                                    <%}%>
                               </tr>
-                              
+                              <%}%>
                          </table>
                     </div>
                </div>

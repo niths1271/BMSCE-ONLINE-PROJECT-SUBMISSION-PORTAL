@@ -15,15 +15,30 @@ router.get("/viewreport", function (req, res) {
       if (err) {
         console.log(err);
       } else {
-        //console.log(result1);
+        console.log(result1.length);
+        if(result1.length==0){
+          connection.query(`SELECT TEACHER_ID,NAME,EMAIL FROM TEACHER_DETAILS WHERE USER_ID='${req.user.id}';`, function (err, result2) {
+            if(err){
+              console.log(err);
+            }else{
+          res.render("treport", {
+            result2: result1,
+            result:result2,
+          });
+        }
+        });
+        }
+        else{
         var docsObj = [];
         getreportFinal(result1,docsObj).then(() => {
           console.log("got", docsObj);
           res.render("treport", {
+            result2:result1,
             result: result1,
             values: docsObj
           });
         });
+      }
       }
     });
   } else {
@@ -67,14 +82,28 @@ router.get("/viewproject", function (req, res) {
         console.log(err);
       } else {
         //console.log(result1);
+        if(result1.length==0){
+          connection.query(`SELECT TEACHER_ID,NAME,EMAIL FROM TEACHER_DETAILS WHERE USER_ID='${req.user.id}';`, function (err, result2) {
+            if(err){
+              console.log(err);
+            }else{
+          res.render("tviewprojects", {
+            result2: result1,
+            result:result2,
+          });
+        }
+        });
+        }else{
         var projdocsObj = [];
         getprojFinal(result1,projdocsObj).then(() => {
           console.log(projdocsObj);
           res.render("tviewprojects", {
+            result2: result1,
             result:result1,
             docs:projdocsObj
           });
         });
+      }
       }
     });
   } else {
