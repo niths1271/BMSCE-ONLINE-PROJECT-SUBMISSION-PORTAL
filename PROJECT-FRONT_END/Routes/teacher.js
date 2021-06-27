@@ -151,6 +151,7 @@ router.post("/viewreport", function (req, res) {
         if (err) {
           console.log(err);
         } else {
+          
           res.redirect("viewreport");
         }
       });

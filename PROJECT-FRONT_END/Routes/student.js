@@ -6,6 +6,7 @@ const insertMembers = require('../controllers/insertmembers');
 var uuid = require('uuid');
 const { report } = require(".");
 
+
 router.get("/submitprojectdetails", function(req, res) {
     if (req.isAuthenticated() && req.user.ROLE==="STUDENT") {
         res.render("submitprojectdetails");
@@ -200,7 +201,16 @@ router.post('/report', function(req, res) {
                 else {
                     file.mv('public/docs/' + uuidname + file.name);
                     console.log("Inserted Successfully");
-                    res.redirect("/student/report");
+                    var line = {TEXT: "Your report has been submitted for verification", PROJECT_ID:result[0].PROJECT_ID};
+                    connection.query(`INSERT INTO NOTIFICATION ?`, line , (eror)=>{
+                        if(eror){
+                            console.log("notification error!");
+                        }else{
+                            console.log("notification pushed!");
+                            res.redirect("/student/report");
+                        }
+                    });
+                    
                 }
             });
         }
@@ -227,7 +237,16 @@ router.post("/appointment", function(req, res) {
                 if (err) throw err
                 else {
                     console.log("Inserted Successfully");
-                    res.redirect("/student/appointment");
+                    var line = {TEXT: "You have requested for an appointment", PROJECT_ID:result[0].PROJECT_ID};
+                    connection.query(`INSERT INTO NOTIFICATION ?`, line , (eror)=>{
+                        if(eror){
+                            console.log("notification error!");
+                        }else{
+                            console.log("notification pushed!");
+                            res.redirect("/student/appointment");
+                        }
+                    });
+                    
                 }
             });
         }
@@ -255,7 +274,16 @@ router.post("/psub", function(req, res){
                 }
                 else {
                     console.log("Inserted Successfully");
-                    res.redirect("/student/psub");
+                    var line = {TEXT: "You have submitted your project", PROJECT_ID:result[0].PROJECT_ID};
+                    connection.query(`INSERT INTO NOTIFICATION ?`, line , (eror)=>{
+                        if(eror){
+                            console.log("notification error!");
+                        }else{
+                            console.log("notification pushed!");
+                            res.redirect("/student/psub");
+                        }
+                    });
+                    
                 }
             });
         }
