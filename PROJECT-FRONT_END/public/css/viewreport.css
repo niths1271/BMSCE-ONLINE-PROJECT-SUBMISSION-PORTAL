@@ -161,7 +161,7 @@ body {
 .flip-box {
   background-color: transparent;
   width: 350px;
-  height: 150px;
+  height: 110px;
   border: 5px solid #f1f1f1;
   perspective: 1000px;
   margin: 0.5cm;
@@ -186,7 +186,7 @@ body {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  padding: 30px;
+  padding: 20px;
 }
 
 .flip-box-front {
