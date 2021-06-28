@@ -156,8 +156,15 @@ router.get("/grades", function(req, res){
                     if (err) {
                         console.log(err);
                     } else{               
-                        console.log(result1);                
-                            res.render("pregrades",{pname:result[0].PROJECT_TITLE,res:result1});                                        
+                        console.log(result1);     
+                        connection.query(`SELECT TEXT FROM NOTIFICATION WHERE PROJECT_ID = '${result[0].PROJECT_ID}';`, function(eror, ress){
+                            if(eror){
+                                console.log(eror);
+                            }else{
+                                res.render("pregrades",{pname:result[0].PROJECT_TITLE,res:result1, noti:ress}); 
+                            }
+                        });           
+                                                                   
                     }
         });
     }
