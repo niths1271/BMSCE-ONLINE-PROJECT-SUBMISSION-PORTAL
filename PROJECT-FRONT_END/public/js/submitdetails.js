@@ -1,59 +1,40 @@
-function Validate() {
-    var no = document.getElementById('members').options[document.getElementById('members').selectedIndex].value;
-    var text=document.getElementById('projecttitle').value;
-    if(text=="")
-    {
-        alert("PLEASE ENTER THE PROJECT TITLE");
-        return false;
-    }
-    if (no == 2) {
-        alert("YOU HAVE SELECTED ONLY TWO MEMBERS IN YOUR TEAM");
-    }
-     else if (no == 3) {
-        alert("YOU HAVE SELECTED THREE MEMBERS IN YOUR TEAM");
-    }
-    
-     else if (no == 4) {
-        alert("YOU HAVE SELECTED FOUR MEMBERS IN YOUR TEAM");
-    }
 
-
-    }
 
     function validate1(){
-          var no = document.getElementById('members').options[document.getElementById('members').selectedIndex].value;
+         var n = document.getElementById("num").value;
+         var no = parseInt(n);
 
-          var usn1=document.getElementById("usn1");
-          var email1=document.getElementById("e1");       
-          var phno1=document.getElementById("phone1");
+    //       var usn1=document.getElementById("usn1");
+    //       var email1=document.getElementById("e1");       
+    //       var phno1=document.getElementById("phone1");
           
-         var u1result= usn1.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
-         var e1result = email1.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
-         var p1result=phno1.value.match('[0-9]{10}');
+    //      var u1result= usn1.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+    //      var e1result = email1.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+    //      var p1result=phno1.value.match('[0-9]{10}');
  
-         var usn2=document.getElementById("usn2");
-         var email2=document.getElementById("e2");       
-         var phno2=document.getElementById("phone2");
+    //      var usn2=document.getElementById("usn2");
+    //      var email2=document.getElementById("e2");       
+    //      var phno2=document.getElementById("phone2");
          
-        var u2result= usn2.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
-        var e2result = email2.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
-        var p2result=phno2.value.match('[0-9]{10}');
+    //     var u2result= usn2.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+    //     var e2result = email2.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+    //     var p2result=phno2.value.match('[0-9]{10}');
 
-        var usn3=document.getElementById("usn3");
-        var email3=document.getElementById("e3");       
-        var phno3=document.getElementById("phone3");
+    //     var usn3=document.getElementById("usn3");
+    //     var email3=document.getElementById("e3");       
+    //     var phno3=document.getElementById("phone3");
         
-       var u3result= usn3.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
-       var e3result = email3.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
-       var p3result=phno3.value.match('[0-9]{10}');
+    //    var u3result= usn3.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+    //    var e3result = email3.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+    //    var p3result=phno3.value.match('[0-9]{10}');
 
-       var usn4=document.getElementById("usn4");
-       var email4=document.getElementById("e4");       
-       var phno4=document.getElementById("phone4");
+    //    var usn4=document.getElementById("usn4");
+    //    var email4=document.getElementById("e4");       
+    //    var phno4=document.getElementById("phone4");
        
-      var u4result= usn4.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
-      var e4result = email4.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
-      var p4result=phno4.value.match('[0-9]{10}');
+    //   var u4result= usn4.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+    //   var e4result = email4.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+    //   var p4result=phno4.value.match('[0-9]{10}');
 
 // var flag=0;
 // for(var i=0;i<=no;i++){
@@ -107,6 +88,21 @@ function Validate() {
 
      if(no==2)
      {
+          var usn1=document.getElementById("usn1");
+          var email1=document.getElementById("e1");       
+          var phno1=document.getElementById("phone1");
+          
+         var u1result= usn1.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+         var e1result = email1.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+         var p1result=phno1.value.match('[0-9]{10}');
+ 
+         var usn2=document.getElementById("usn2");
+         var email2=document.getElementById("e2");       
+         var phno2=document.getElementById("phone2");
+         
+        var u2result= usn2.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+        var e2result = email2.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+        var p2result=phno2.value.match('[0-9]{10}');
          var flag=0;
        if(u1result== usn1.value)
        {
@@ -199,6 +195,31 @@ if(flag==1){
 
 else if(no==3)
 {
+    
+          var usn1=document.getElementById("usn1");
+          var email1=document.getElementById("e1");       
+          var phno1=document.getElementById("phone1");
+          
+         var u1result= usn1.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+         var e1result = email1.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+         var p1result=phno1.value.match('[0-9]{10}');
+ 
+         var usn2=document.getElementById("usn2");
+         var email2=document.getElementById("e2");       
+         var phno2=document.getElementById("phone2");
+         
+        var u2result= usn2.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+        var e2result = email2.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+        var p2result=phno2.value.match('[0-9]{10}');
+
+        var usn3=document.getElementById("usn3");
+        var email3=document.getElementById("e3");       
+        var phno3=document.getElementById("phone3");
+        
+       var u3result= usn3.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+       var e3result = email3.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+       var p3result=phno3.value.match('[0-9]{10}');
+
     var flag=0;
     if(u1result== usn1.value)
     {
@@ -333,6 +354,37 @@ else if(no==3)
 }
 
 else if(no==4){
+     var usn1=document.getElementById("usn1");
+          var email1=document.getElementById("e1");       
+          var phno1=document.getElementById("phone1");
+          
+         var u1result= usn1.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+         var e1result = email1.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+         var p1result=phno1.value.match('[0-9]{10}');
+ 
+         var usn2=document.getElementById("usn2");
+         var email2=document.getElementById("e2");       
+         var phno2=document.getElementById("phone2");
+         
+        var u2result= usn2.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+        var e2result = email2.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+        var p2result=phno2.value.match('[0-9]{10}');
+
+        var usn3=document.getElementById("usn3");
+        var email3=document.getElementById("e3");       
+        var phno3=document.getElementById("phone3");
+        
+       var u3result= usn3.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+       var e3result = email3.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+       var p3result=phno3.value.match('[0-9]{10}');
+
+       var usn4=document.getElementById("usn4");
+       var email4=document.getElementById("e4");       
+       var phno4=document.getElementById("phone4");
+       
+      var u4result= usn4.value.match('1BM[0-9][0-9][A-Z][A-Z][0-9]{3}');
+      var e4result = email4.value.match('[a-z]+.[a-z][a-z][0-9][0-9]@bmsce.ac.in');
+      var p4result=phno4.value.match('[0-9]{10}');
     var flag=0;
     if(u1result== usn1.value)
     {
