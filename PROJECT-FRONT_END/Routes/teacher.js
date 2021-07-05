@@ -157,6 +157,7 @@ router.post("/viewreport", function (req, res) {
           console.log(eror);
         }else{
           console.log("notification pushed 1");
+          res.redirect("/teacher/viewreport");
         }
         }); 
       }else{
@@ -176,21 +177,12 @@ router.post("/viewreport", function (req, res) {
                         console.log(err);
                         } else {
           
-                        res.redirect("viewreport");
+                        res.redirect("/teacher/viewreport");
                          }
                     });
                   }
                 });
-              }else{
-                connection.query(`DELETE FROM DOCUMENTS WHERE STATUS="DISAPPROVED"`, function (err) {
-                        if (err) {
-                        console.log(err);
-                        } else {
-          
-                        res.redirect("viewreport");
-                         }
-                    });
-              }            
+              }          
             }
           });  
       }
