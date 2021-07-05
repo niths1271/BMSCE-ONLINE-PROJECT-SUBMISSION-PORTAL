@@ -148,14 +148,20 @@ router.post("/viewreport", function (req, res) {
     if (err) {
       console.log(err);
     } else {
+
       console.log("Updated successfully");
-      var dat = {PROJECT_ID:req.body.projectId, TEXT:"your report has been approved" };
+      if(req.body.approval == "APPROVED"){
+        var dat = {PROJECT_ID:req.body.projectId, TEXT:"your report has been approved" };
       connection.query(`INSERT INTO NOTIFICATION SET ?`, dat, function(eror){
         if(eror){
           console.log(eror);
         }else{
           console.log("notification pushed 1");
-          connection.query(`SELECT PROJECT_ID FROM DOCUMENTS WHERE STATUS = 'DISAPPROVED'`, function (ner, resll) {
+          res.redirect("/teacher/viewreport");
+        }
+        }); 
+      }else{
+        connection.query(`SELECT PROJECT_ID FROM DOCUMENTS WHERE STATUS = 'DISAPPROVED'`, function (ner, resll) {
             if(ner){
               console.log(ner);
             }else{
@@ -171,25 +177,19 @@ router.post("/viewreport", function (req, res) {
                         console.log(err);
                         } else {
           
-                        res.redirect("viewreport");
+                        res.redirect("/teacher/viewreport");
                          }
                     });
                   }
                 });
-              }else{
-                connection.query(`DELETE FROM DOCUMENTS WHERE STATUS="DISAPPROVED"`, function (err) {
-                        if (err) {
-                        console.log(err);
-                        } else {
-          
-                        res.redirect("viewreport");
-                         }
-                    });
-              }            
+              }          
             }
-          });        
-        }
-      });     
+          });  
+      }
+       
+                
+        
+         
     }
   });
 });
