@@ -152,7 +152,7 @@ router.get("/grades", function(req, res){
             if (err) {
                 console.log(err);
             } else{              
-                connection.query(`SELECT S.NAME,S.STUD_ID FROM GRADES G,STUDENT_DETAILS S WHERE G.STUDENT_ID=S.STUD_ID AND G.PROJECT_ID= '${result[0].PROJECT_ID}' ;`, function(err, result1){
+                connection.query(`SELECT S.NAME,S.USN FROM GRADES G,STUDENT_DETAILS S WHERE G.USN=S.USN AND G.PROJECT_ID= '${result[0].PROJECT_ID}' ;`, function(err, result1){
                     if (err) {
                         console.log(err);
                     } else{               
@@ -341,7 +341,7 @@ router.post("/grades",function(req,res){
                 [6,result[0].ORALCOMMUNICATION]
             ]
          const totalMarks=result[0].TOTAL_CIE+result[0].TOTAL_SEE;
-         connection.query(`SELECT NAME,USN,EMAIL,PHONE_NO FROM STUDENT_DETAILS WHERE STUD_ID='${req.body.memberid}';`,function(err,result1){
+         connection.query(`SELECT NAME,USN,EMAIL,PHONE_NO FROM STUDENT_DETAILS WHERE USN='${req.body.memberid}';`,function(err,result1){
              if(err){
                  console.log(err);
              }

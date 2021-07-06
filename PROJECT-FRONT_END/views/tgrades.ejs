@@ -34,7 +34,7 @@
                             <th>CSS (0-10)</th>
                             <th>REPORT (0-10)</th>
                             <th>ORAL COMMUNICATION (0-10)</th>
-                
+                            <th>SEE(0-50)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -59,7 +59,7 @@
                                     <td>
                                         <input type="number" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION" required min="0" max="10">
                                     </td>
-                                    <input type="hidden" value=<%=val.STUD_ID%> name="STUD_IDs">
+                                    <input type="hidden" value=<%=val.USN%> name="STUD_IDs">
                                     <input type="hidden" value=<%=val.PROJECT_ID%> name="PROJECT_ID">
                                 </tr>
                                 <% }); %>

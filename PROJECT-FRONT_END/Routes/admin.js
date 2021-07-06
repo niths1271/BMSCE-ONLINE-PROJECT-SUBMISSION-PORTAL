@@ -18,7 +18,7 @@ router.get("/admindashboard", function(req, res) {
           if (err) {
               console.log(err);
           } else {
-              connection.query(`SELECT DISTINCT NAME,USN,EMAIL,PHONE_NO FROM STUDENT_DETAILS`, function(err, result3) {
+              connection.query(`SELECT NAME,USN,EMAIL,PHONE_NO FROM STUDENT_DETAILS`, function(err, result3) {
                   if (err) {
                       console.log(err);
                   } else {

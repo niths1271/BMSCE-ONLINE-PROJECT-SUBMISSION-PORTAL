@@ -6,7 +6,7 @@ function getprojFinal(result1,projdocsObj) {
        result1.forEach((result, index) => {
          function names() {
            return new Promise(function (resolve, reject) {
-             const query1 = `SELECT PROJECT_ID,NAME FROM STUDENT_DETAILS WHERE PROJECT_ID='${result.PROJECT_ID}';`;
+             const query1 = `SELECT P.PROJECT_ID,S.NAME FROM STUDENT_DETAILS S,STUD_PROJ_DETAILS P WHERE S.USN=P.USN AND P.PROJECT_ID='${result.PROJECT_ID}';`;
              connection.query(query1, function (err, result2) {
                if (err) {
                  console.log(err);
