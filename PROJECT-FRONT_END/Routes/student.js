@@ -323,8 +323,7 @@ router.post("/psub", function(req, res){
 
 router.post("/grades",function(req,res){
     const query=`SELECT HTML,JAVASCRIPT,CSS,REPORT,ORALCOMMUNICATION,
-                (HTML+JAVASCRIPT+CSS+REPORT+ORALCOMMUNICATION) AS TOTAL_CIE,
-                TOTAL_SEE FROM GRADES WHERE STUDENT_ID ='${req.body.memberid}';`;
+                CIE,TOTAL_SEE FROM GRADES WHERE STUDENT_ID ='${req.body.memberid}';`;
     connection.query(query,function(err, result) {
         if(err){
             console.log(err);
@@ -340,7 +339,7 @@ router.post("/grades",function(req,res){
                 [5,result[0].REPORT],
                 [6,result[0].ORALCOMMUNICATION]
             ]
-         const totalMarks=result[0].TOTAL_CIE+result[0].TOTAL_SEE;
+         const totalMarks=result[0].CIE+result[0].TOTAL_SEE;
          connection.query(`SELECT NAME,USN,EMAIL,PHONE_NO FROM STUDENT_DETAILS WHERE USN='${req.body.memberid}';`,function(err,result1){
              if(err){
                  console.log(err);
@@ -349,7 +348,7 @@ router.post("/grades",function(req,res){
              console.log(result1);
              console.log(JSON.stringify(googleChartArray));
            res.render("grades",{dataArray:JSON.stringify(googleChartArray),
-                                cie:result[0].TOTAL_CIE*2,
+                                cie:result[0].CIE*2,
                                 see:result[0].TOTAL_SEE*2,
                                 total:totalMarks,
                                 name:result1[0].NAME,
