@@ -29,6 +29,7 @@
                         <thead>
                             <tr>
                             <th>USN</th>
+                            <th>CIE</th>
                             <th>HTML (0-10)</th>
                             <th>JAVASCRIPT (0-10)</th>
                             <th>CSS (0-10)</th>
@@ -45,6 +46,9 @@
                                         <%= val.USN %>
                                     </td>
                                     <td>
+                                        <input type="number" name="CIE" id="CIE" required min="0" max="50">
+                                    </td>
+                                    <td>
                                         <input type="number" name="HTML" id="HTML" required min="0" max="10">
                                     </td>
                                     <td>
@@ -59,8 +63,11 @@
                                     <td>
                                         <input type="number" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION" required min="0" max="10">
                                     </td>
+                                    <td>
+                                        <input type="number" name="SEE" id="SEE" required min="0" max="50">
+                                    </td>
                                     <input type="hidden" value=<%=val.USN%> name="STUD_IDs">
-                                    <input type="hidden" value=<%=val.PROJECT_ID%> name="PROJECT_ID">
+                                    <input type="hidden" value=<%=id%> name="PROJECT_ID">
                                 </tr>
                                 <% }); %>
                 
@@ -79,11 +86,13 @@
                     <thead>
                         <tr>
                             <th>USN (0-10)</th>
+                            <th>CIE</th>
                             <th>HTML (0-10)</th>
                             <th>JAVASCRIPT (0-10)</th>
                             <th>CSS (0-10)</th>
                             <th>REPORT (0-10)</th>
                             <th>ORAL COMMUNICATION (0-10)</th>
+                            <th>SEE(0-50)</th>
                 
                         </tr>
                     </thead>
@@ -93,6 +102,9 @@
                             <tr>
                                 <td>
                                     <%= vals[index].USN %>
+                                </td>
+                                <td>
+                                    <input type="number" name="CIE" id="CIE" class="edit" value="<%= gd.CIE %>" readonly>
                                 </td>
                                
                                 <td>
@@ -110,8 +122,11 @@
                                 <td>
                                     <input type="number" class="edit" name="ORALCOMMUNICATION" id="ORALCOMMUNICATION" value="<%= gd.ORALCOMMUNICATION %>" readonly>
                                 </td>
-                                <input type="hidden" value=<%=vals[index].STUD_ID%> name="STUD_IDs">
-                                <input type="hidden" value=<%=vals[index].PROJECT_ID%> name="PROJECT_ID">
+                                <td>
+                                    <input type="number" class="edit" name="SEE" id="SEE" value="<%= gd.TOTAL_SEE %>" readonly>
+                                </td>
+                                <input type="hidden" value=<%=vals[index].USN%> name="STUD_IDs">
+                                <input type="hidden" value=<%=id%> name="PROJECT_ID">
                                 <input type="hidden" name="patch" value="yes">
                             </tr>
                             <% }); %>

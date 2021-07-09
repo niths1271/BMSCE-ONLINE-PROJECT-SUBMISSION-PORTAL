@@ -260,15 +260,16 @@ router.post("/viewappointmentreqs",function(req, res){
 
 router.post("/grading", function(req, res){
   console.log("huki",req.body);
-  connection.query(`SELECT * FROM STUDENT_DETAILS WHERE PROJECT_ID='${req.body.PROJECT_ID}';`, function(err, reslt){
+  connection.query(`SELECT * FROM STUDENT_DETAILS WHERE USN = ANY (SELECT USN FROM STUD_PROJ_DETAILS WHERE PROJECT_ID='${req.body.PROJECT_ID}');`, function(err, reslt){
     if(err){
       console.log(err);
     }else{
-      connection.query(`SELECT * FROM GRADES WHERE PROJECT_ID = '${reslt[0].PROJECT_ID}'`, function(eror, resst){
+      connection.query(`SELECT * FROM GRADES WHERE PROJECT_ID = '${req.body.PROJECT_ID}'`, function(eror, resst){
         if(eror){
           console.log(eror);
         }else{
-          res.render("tgrades", {vals:reslt, gds:resst, title:req.body.PROJECT_TITLE});
+          
+          res.render("tgrades", {vals:reslt, gds:resst, title:req.body.PROJECT_TITLE, id:req.body.PROJECT_ID});
         }
       });
       
@@ -283,26 +284,28 @@ router.post("/fgrade", function(req, res){
   console.log("grade", grades);
   var inserted = 0;
   grades.STUD_IDs.forEach((student, index)=>{
+    var cie = parseInt(grades.CIE[index]);
     var html = parseInt(grades.HTML[index]);
     var css = parseInt(grades.CSS[index]);
     var js = parseInt(grades.JAVASCRIPT[index]);
     var report = parseInt(grades.REPORT[index]);
     var oc = parseInt(grades.ORALCOMMUNICATION[index]);
-    var total = html + css+ js + oc + report;
+    var total = parseInt(grades.SEE[index]);
     var marks = {
+      CIE:cie,
       HTML:html,
       JAVASCRIPT:js,
       CSS:css,
       REPORT:report,
       ORALCOMMUNICATION:oc,
       PROJECT_ID:parseInt(grades.PROJECT_ID[index]),
-      STUDENT_ID:parseInt(student),
+      USN:student,
       TOTAL_SEE: total
     };
     console.log("niru",marks);
     connection.query(`INSERT INTO GRADES SET ?`, marks, function(error, result, fields){
       if(error){
-        console.log(error);
+        console.log(error, "GRADE ERROR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       }else{
         console.log("inserted!");
         inserted = inserted +1;
@@ -333,18 +336,19 @@ router.post("/fgrade", function(req, res){
 });
 
 router.post("/patchgrade", function(req, res){
-  console.log(req.body);
+  console.log("HURRR",req.body);
   var grades = req.body;
   var inserted = 0;
   grades.STUD_IDs.forEach((id, index)=>{
+    var cie = parseInt(grades.CIE[index]);
       var html = parseInt(grades.HTML[index]);
     var css = parseInt(grades.CSS[index]);
     var js = parseInt(grades.JAVASCRIPT[index]);
     var report = parseInt(grades.REPORT[index]);
     var oc = parseInt(grades.ORALCOMMUNICATION[index]);
-    var total = html + css+ js + oc + report;
+    var total = parseInt(grades.SEE[index]);
     
-    connection.query(`UPDATE GRADES SET HTML = '${html}', CSS = '${css}', JAVASCRIPT = '${js}', REPORT = '${report}', ORALCOMMUNICATION = '${oc}',TOTAL_SEE='${total}' WHERE STUDENT_ID='${parseInt(id)}'`, function(error, reslt){
+    connection.query(`UPDATE GRADES SET CIE = '${cie}', HTML = '${html}', CSS = '${css}', JAVASCRIPT = '${js}', REPORT = '${report}', ORALCOMMUNICATION = '${oc}',TOTAL_SEE='${total}' WHERE USN='${id}'`, function(error, reslt){
       if(error){
         console.log(error);
       }else{

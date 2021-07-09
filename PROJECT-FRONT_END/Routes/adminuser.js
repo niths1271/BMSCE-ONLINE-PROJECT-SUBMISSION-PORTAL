@@ -15,14 +15,7 @@ router.get("/login", function(req, res) {
  router.post('/login',
  passport.authenticate('local', { failureRedirect: '/adminuser/login' }),
  function(req, res) {
-     connection.query(`SELECT PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID = ${req.user.id};`, function(error, result) {
-         if (!error) {
-                 res.redirect("/admin/admindashboard");
-             }
-      else {
-             console.log(error);
-         }
-     });
+      res.redirect("/admin/admindashboard");
  });
 
 
