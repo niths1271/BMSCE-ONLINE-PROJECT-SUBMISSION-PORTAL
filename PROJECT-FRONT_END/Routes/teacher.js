@@ -360,7 +360,7 @@ router.post("/patchgrade", function(req, res){
   var inserted = 0;
   grades.STUD_IDs.forEach((id, index)=>{
     var cie = parseInt(grades.CIE[index]);
-      var html = parseInt(grades.HTML[index]);
+    var html = parseInt(grades.HTML[index]);
     var css = parseInt(grades.CSS[index]);
     var js = parseInt(grades.JAVASCRIPT[index]);
     var report = parseInt(grades.REPORT[index]);

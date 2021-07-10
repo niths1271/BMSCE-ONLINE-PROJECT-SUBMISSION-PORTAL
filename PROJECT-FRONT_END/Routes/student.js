@@ -323,7 +323,7 @@ router.post("/psub", function(req, res){
 
 router.post("/grades",function(req,res){
     const query=`SELECT HTML,JAVASCRIPT,CSS,REPORT,ORALCOMMUNICATION,
-                CIE,TOTAL_SEE FROM GRADES WHERE STUDENT_ID ='${req.body.memberid}';`;
+                CIE,TOTAL_SEE FROM GRADES WHERE USN ='${req.body.memberid}';`;
     connection.query(query,function(err, result) {
         if(err){
             console.log(err);
