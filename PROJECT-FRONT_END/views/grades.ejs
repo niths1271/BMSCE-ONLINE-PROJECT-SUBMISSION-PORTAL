@@ -133,25 +133,23 @@ function drawChart() {
             </div>
             <div class="g-container a">
                 <h3>Instructor Remarks</h3>
-                <div class="g-row">
-                    <div class="m2">
-                        <img class="g-circle" src="/photos/avatar3.png" style="width:96px;height:96px">
-                    </div>
-                    <div class="m10">
-                        <h4>Dr.Umadevi <span class="g-opacity g-medium">Sep 29, 2020, 9:12 PM</span></h4>
-                        <p>Keep up the GREAT work!</p><br>
-                    </div>
-                </div>
+                <% console.log("gili",remarks); %>
 
-                <div class="g-row">
-                    <div class="m2">
-                        <img class="g-circle" src="/photos/avatar1.png" style="width:96px;height:96px">
+                <% remarks.forEach(remark=>{ %>
+
+                    <div class="g-row">
+                        <div class="m2">
+                            <img class="g-circle" src="/photos/avatar3.png" style="width:96px;height:96px">
+                        </div>
+                        <div class="m10">
+                            <h4><%= tname.NAME %></h4>
+                            <p><%= remark.REMARK %></p><br>
+                        </div>
                     </div>
-                    <div class="m10">
-                        <h4>Bhoomika A P <span class="g-opacity g-medium">Sep 28, 2020, 10:15 PM</span></h4>
-                        <p>Well Done!Slight modifications can be done with the code</p><br>
-                    </div>
-                </div>
+                <% }); %>
+                
+
+                
             </div>
             <div class="g-container b">
                 <h3>Student Info:</h3>

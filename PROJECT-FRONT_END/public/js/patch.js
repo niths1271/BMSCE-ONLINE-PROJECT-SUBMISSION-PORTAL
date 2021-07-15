@@ -4,6 +4,7 @@ function myfn() {
     
   document.getElementById("change").value = "CONFIRM";
   document.getElementById("change").removeEventListener("click", myfn);
+  document.getElementsByClassName("remark")[0].style.display = "inline-block";
   
   var inputs = document.getElementsByClassName("edit").length;
   for(let i = 0; i < inputs; i++){

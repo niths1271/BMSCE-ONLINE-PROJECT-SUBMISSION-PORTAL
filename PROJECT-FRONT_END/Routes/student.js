@@ -322,7 +322,7 @@ router.post("/psub", function(req, res){
 });
 
 router.post("/grades",function(req,res){
-    const query=`SELECT HTML,JAVASCRIPT,CSS,REPORT,ORALCOMMUNICATION,
+    const query=`SELECT PROJECT_ID, HTML,JAVASCRIPT,CSS,REPORT,ORALCOMMUNICATION,
                 CIE,TOTAL_SEE FROM GRADES WHERE USN ='${req.body.memberid}';`;
     connection.query(query,function(err, result) {
         if(err){
@@ -345,16 +345,32 @@ router.post("/grades",function(req,res){
                  console.log(err);
              }
              else{
-             console.log(result1);
-             console.log(JSON.stringify(googleChartArray));
-           res.render("grades",{dataArray:JSON.stringify(googleChartArray),
+                 console.log(result1);
+                 connection.query(`SELECT REMARK FROM REMARKS WHERE PROJECT_ID = '${result[0].PROJECT_ID}';`, function(eror, resst){
+                     if(eror){
+                         console.log("kili", eror);
+                     }else{
+                        connection.query(`SELECT T.NAME FROM TEACHER_DETAILS T, PROJECT_DETAILS P  WHERE T.TEACHER_ID = P.TEACHER_ID AND P.PROJECT_ID = '${result[0].PROJECT_ID}';`, function(erer, resutt){
+                            if(erer){
+                                console.log(erer);
+                            }else{
+                                console.log(JSON.stringify(googleChartArray));
+                                res.render("grades",{dataArray:JSON.stringify(googleChartArray),
                                 cie:result[0].CIE*2,
                                 see:result[0].TOTAL_SEE*2,
                                 total:totalMarks,
                                 name:result1[0].NAME,
                                 usn:result1[0].USN,
                                 email:result1[0].EMAIL,
+                                remarks:resst,
+                                tname:resutt[0],
                                 phoneno:result1[0].PHONE_NO});
+                            }
+                        });
+                        
+                     }
+                 });
+             
            }
     });
 }

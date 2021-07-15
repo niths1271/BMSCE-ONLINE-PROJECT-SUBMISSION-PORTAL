@@ -343,7 +343,15 @@ router.post("/fgrade", function (req, res) {
                   console.log(eror);
                 } else {
                   console.log("noti pushed");
-                  res.redirect("/teacher/grading");
+
+                  connection.query(`INSERT INTO REMARKS SET ?`, {PROJECT_ID:parseInt(grades.PROJECT_ID[0]),REMARK:grades.remark }, function(erorr){
+                    if(erorr){
+                      console.log(erorr);
+                    }else{
+                      console.log("remarks inserted!");
+                      res.redirect("/teacher/grading");
+                    }
+                  });
                 }
               });
             }
@@ -375,7 +383,15 @@ router.post("/patchgrade", function(req, res){
         inserted = inserted + 1;
 
         if (inserted === grades.STUD_IDs.length) {
-          res.redirect("/teacher/grading");
+          connection.query(`INSERT INTO REMARKS SET ?`, {PROJECT_ID:parseInt(grades.PROJECT_ID[0]),REMARK:grades.remark }, function(erorr){
+                    if(erorr){
+                      console.log(erorr);
+                    }else{
+                      console.log("remark 2 inserted");
+                      res.redirect("/teacher/grading");
+                    }
+                  });
+          
         }
       }
     });
