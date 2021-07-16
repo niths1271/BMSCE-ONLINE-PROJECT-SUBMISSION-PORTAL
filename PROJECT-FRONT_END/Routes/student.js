@@ -91,13 +91,8 @@ router.get("/appointment", function(req, res) {
                         res.render("appointment", done);
                    }
                 });
-
-                       
-
-                    }
+                   }
                 });
-
-
             }
         });
     } else {
@@ -111,7 +106,6 @@ router.get("/psub", function(req, res){
         connection.query(`SELECT PROJECT_TITLE, PROJECT_ID FROM PROJECT_DETAILS WHERE USER_ID =  '${req.user.id}' ;`, function(err, result){
             if (err) {
                 console.log(err);
-
             } else{
                 var send = {pname: result[0].PROJECT_TITLE, submitted : 0};             
                   connection.query(`SELECT * FROM PROJECTS WHERE PROJECT_ID ='${result[0].PROJECT_ID}';`, function(error, reslt) {
@@ -134,8 +128,7 @@ router.get("/psub", function(req, res){
                         send.noti = ress;
                         res.render("psub", send);
                    }
-                });
-                        
+                });                     
                     }
                 });
 
