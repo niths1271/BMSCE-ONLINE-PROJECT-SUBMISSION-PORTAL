@@ -85,31 +85,16 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">perm_identity</i>
-                  </div>
-                  <p class="card-category">TOTAL NUMBER OF USERS</p>
-                  <h2 class="card-title">6
-                  </h2>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                         <i class="material-icons">update</i> Just Updated
-                       </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-8 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">assignment_ind</i>
                   </div>
                   <p class="card-category">BEST PROJECT</p>
-                  <h2 class="card-title">3</h2>
+                  <h2 class="card-title"><b>PROJECT ID:</b><%=result2[0].PROJECT_ID%><h2>
+                    <h2 class="card-title"><b>PROJECT TITLE:</b><%=result2[0].PROJECT_TITLE%></h2>                
+                  <h2 class="card-title"><b>AVG MARKS</b>:<%=Math.round(result2[0].AVERAGE)%></h2>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -166,7 +151,7 @@
                       <tr>
                          <td><%=result2[i].PROJECT_ID%></td>
                          <td><%=result2[i].PROJECT_TITLE%></td>
-                         <td><%=result2[i].AVERAGE%></td>
+                         <td><%=Math.round(result2[i].AVERAGE)%></td>
                       </tr>
                       <%}%>
                     </tbody>
