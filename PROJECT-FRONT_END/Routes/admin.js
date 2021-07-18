@@ -77,8 +77,9 @@ router.get("/appointTeacher", function (req, res) {
 
 router.get("/adminacademicdb", async function (req, res) {
     if (req.isAuthenticated() && req.user.ROLE === "ADMIN") {
-        connection.query(`SELECT P.PROJECT_ID,P.PROJECT_TITLE,S.NAME,S.USN,MAX(G.TOTAL_MARKS) AS MAX FROM PROJECT_DETAILS P,STUDENT_DETAILS S,GRADES G 
-                         WHERE P.PROJECT_ID=G.PROJECT_ID AND G.USN=S.USN GROUP BY P.PROJECT_ID; `, async function (err, result1) {
+        connection.query(`SELECT T1.PROJECT_ID,T1.PROJECT_TITLE,T1.NAME,T1.USN,T1.TOTAL_MARKS FROM (SELECT P.PROJECT_ID,P.PROJECT_TITLE,S.NAME,S.USN,G.TOTAL_MARKS FROM PROJECT_DETAILS P,STUDENT_DETAILS S,GRADES G 
+            WHERE P.PROJECT_ID=G.PROJECT_ID AND G.USN=S.USN)T1 INNER JOIN(SELECT PROJECT_ID,MAX(TOTAL_MARKS) AS MAX_MARKS FROM GRADES G
+             GROUP BY PROJECT_ID)T2 ON T1.PROJECT_ID=T2.PROJECT_ID AND T1.TOTAL_MARKS=T2.MAX_MARKS; `, async function (err, result1) {
             if (err) {
                 console.log(err);
             } else {
