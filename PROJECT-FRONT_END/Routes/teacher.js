@@ -235,11 +235,22 @@ router.post("/scheduleappointment", function (req, res) {
             console.log(eror);
           } else {
             console.log("noti pushed");
-            inserted += 1;
+            not = {
+              PROJECT_ID: team,
+              TEXT: retDoc.add
+            };
+            connection.query(`INSERT INTO NOTIFICATION SET ?`, not, function(erore ){
+              if(erore){
+                console.log(erore);
+              }else{
+                console.log("another noti pushed");
+                inserted += 1;
             console.log("successful!");
             if (inserted === teams.length) {
               res.redirect("/teacher/scheduleappointment");
             }
+              }
+            });
           }
         });
 
