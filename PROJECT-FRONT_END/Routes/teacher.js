@@ -63,11 +63,11 @@ router.get("/scheduleappointment", function (req, res) {
 });
 router.get("/viewappointmentreqs", function (req, res) {
   if (req.isAuthenticated() && req.user.ROLE === "TEACHER") {
-    connection.query(`SELECT P.PROJECT_TITLE, A.ADATE, A.TYPEOFAPP, A.PROJECT_ID, A.APPROVAL, A.SCHEDULED_BY_ADMIN FROM APPOINTMENT A, PROJECT_DETAILS P, TEACHER_DETAILS T WHERE A.PROJECT_ID = P.PROJECT_ID AND P.TEACHER_ID = T.TEACHER_ID AND T.TEACHER_ID ='${req.user.id}';`, function (err, reslt) {
+    connection.query(`SELECT P.PROJECT_TITLE, A.ADATE, A.TYPEOFAPP, A.PROJECT_ID, A.APPROVAL, A.SCHEDULED_BY_ADMIN, T.NAME, T.EMAIL FROM APPOINTMENT A, PROJECT_DETAILS P, TEACHER_DETAILS T WHERE A.PROJECT_ID = P.PROJECT_ID AND P.TEACHER_ID = T.TEACHER_ID AND T.USER_ID ='${req.user.id}';`, function (err, reslt) {
       if (err) {
         console.log(err);
       } else {
-        //console.log(reslt);
+        
         res.render("tappointmentreqs", {
           vals: reslt
         });
@@ -235,11 +235,22 @@ router.post("/scheduleappointment", function (req, res) {
             console.log(eror);
           } else {
             console.log("noti pushed");
-            inserted += 1;
+            not = {
+              PROJECT_ID: team,
+              TEXT: retDoc.add
+            };
+            connection.query(`INSERT INTO NOTIFICATION SET ?`, not, function(erore ){
+              if(erore){
+                console.log(erore);
+              }else{
+                console.log("another noti pushed");
+                inserted += 1;
             console.log("successful!");
             if (inserted === teams.length) {
               res.redirect("/teacher/scheduleappointment");
             }
+              }
+            });
           }
         });
 
