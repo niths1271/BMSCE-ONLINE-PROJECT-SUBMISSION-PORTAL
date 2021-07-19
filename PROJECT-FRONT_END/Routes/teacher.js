@@ -330,7 +330,8 @@ router.post("/fgrade", function (req, res) {
       ORALCOMMUNICATION:oc,
       PROJECT_ID:parseInt(grades.PROJECT_ID[index]),
       USN:student,
-      TOTAL_SEE: total
+      TOTAL_SEE: total,
+      TOTAL_MARKS:cie+total
     };
     console.log("niru",marks);
     connection.query(`INSERT INTO GRADES SET ?`, marks, function(error, result, fields){

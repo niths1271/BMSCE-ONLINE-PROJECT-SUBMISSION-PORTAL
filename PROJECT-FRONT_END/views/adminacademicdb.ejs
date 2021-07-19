@@ -33,7 +33,7 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+          <li class="nav-item">
             <a class="nav-link" href="/admin/admindashboard">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
@@ -46,17 +46,17 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="/admin/appointTeacher">
+            <a class="nav-link" href="/admin/appointTeacher">        
               <i class="material-icons">content_paste</i>
               <p>Assign Teacher</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="/admin/adminacademicdb">
-              <i class="material-icons">dashboard</i>
-              <p>Academic Dashboard</p>
-            </a>
-          </li>
+          <li class="nav-item active  ">
+               <a class="nav-link" href="/admin/adminacademicdb">
+                 <i class="material-icons">dashboard</i>
+                 <p>Academic Dashboard</p>
+               </a>
+             </li>
         </ul>
       </div>
     </div>
@@ -76,9 +76,7 @@
                     Logout
                   </p>
                 </a>
-              </li>
-      
-      
+              </li>   
             </ul>
           </div>
         </div>
@@ -87,63 +85,16 @@
       <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-warning card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">perm_identity</i>
-                  </div>
-                  <p class="card-category">TOTAL NUMBER OF USERS</p>
-                  <h2 class="card-title"><%=usersno%>
-                  </h2>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                         <i class="material-icons">update</i> Just Updated
-                       </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-success card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">perm_identity</i>
-                  </div>
-                  <p class="card-category">TOTAL NUMBER OF TEACHERS</p>
-                  <h2 class="card-title"><%=teachers%></h2>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                         <i class="material-icons">update</i> Just Updated
-                       </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-              <div class="card card-stats">
-                <div class="card-header card-header-danger card-header-icon">
-                  <div class="card-icon">
-                    <i class="material-icons">perm_identity</i>
-                  </div>
-                  <p class="card-category">TOTAL NUMBER OF STUDENTS</p>
-                  <h2 class="card-title"><%=student.length %></h2>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                         <i class="material-icons">update</i> Just Updated
-                       </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-8 col-md-6 col-sm-6">
               <div class="card card-stats">
                 <div class="card-header card-header-info card-header-icon">
                   <div class="card-icon">
                     <i class="material-icons">assignment_ind</i>
                   </div>
-                  <p class="card-category">TOTAL NUMBER OF PROJECTS</p>
-                  <h2 class="card-title"><%=project.length %></h2>
+                  <p class="card-category">BEST PROJECT</p>
+                  <h2 class="card-title"><b>PROJECT ID:</b><%=result2[0].PROJECT_ID%><h2>
+                    <h2 class="card-title"><b>PROJECT TITLE:</b><%=result2[0].PROJECT_TITLE%></h2>                
+                  <h2 class="card-title"><b>AVG MARKS</b>:<%=Math.round(result2[0].AVERAGE)%></h2>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -154,26 +105,28 @@
             </div>
           </div>
           <div class="row">
-               <div class="col-lg-5 col-md-12">
+               <div class="col-lg-8 col-md-12">
                     <div class="card">
                       <div class="card-header card-header-warning">
-                        <h3 class="card-title">PROJECT DETAILS</h3>
+                        <h3 class="card-title">PROJECT WISE BEST STUDENT</h3>
                       </div>
                       <div class="card-body table-responsive">
                         <table class="table table-hover">
                           <thead class="text-warning">
-                            <th>ID</th>
-                            <th>TITLE</th>
-                            <th>NUMBER OF MEMBERS</th>
-                            <th>SECTION</th>
+                            <th>PROJECT ID</th>
+                            <th>PROJECT TITLE</th>
+                            <th>STUDENT NAME</th>
+                            <th>STUDENT USN</th>
+                            <th>MARKS OBTAINED</th>
                           </thead>
                           <tbody>
-                               <%for(var i=0;i<project.length;i++){%>
+                               <%for(var i=0;i<result1.length;i++){%>
                             <tr>
-                              <td><%=project[i].PROJECT_ID%></td>
-                              <td><%=project[i].PROJECT_TITLE%></td>
-                              <td><%=project[i].MEMBERS_NO%></td>
-                              <td><%=project[i].SECTION%></td>
+                              <td><%=result1[i].PROJECT_ID%></td>
+                              <td><%=result1[i].PROJECT_TITLE%></td>
+                              <td><%=result1[i].NAME%></td>
+                              <td><%=result1[i].USN%></td>
+                              <td><%=result1[i].TOTAL_MARKS%></td>
                             </tr>
                          <%}%>
                           </tbody>
@@ -181,26 +134,24 @@
                       </div>
                     </div>
                   </div>
-            <div class="col-lg-7 col-md-12">
+            <div class="col-lg-8 col-md-12">
               <div class="card">
                 <div class="card-header card-header-warning">
-                  <h4 class="card-title">STUDENT DETAILS</h4>
+                  <h4 class="card-title">AVERAGE OF MARKS OBTAINED IN EACH PROJECT</h4>
                 </div>
                 <div class="card-body table-responsive">
                   <table class="table table-hover">
                     <thead class="text-warning">
-                      <th>NAME</th>
-                      <th>USN</th>
-                      <th>EMAIL ID</th>
-                      <th>PHONE NO</th>
+                      <th>PROJECT ID</th>
+                      <th>PROJECT TITLE</th>
+                      <th>AVERAGE MARKS</th>
                     </thead>
                     <tbody>
-                         <%for(var i=0;i<student.length;i++){%>
+                         <%for(var i=0;i<result2.length;i++){%>
                       <tr>
-                         <td><%=student[i].NAME%></td>
-                         <td><%=student[i].USN%></td>
-                         <td><%=student[i].EMAIL%></td>
-                         <td><%=student[i].PHONE_NO%></td>
+                         <td><%=result2[i].PROJECT_ID%></td>
+                         <td><%=result2[i].PROJECT_TITLE%></td>
+                         <td><%=Math.round(result2[i].AVERAGE)%></td>
                       </tr>
                       <%}%>
                     </tbody>
@@ -208,6 +159,31 @@
                 </div>
               </div>
             </div>
+            <div class="col-lg-8 col-md-12">
+               <div class="card">
+                 <div class="card-header card-header-warning">
+                   <h4 class="card-title">NUMBER OF PROJECTS PER STUDENT</h4>
+                 </div>
+                 <div class="card-body table-responsive">
+                   <table class="table table-hover">
+                     <thead class="text-warning">
+                       <th>USN</th>
+                       <th>NAME</th>
+                       <th>NUMBER OF PROJECTS ASSIGNED</th>
+                     </thead>
+                     <tbody>
+                          <%for(var i=0;i<result3.length;i++){%>
+                       <tr>
+                          <td><%=result3[i].USN%></td>
+                          <td><%=result3[i].NAME%></td>
+                          <td><%=result3[i].COUNT%></td>
+                       </tr>
+                       <%}%>
+                     </tbody>
+                   </table>
+                 </div>
+               </div>
+             </div>
           </div>
         </div>
       </div>
