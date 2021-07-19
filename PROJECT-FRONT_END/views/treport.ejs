@@ -23,6 +23,43 @@
             <br />
             <br />
             <br />
+            <% var pending=0 %>
+              <% var yetTo=0 %>
+              <!-- ----------------------------------------- -->
+               <%if(result2.length==0){%>
+
+
+
+            <%}else{%>
+
+            <% for(var i=0;i<values.length;i++){ %>
+            
+                  <% for(let j = 0; j<result[i].MEMBERS_NO;j++){ %>
+                  
+                  <% }  %>
+               
+              <%var indexz=values[i].length-1%>
+              <%if(((indexz+1)-result[i].MEMBERS_NO)!=0){%>
+              
+                
+              <%if(values[i][indexz].STATUS==="PENDING"){%>
+                <% pending++; %>
+             
+              <%}else if(values[i][indexz].STATUS==="APPROVED"){%>
+              
+              <%}else{%>
+              
+              <%}%>
+                <%}else{%>
+                  <% yetTo++ %>
+             
+              <%}%>
+            
+            <% } %>
+
+              <%}%>
+<!-- 
+              ------------------------------------- -->
             <div class="flip-box">
               <div class="flip-box-inner">
                 <div class="flip-box-front">
@@ -31,7 +68,7 @@
                   </h2>
                 </div>
                 <div class="flip-box-back">
-                  <h2>5 teams</h2>
+                  <h2><%= yetTo %></h2>
                 </div>
               </div>
             </div>
@@ -43,7 +80,7 @@
                   </h2>
                 </div>
                 <div class="flip-box-back">
-                  <h2>2 teams</h2>
+                  <h2><%= pending %></h2>
                 </div>
               </div>
             </div>
@@ -63,6 +100,7 @@
             <span style="font-size: 20px">&#9733;</span> List of reports
             submitted by teams:
           </h2>
+         
           <table id="teachers" class="table">
             <tr>
               <th>Teams</th>
@@ -94,6 +132,7 @@
                     <%= values[i][index].LINK.substring(63,l) %></i></a>
               </td>
               <%if(values[i][index].STATUS==="PENDING"){%>
+                
               <td class="approval">
                 <form action="/teacher/viewreport" method="POST">
                   <!-- <input type="checkbox" class="checkbox" name="checkBox2" onchange="this.form.submit()" /> -->
@@ -114,6 +153,7 @@
               </td>
               <%}%>
                 <%}else{%>
+                  
               <td>NOT YET SUBMITTED</td>
               <%}%>
             </tr>
