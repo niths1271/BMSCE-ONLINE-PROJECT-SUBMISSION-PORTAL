@@ -21,7 +21,7 @@
 
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
-  display: none;
+  /* display: none; */
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
@@ -34,11 +34,16 @@
   color: black;
   padding: 12px 16px;
   text-decoration: none;
-  display: block;
+  /* display: block; */
 }
 
 /* Change color of dropdown links on hover */
 .dropdown-content input:hover {background-color: #ddd}
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-.show {display:block;}
+/* .show {display:block;} */
+
+/* .myDropdown{
+  display: flex;
+  flex-direction: column;
+} */

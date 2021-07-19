@@ -120,14 +120,11 @@ res.redirect("/suser/login")
 router.post('/reset', function(req, res){
     console.log("aaa",req.body);
     var uid = req.body.id;
-    connection.query(`SELECT S.EMAIL FROM STUDENT_DETAILS S, PROJECT_DETAILS P, USER_DETAILS U WHERE U.ID = P.USER_ID AND S.PROJECT_ID = P.PROJECT_ID AND U.USERNAME='${uid}';`, function(error, reslt){
-        if(error){
-            console.log(error);
-        }else{
-            console.log("mails",reslt);
-            res.render('reset', {email:1, vals:reslt, uid:uid});
-        }
-    });
+    
+    
+    res.render('reset', {email:1, uid:uid});
+        
+    
 });
 
 router.get("/changepw/:team", function(req,res){
